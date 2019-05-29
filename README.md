@@ -68,6 +68,15 @@ python test.py agr agr GRU 0 0.001 256 > outfile
 The output of the test script is currently not very user-friendly (I'll be cleaning it up soon). The two most important things indicated in the output are the two metrics we focus on in the paper, namely test set full-sentence accuracy and generalization set first-word accuracy. Here is how to find each of these in the test script output:
 - Test set full-sentence accuracy: If you search for "Overall test correct:", that will be the start of a block of results about test set full-sentence accuracy. At the end of that block will be 4 lines starting with "Mean:", "Median:", "Mean10:", and "Median10:". The first 2 of those are the most relevant: "Mean:" gives the mean test set full-sentence accuracy across all the random initializations, and "Median:" gives the median.
 - Generalization set first-word accuracy: Same as above, except that the relevant block for this one is the one starting with "Overall gen first word correct aux:"
+
+# Notes on running
+
+The non-tree-based models run reasonably quickly; on an NVIDIA k80 GPU, these models will converge in roughly 30 minutes to 1 hour (on a CPU, they train more slowly, but should still converge within a few hours). Models with content-based attention are significantly slower than models with no attention or position-based attention (but should still converge within a few hours).
+
+The tree-based models take much longer to train (roughly 1 day, whether on a CPU or GPU; GPUs do not bring about much speedup for these models because their batches are not implemented in a way that GPUs can take advantage of).
+
+
+
   
 
 
