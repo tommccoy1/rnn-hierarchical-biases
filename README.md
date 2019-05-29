@@ -2,7 +2,7 @@
 Code for "Does syntax need to grow on trees? Sources of inductive bias in sequence to sequence networks"
 
 # Dependencies
-I ran this with PyTorch version 0.4.0, but other versions may well work. It should run on either a GPU or CPU (though at least some experiments will be markedly faster on a GPU).
+We ran this with PyTorch version 0.4.0, but other versions may well work. It should run on either a GPU or CPU (though at least some experiments will be markedly faster on a GPU).
 
 # Data
 Files ending in `.train`, `.dev`, `.test`, and `.gen` are training, development, test, and generalization sets, respectively. Files starting `agr` are the data for the question formation task, and file starting with `tense` are the data for the tense reinflection task.
