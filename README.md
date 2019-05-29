@@ -75,6 +75,12 @@ The non-tree-based models run reasonably quickly; on an NVIDIA k80 GPU, these mo
 
 The tree-based models take much longer to train (over 1 day, whether on a CPU or GPU; GPUs do not bring about much speedup for these models because their batches are not implemented in a way that GPUs can take advantage of).
 
+# Example
+
+This repo contains the output of one small example. The example was created by running the commands in `GRU_agr_1_0.01_256.scr`. The first 2 commands in that script train 2 instances of a GRU with location-based attention, a hidden size of 256, and a learning rate of 0.01 on the task of question formation. These commands create the subdirectories `agr_GRU_1_0.01_256_0` and `agr_GRU_1_0.01_256_1`. Each of these subdirectories contains the saved weights of the model being trained by that command (these weights are split into 2 files, one for the encoder's weights and one for the decoder's weights). The remaining files in these subdirectories are empty and only serve as indicators of progress during training.
+
+The third line in `GRU_agr_1_0.01_256.scr` then tests the trained models and outputs the results to `test_agr_GRU_1_0.01_256.out`. There is a lot of information in `test_agr_GRU_1_0.01_256.out`, but the most important data are that the test set full-sentence accuracy had a median of 0.974 and that the generalization set first-word accuracy had a median of 0.926.
+
 
 
   
