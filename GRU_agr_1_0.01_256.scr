@@ -1,0 +1,7 @@
+
+python seq2seq.py agr agr GRU 1 0.01 256 0
+python seq2seq.py agr agr GRU 1 0.01 256 1
+
+python test.py agr agr GRU 1 0.01 256 > test_agr_GRU_1_0.01_256.out
+
+

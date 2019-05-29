@@ -501,6 +501,8 @@ class LSTMBob(nn.Module):
 
         return hx, (hx, cx)
 
+# This implements the Tree-GRU of Chen et al. 2017, described
+# in section 3.2 of this paper: https://arxiv.org/pdf/1707.05436.pdf
 class TreeEncoderRNNNew(nn.Module):
     def __init__(self, vocab_size, hidden_size):
         super(TreeEncoderRNNNew, self).__init__()
@@ -508,8 +510,6 @@ class TreeEncoderRNNNew(nn.Module):
         emb_size = hidden_size
         self.emb_size = hidden_size
         self.embedding = nn.Embedding(vocab_size, emb_size)
-        #self.hidden_squeeze = nn.Linear(2 * hidden_size, hidden_size)
-        #self.rnn = nn.GRU(2 * emb_size, hidden_size)
 
 
         self.l_rl = nn.Linear(hidden_size, hidden_size)
@@ -532,8 +532,6 @@ class TreeEncoderRNNNew(nn.Module):
         self.r = nn.Linear(hidden_size, hidden_size)
 
 
-
-
     def forward(self, training_set): #input_seq, tree):
         input_seq = training_set[0]
         tree = training_set[2]
@@ -541,8 +539,14 @@ class TreeEncoderRNNNew(nn.Module):
 
         for elt in input_seq:
             embedded_seq.append(self.embedding(Variable(torch.LongTensor([elt])).to(device=available_device)).unsqueeze(0))
-            #embedded_seq.append((self.embedding(Variable(torch.LongTensor([elt])).to(device=available_device)).unsqueeze(0), Variable(torch.zeros(1,1,self.hidden_size).to(device=available_device))))
 
+        # current_level starts out as a list of word embeddings for the words in the sequence
+        # Then, the tree (which is passed as an input - the element at index 2 of training_set) is used to 
+        # determine which 2 things in current_level should be merged together to form a new, single unit
+        # Those 2 things are replaced with their merged version in current_level, and that process repeats, 
+        # with each time step merging at least one pair of adjacent elements in current_level to create a 
+        # single new element, until current_level only contains one element. This element is then a single 
+        # embedding for the whole tree, and it is what is returned.
         current_level = embedded_seq
         for level in tree:
             next_level = []
@@ -550,7 +554,6 @@ class TreeEncoderRNNNew(nn.Module):
             for node in level:
 
                 if len(node) == 1:
-                    #print("chinchilla", current_level, node[0])
                     next_level.append(current_level[node[0]])
                     continue
                 left = node[0]
@@ -572,7 +575,7 @@ class TreeEncoderRNNNew(nn.Module):
         return current_level[0], current_level[0], current_level[0]
 
 
-
+# This is obsolete; the model used in the paper is TreeEncoderRNNNew
 class TreeEncoderRNN(nn.Module):
     def __init__(self, vocab_size, hidden_size):
         super(TreeEncoderRNN, self).__init__()
@@ -645,6 +648,10 @@ class TreeEncoderRNN(nn.Module):
 
         return current_level[0][1], current_level[0][1], current_level[0][1]
 
+# This implements the binary tree decoder of Chen et al. 2018, described in
+# section 3.2 of this paper: http://papers.nips.cc/paper/7521-tree-to-tree-neural-networks-for-program-translation.pdf
+# The only difference is that we have implemented it as a GRU instead of an LSTM, but this is
+# a straightforward modification of their setup
 class TreeDecoderRNN(nn.Module):
     def __init__(self, vocab_size, hidden_size):
         super(TreeDecoderRNN, self).__init__()
@@ -652,8 +659,8 @@ class TreeDecoderRNN(nn.Module):
         self.word_out = nn.Linear(hidden_size, vocab_size)
         self.rnn_l = nn.GRU(hidden_size, hidden_size)
         self.rnn_r = nn.GRU(hidden_size, hidden_size)
-        self.left_child = nn.Linear(hidden_size, hidden_size)
-        self.right_child = nn.Linear(hidden_size, hidden_size)
+        self.left_child = nn.Linear(hidden_size, hidden_size) # Obsolete, can delete?
+        self.right_child = nn.Linear(hidden_size, hidden_size) # Obsolete, can delete?
 
     def forward(self, hidden, encoder_outputs, training_set, tf_ratio=0.5): #(self, encoding, tree):
         encoding = hidden
@@ -663,6 +670,8 @@ class TreeDecoderRNN(nn.Module):
 
         current_layer = [encoding]
 
+        # This works in revers of the tree encoder: start with a single vector encoding, then 
+        # output 2 children from it, and repeat until the whole tree has been generated
         for layer in tree_to_use:
             next_layer = []
             for index, node in enumerate(layer):
@@ -677,11 +686,11 @@ class TreeDecoderRNN(nn.Module):
                     next_layer.append(right)
             current_layer = next_layer
 
+        # Apply a linear layer to each leaf embedding to determine what word is at that leaf
         words_out = []
         for elt in current_layer:
             words_out.append(nn.LogSoftmax()(self.word_out(elt).view(-1).unsqueeze(0)))
 
-        #print(words_out)
         return words_out
 
 
