@@ -73,7 +73,7 @@ The output of the test script is currently not very user-friendly (I'll be clean
 
 The non-tree-based models run reasonably quickly; on an NVIDIA k80 GPU, these models will converge in roughly 30 minutes to 1 hour (on a CPU, they train more slowly, but should still converge within a few hours). Models with content-based attention are significantly slower than models with no attention or position-based attention (but should still converge within a few hours).
 
-The tree-based models take much longer to train (roughly 1 day, whether on a CPU or GPU; GPUs do not bring about much speedup for these models because their batches are not implemented in a way that GPUs can take advantage of).
+The tree-based models take much longer to train (over 1 day, whether on a CPU or GPU; GPUs do not bring about much speedup for these models because their batches are not implemented in a way that GPUs can take advantage of).
 
 
 
