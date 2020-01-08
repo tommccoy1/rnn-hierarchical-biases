@@ -67,8 +67,11 @@ This repo contains the output of one small example. The example was created by r
 
 The third line in `GRU_agr_1_0.01_256.scr` then tests the trained models and outputs the results to `test_agr_GRU_1_0.01_256.out`. There is a lot of information in `test_agr_GRU_1_0.01_256.out`, but the most important data are that the test set full-sentence accuracy had a median of 0.974 and that the generalization set first-word accuracy had a median of 0.926.
 
+# Basic description of the code
 
-# Variants on sequential RNNs (Section 3.3 / Figure 4)
+# How to replicate the experiments in the paper
+
+## Variants on sequential RNNs (Section 3.3 / Figure 4)
 
 Run each of the following lines 100 times (the code will automatically generate a separate folder for each run):
 - `python seq2seq.py --encoder SRN --decoder SRN --task question --attention none --lr 0.001 --hs 256`
