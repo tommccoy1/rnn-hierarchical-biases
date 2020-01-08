@@ -201,9 +201,7 @@ Run the following evaluations once each:
 - `python test_question.py --encoder GRU --decoder GRU --task question_tense_subject --attention none --lr 0.001 --hs 256 > GRU_GRU_question_tense_subject_none_0.001_256.results`
 - `python test_tense.py --encoder GRU --decoder GRU --task question_main_tense --attention none --lr 0.001 --hs 256 > GRU_GRU_question_main_tense_none_0.001_256.results`
 - `python test_question.py --encoder GRU --decoder GRU --task question_tense_aux_subject --attention none --lr 0.001 --hs 256 > GRU_GRU_question_tense_aux_subject_none_0.001_256.results`
-- `python test_tense.py --encoder GRU --decoder GRU --task question_main_tense_aux --attention none --lr 0.001 --hs 256 > GRU_GRU_question_main_tense_aux_none_0.001_256.results`
-
-(Do we need a different eval script for tense aux?)
+- `python test_tense_aux.py --encoder GRU --decoder GRU --task question_main_tense_aux --attention none --lr 0.001 --hs 256 > GRU_GRU_question_main_tense_aux_none_0.001_256.results`
 
 
 
