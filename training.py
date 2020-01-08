@@ -72,7 +72,7 @@ def train(training_pair, encoder, decoder, encoder_optimizer, decoder_optimizer,
 
 
 # Do many iterations of training
-def trainIters(encoder, decoder, n_iters, enc_recurrent_unit, dec_recurrent_unit, attention, training_pairs, dev_batches, index2word, directory, prefix, print_every=1000, learning_rate=0.01):
+def trainIters(encoder, decoder, n_iters, enc_recurrent_unit, dec_recurrent_unit, attention, training_pairs, dev_batches, index2word, directory, prefix, print_every=1000, learning_rate=0.01, patience=3):
     print_loss_total = 0  
 
     # Training with stochastic gradient descent
@@ -120,7 +120,7 @@ def trainIters(encoder, decoder, n_iters, enc_recurrent_unit, dec_recurrent_unit
                     else:
                         count_since_improved += 1
                     
-                    if count_since_improved >= 3 and iter >= 150000: # Changed to make trees train longer
+                    if count_since_improved >= patience and iter >= 150000: # Changed to make trees train longer
                         break
 
 
@@ -131,7 +131,7 @@ def trainIters(encoder, decoder, n_iters, enc_recurrent_unit, dec_recurrent_unit
                     else:
                         count_since_improved += 1
 
-                    if count_since_improved >= 3 and iter >= 30000:
+                    if count_since_improved >= patience and iter >= 30000:
                         break
 
 

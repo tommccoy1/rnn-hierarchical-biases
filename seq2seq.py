@@ -46,6 +46,8 @@ parser.add_argument("--attention", help="attention type", type=str, default=None
 parser.add_argument("--lr", help="learning rate", type=float, default=None)
 parser.add_argument("--hs", help="hidden size", type=int, default=None)
 parser.add_argument("--seed", help="random seed", type=float, default=None)
+parser.add_argument("--parse_strategy", help="whether to parse correctly or right-branching", type=str, default="correct")
+parser.add_argument("--patience", help="patience", type=int, default=3)
 args = parser.parse_args()
 
 
@@ -142,9 +144,16 @@ def file_to_batches(filename, MAX_LENGTH, batch_size=5):
             # tree-based models in the multi-task setting, nor with 
             # brackets in the input. 
             if "tense" in args.task:
-                pair = [words1, words2, parse_tense(s1), parse_tense(s2)]
+                if args.parse_strategy == "correct":
+                    pair = [words1, words2, parse_tense(s1), parse_tense(s2)]
+                elif args.parse_strategy == "right_branching":
+                    pair = [words1, words2, parse_right_branching(s1), parse_right_branching(s2)]
             else:
-                pair = [words1, words2, parse_question(s1), parse_question(s2)]
+                if args.parse_strategy == "correct":
+                    pair = [words1, words2, parse_question(s1), parse_question(s2)]
+                elif args.parse_strategy == "right_branching":
+                    pair = [words1, words2, parse_right_branching(s1), parse_right_branching(s2)]
+
         pairs.append(pair)
 
     # Now sort these sentence pairs by length, as each batch must
@@ -226,7 +235,7 @@ if __name__ == "__main__":
             torch.cuda.manual_seed_all(random_seed)	
 
         # Train the model
-        trainIters(encoder, decoder, 10000000, args.encoder, args.decoder, args.attention, train_batches, dev_batches, index2word, directory, prefix, print_every=1000, learning_rate=args.lr)
+        trainIters(encoder, decoder, 10000000, args.encoder, args.decoder, args.attention, train_batches, dev_batches, index2word, directory, prefix, print_every=1000, learning_rate=args.lr, patience=args.patience)
 
 
 

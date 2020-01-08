@@ -316,6 +316,25 @@ def pos_to_parse_tense(pos_seq):
 def parse_tense(sent):
     return pos_to_parse_tense(sent_to_pos_tense(sent))
 
+# Returns a uniformly right-branching parse
+def parse_right_branching(sent):
+    len_sent = len(sent.split())
+
+    full_parse = []
+
+    for i in range(len_sent):
+        if i == 0:
+            new_part = [[0]]
+        elif i == 1:
+            new_part = [[0,1]]
+        else:
+            new_part = [[j] for j in range(i - 1)] + [[i-1,i]]
+
+        full_parse = [new_part] + full_parse
+
+    return full_parse
+
+
 
 
 

@@ -48,6 +48,7 @@ parser.add_argument("--encoder", help="encoder type", type=str, default=None)
 parser.add_argument("--decoder", help="decoder type", type=str, default=None)
 parser.add_argument("--task", help="task", type=str, default=None)
 parser.add_argument("--attention", help="attention type", type=str, default=None)
+parser.add_argument("--parse_strategy", help="whether to parse correctly or right-branching", type=str, default="correct")
 parser.add_argument("--lr", help="learning rate", type=float, default=None)
 parser.add_argument("--hs", help="hidden size", type=int, default=None)
 parser.add_argument("--seed", help="random seed", type=float, default=None)
@@ -179,9 +180,9 @@ while direcs_to_process:
             pred_sents = logits_to_sentence(evaluate(encoder, decoder, this_batch), index2word)
 
             for trio in zip(input_sents, target_sents, pred_sents):
-                input_sent = trio[0]
-                target_sent = trio[1]
-                pred_sent = trio[2]
+                input_sent = sent_remove_brackets(trio[0])
+                target_sent = sent_remove_brackets(trio[1])
+                pred_sent = sent_remove_brackets(trio[2])
 
                 total += 1
                                 
@@ -220,9 +221,9 @@ while direcs_to_process:
             pred_sents = logits_to_sentence(evaluate(encoder, decoder, this_batch), index2word)
 
             for trio in zip(input_sents, target_sents, pred_sents):
-                input_sent = trio[0]
-                target_sent = trio[1]
-                pred_sent = trio[2]
+                input_sent = sent_remove_brackets(trio[0])
+                target_sent = sent_remove_brackets(trio[1])
+                pred_sent = sent_remove_brackets(trio[2])
 
                 correct_words = target_sent.split()
 

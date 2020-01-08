@@ -88,6 +88,17 @@ def logits_to_sentence(pred_words, index2word, end_at_punc=True):
 
     return all_sents
 
+def sent_remove_brackets(sent):
+    words = sent.split()
+    new_words = []
+
+    for word in words:
+        if word not in ["[", "]"]:
+            new_words.append(word)
+
+    return " ".join(new_words)
+
+
 # Given a batch as input, get the decoder's outputs (as argmax indices)
 MAX_EXAMPLE = 10000
 def evaluate(encoder, decoder, batch, max_length=30):

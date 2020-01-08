@@ -183,7 +183,25 @@ Run the following evaluations once each:
 
 
 ### Tree structure vs. tree information (Section 7 / Figure 9)
-To be added: Currently the server hosting this code is down.
+Run the following training steps 100 times each:
+- `python seq2seq.py --encoder GRU --decoder GRU --task question --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder GRU --task question_bracket --attention none --lr 0.001 --hs 256 --patience 6`
+- `python seq2seq.py --encoder Tree --decoder Tree --task question --attention none --lr 0.001 --hs 256 --parse_strategy right_branching`
+- `python seq2seq.py --encoder Tree --decoder Tree --task question --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder GRU --task tense --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder GRU --task tense_bracket --attention none --lr 0.001 --hs 256 --patience 6`
+- `python seq2seq.py --encoder Tree --decoder Tree --task tense --attention none --lr 0.001 --hs 256 --parse_strategy right_branching`
+- `python seq2seq.py --encoder Tree --decoder Tree --task tense --attention none --lr 0.001 --hs 256`
+
+Run the following evaluations once each:
+- `python test_question.py --encoder GRU --decoder GRU --task question --attention none --lr 0.001 --hs 256 > GRU_GRU_question_none_0.001_256.results`
+- `python test_question.py --encoder GRU --decoder GRU --task question_bracket --attention none --lr 0.001 --hs 256 --patience 6 > GRU_GRU_question_bracket_none_0.001_256.results`
+- `python test_question.py --encoder Tree --decoder Tree --task question --attention none --lr 0.001 --hs 256 --parse_strategy right_branching > TreeRB_TreeRB_question_none_0.001_256.results`
+- `python test_question.py --encoder Tree --decoder Tree --task question --attention none --lr 0.001 --hs 256 > Tree_Tree_question_none_0.001_256.results`
+- `python test_tense.py --encoder GRU --decoder GRU --task tense --attention none --lr 0.001 --hs 256 > GRU_GRU_tense_none_0.001_256.results`
+- `python test_tense.py --encoder GRU --decoder GRU --task tense_bracket --attention none --lr 0.001 --hs 256 --patience 6 > GRU_GRU_tense_bracket_none_0.001_256.results`
+- `python test_tense.py --encoder Tree --decoder Tree --task tense --attention none --lr 0.001 --hs 256 --parse_strategy right_branching > TreeRB_TreeRB_tense_none_0.001_256.results`
+- `python test_tense.py --encoder Tree --decoder Tree --task tense --attention none --lr 0.001 --hs 256 > Tree_Tree_question_none_0.001_256.results`
 
 
 ### Multitask learning (Section 8 / Figure 10)
@@ -203,6 +221,6 @@ Run the following evaluations once each:
 - `python test_question.py --encoder GRU --decoder GRU --task question_tense_aux_subject --attention none --lr 0.001 --hs 256 > GRU_GRU_question_tense_aux_subject_none_0.001_256.results`
 - `python test_tense_aux.py --encoder GRU --decoder GRU --task question_main_tense_aux --attention none --lr 0.001 --hs 256 > GRU_GRU_question_main_tense_aux_none_0.001_256.results`
 
-
+# CFG
 
 
