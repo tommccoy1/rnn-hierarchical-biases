@@ -67,7 +67,7 @@ def train(training_pair, encoder, decoder, encoder_optimizer, decoder_optimizer,
     encoder_optimizer.step()
     decoder_optimizer.step()
 
-    return loss.data[0] / target_length
+    return loss.data.item() / target_length
 
 
 

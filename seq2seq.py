@@ -55,26 +55,26 @@ directory = args.task + "_" + args.encoder + "_" + args.decoder  + "_" + args.at
 
 # Create a directory where the outputs will be saved
 if __name__ == "__main__":
-        wait_time = random.randint(0, 99)
-        time.sleep(wait_time)
+    wait_time = random.randint(0, 99)
+    time.sleep(wait_time)
 
-        counter = 0
-        dir_made = 0
+    counter = 0
+    dir_made = 0
 
-        while not dir_made:
-                if not os.path.exists(directory + "_" +  str(counter)):
-                        directory = directory + "_" + str(counter)
-                        os.mkdir(directory)
-                        dir_made = 1
+    while not dir_made:
+        if not os.path.exists(directory + "_" +  str(counter)):
+            directory = directory + "_" + str(counter)
+            os.mkdir(directory)
+            dir_made = 1
 
-                else:
-                        counter += 1
+        else:
+            counter += 1
 
-# Implement the random seed
-if args.seed is None:
-    random_seed = counter
+    # Implement the random seed
+    if args.seed is None:
+        random_seed = counter
 
-random.seed(random_seed)
+    random.seed(random_seed)
 
 # Reading the training data
 trainingFile = 'data/' + prefix + '.train'
@@ -116,77 +116,85 @@ for line in fi:
 # that can be inputted into our models
 MAX_LENGTH = 20
 def file_to_batches(filename, MAX_LENGTH, batch_size=5):
-	fi = open(filename, "r")
-	pairs = []
+    fi = open(filename, "r")
+    pairs = []
 
-        # Convert words into indices, and create a parse for each sentence
-        # Thus, each training "pair" is really a 4-tuple containing sentence1,
-        # sentence2, the parse for sentence1, and the parse for sentence2
-	for line in fi:
-		parts = line.strip().split("\t")
-		s1 = parts[0].strip().lower()
-		s2 = parts[1].strip().lower()
+    # Convert words into indices, and create a parse for each sentence
+    # Thus, each training "pair" is really a 4-tuple containing sentence1,
+    # sentence2, the parse for sentence1, and the parse for sentence2
+    for line in fi:
+        parts = line.strip().split("\t")
+        s1 = parts[0].strip().lower()
+        s2 = parts[1].strip().lower()
 
-		words1 = [word2index[word] for word in s1.split()]
-		words2 = [word2index[word] for word in s2.split()]
+        words1 = [word2index[word] for word in s1.split()]
+        words2 = [word2index[word] for word in s2.split()]
 
-		words1 = Variable(torch.LongTensor(words1).view(-1, 1)).to(device=available_device)
-		words2 = Variable(torch.LongTensor(words2).view(-1, 1)).to(device=available_device)
+        words1 = Variable(torch.LongTensor(words1).view(-1, 1)).to(device=available_device)
+        words2 = Variable(torch.LongTensor(words2).view(-1, 1)).to(device=available_device)
 
-		if sys.argv[1] == "tense":
-			pair = [words1, words2, parse_tense(s1), parse_tense(s2)]
-		else:
-			pair = [words1, words2, parse_question(s1), parse_question(s2)]
-		pairs.append(pair)
+        if args.encoder != "Tree" and args.decoder != "Tree":
+            # Don't parse things if we don't need to
+            pair = [words1, words2, None, None]
+        else:
+            # Using a tree-based model, so we need parses
+            # Note that this code is not compatible with using
+            # tree-based models in the multi-task setting, nor with 
+            # brackets in the input. 
+            if "tense" in args.task:
+                pair = [words1, words2, parse_tense(s1), parse_tense(s2)]
+            else:
+                pair = [words1, words2, parse_question(s1), parse_question(s2)]
+        pairs.append(pair)
 
-        # Now sort these sentence pairs by length, as each batch must
-        # have the same length within the batch (you could use padding to
-        # avoid this issue, but we didn't do that)
-	length_sorted_pairs_dict = {}
+    # Now sort these sentence pairs by length, as each batch must
+    # have the same length within the batch (you could use padding to
+    # avoid this issue, but we didn't do that)
+    length_sorted_pairs_dict = {}
 	
-	for i in range(30):
-		length_sorted_pairs_dict[i] = []  
+    for i in range(30):
+        length_sorted_pairs_dict[i] = []  
 
-	for pair in pairs:
-		length = len(pair[0])
-		if length not in length_sorted_pairs_dict:
-			length_sorted_pairs_dict[length] = []
-		length_sorted_pairs_dict[length].append(pair)
+    for pair in pairs:
+        length = len(pair[0])
+        if length not in length_sorted_pairs_dict:
+            length_sorted_pairs_dict[length] = []
+        length_sorted_pairs_dict[length].append(pair)
 
-		if length > MAX_LENGTH:
-			MAX_LENGTH = length
+        if length > MAX_LENGTH:
+            MAX_LENGTH = length
 
-	length_sorted_pairs_list = []
+    length_sorted_pairs_list = []
 
-	for i in range(30):
-		possibilities = length_sorted_pairs_dict[i]
-		random.shuffle(possibilities)
+    for i in range(30):
+        possibilities = length_sorted_pairs_dict[i]
+        random.shuffle(possibilities)
 
-		this_set = []
-		for j in range(len(possibilities)):
-			this_set.append(possibilities[j])
-			if len(this_set) == batch_size:
-				length_sorted_pairs_list.append(this_set)
-				this_set = []
-				random.shuffle(length_sorted_pairs_list)
+        this_set = []
+        for j in range(len(possibilities)):
+            this_set.append(possibilities[j])
+            if len(this_set) == batch_size:
+                length_sorted_pairs_list.append(this_set)
+                this_set = []
+                random.shuffle(length_sorted_pairs_list)
 
-        # Convert each batch from a list into a single tensor
-	batch_list = []
-	for pre_batch in length_sorted_pairs_list:
-		tensorA = None
-		tensorB = None
+    # Convert each batch from a list into a single tensor
+    batch_list = []
+    for pre_batch in length_sorted_pairs_list:
+        tensorA = None
+        tensorB = None
 		
-		for elt in pre_batch:
-			if tensorA is None:
-				tensorA = elt[0]
-				tensorB = elt[1]
-			else:
-				tensorA = torch.cat((tensorA, elt[0]), 1)
-				tensorB = torch.cat((tensorB, elt[1]), 1)
+        for elt in pre_batch:
+            if tensorA is None:
+                tensorA = elt[0]
+                tensorB = elt[1]
+            else:
+                tensorA = torch.cat((tensorA, elt[0]), 1)
+                tensorB = torch.cat((tensorB, elt[1]), 1)
 		
-		batch_list.append([tensorA, tensorB, elt[2], elt[3]])
+        batch_list.append([tensorA, tensorB, elt[2], elt[3]])
 
-	return batch_list, MAX_LENGTH
+    return batch_list, MAX_LENGTH
 
 
 # Where the training actually happens

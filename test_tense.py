@@ -119,8 +119,8 @@ if args.decoder == "Tree":
 else:
     decoder = DecoderRNN(args.hs, len(word2index.keys()), args.decoder, attn=args.attention, n_layers=1, dropout_p=0.1, max_length=MAX_LENGTH)
 
-encoder1 = encoder1.to(device=available_device)
-decoder1 = decoder1.to(device=available_device)
+encoder = encoder.to(device=available_device)
+decoder = decoder.to(device=available_device)
 
 # Variables for iterating over directories
 counter = 0
@@ -158,14 +158,14 @@ while direcs_to_process:
                 enc = dec.replace("decoder", "encoder")
 
 
-                encoder1.load_state_dict(torch.load(directory_now + "/" + enc))
-                decoder1.load_state_dict(torch.load(directory_now + "/" + dec))
+                encoder.load_state_dict(torch.load(directory_now + "/" + enc))
+                decoder.load_state_dict(torch.load(directory_now + "/" + dec))
 
                         
                 print("Test set example outputs")
-                evaluateRandomly(encoder1, decoder1, test_batches, index2word)
+                evaluateRandomly(encoder, decoder, test_batches, index2word)
                 print("Gen set example outputs")
-                evaluateRandomly(encoder1, decoder1, gen_batches, index2word)
+                evaluateRandomly(encoder, decoder, gen_batches, index2word)
                 print("Evaluation of model")
 
                 # Evaluation on the test set
@@ -176,7 +176,7 @@ while direcs_to_process:
                 for this_batch in test_batches:
                         input_sents = logits_to_sentence(this_batch[0], index2word, end_at_punc=False)
                         target_sents = logits_to_sentence(this_batch[1], index2word)
-                        pred_sents = logits_to_sentence(evaluate(encoder1, decoder1, this_batch), index2word)
+                        pred_sents = logits_to_sentence(evaluate(encoder, decoder, this_batch), index2word)
 
                         for trio in zip(input_sents, target_sents, pred_sents):
                                 input_sent = trio[0]
@@ -217,7 +217,7 @@ while direcs_to_process:
                 for this_batch in gen_batches:
                         input_sents = logits_to_sentence(this_batch[0], index2word, end_at_punc=False)
                         target_sents = logits_to_sentence(this_batch[1], index2word)
-                        pred_sents = logits_to_sentence(evaluate(encoder1, decoder1, this_batch), index2word)
+                        pred_sents = logits_to_sentence(evaluate(encoder, decoder, this_batch), index2word)
 
 
                         for trio in zip(input_sents, target_sents, pred_sents):
