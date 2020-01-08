@@ -19,10 +19,10 @@ import time
 import math
 
 
+# Functions for evaluation
 
 
-
-# Computing loss on the development set
+# Computing loss on a set of examples
 def loss(example_set, encoder, decoder, criterion, recurrent_unit, attention=False, max_length=30):
     loss = 0
 
@@ -36,6 +36,7 @@ def loss(example_set, encoder, decoder, criterion, recurrent_unit, attention=Fal
 
         decoder_hidden = encoder_hidden
 
+        # No teacher forcing during evaluation
         decoder_outputs = decoder(decoder_hidden, encoder_outputs, training_pair, attn=attention, tf_ratio=0.0)
 
         for di in range(target_length):
@@ -47,14 +48,13 @@ def loss(example_set, encoder, decoder, criterion, recurrent_unit, attention=Fal
 
     return loss.data[0]
 
-
+# Get the model's full-sentence accuracy on a set of examples
 def score(example_set, encoder1, decoder1, index2word):
     right = 0
     total = 0
 
-    count_sents = 0 # CHANGE
     for unproc_batch in example_set:
-        batch = unproc_batch #(unproc_batch[0].transpose(0,1), unproc_batch[1].transpose(0,1))
+        batch = unproc_batch 
         batch_size = batch[0].size()[1]
         elt = batch
         pred_words = evaluate(encoder1, decoder1, elt)
@@ -67,32 +67,15 @@ def score(example_set, encoder1, decoder1, index2word):
                 right += 1
             total += 1
 
-#        for index in range(batch_size):
-#            this_sent = []
-#            for output_word in pred_words: #[index]:
-#                this_sent.append(index2word[output_word[index].item()])
-#            if "." in this_sent:
-#                this_sent = this_sent[:this_sent.index(".") + 1]
-#            if "?" in this_sent:
-#                this_sent = this_sent[:this_sent.index("?") + 1]
-#            this_sent_final = " ".join(this_sent)
-#
-#            total += 1
-#
-#            correct_sent = []
-#            for output_word in batch[1]: #[index]:
-#                correct_sent.append(index2word[output_word[index].item()])
-#            correct_sent = " ".join(correct_sent[:-1])
-#            if this_sent_final == correct_sent: #batch[index][1]:
-#                right += 1
     return right * 1.0 / total
 
+# Convert logits to a sentence
 def logits_to_sentence(pred_words, index2word, end_at_punc=True):
 	batch_size = pred_words.size()[1]
 	all_sents = []
 	for index in range(batch_size):
 		this_sent = []
-		for output_word in pred_words: #[index]:
+		for output_word in pred_words: 
 			this_sent.append(index2word[output_word[index].item()])
 		if end_at_punc:
 			if "." in this_sent:
@@ -105,7 +88,7 @@ def logits_to_sentence(pred_words, index2word, end_at_punc=True):
 
 	return all_sents
 
-
+# Given a batch as input, get the decoder's outputs (as argmax indices)
 MAX_EXAMPLE = 10000
 def evaluate(encoder, decoder, batch, max_length=30):
     encoder_output, encoder_hidden, encoder_outputs = encoder(batch)

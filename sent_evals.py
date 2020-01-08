@@ -1,4 +1,9 @@
+# Functions for getting finer-grained evaluations of output sentences
 
+# Given a sentence from the question formation generalization set,
+# determine the type of relative clause it has modifying the subject:
+# an object relative clause (ORC), a transitive subject relative
+# clause (SRC_t), or an intransitive subject relative clause (SRC_i).
 dets = ["the", "some", "my", "your", "our", "her"]
 def rc_category(sent):
         words_pre = sent.split()
@@ -18,7 +23,17 @@ def rc_category(sent):
 
 
 
-
+# Categorize the outputs of a model trained on question formation in a way
+# inspired by Crain & Nakayama 1987. The outputs are categorized based on whether
+# they could have been formed by placing an auxiliary at the front of the 
+# input and deleting (or failing to delete) an auxiliary from within the input; if so,
+# this function then categorizes them based on which auxiliary was placed at the front and
+# which was deleted.
+# Most outputs are in the "other" category which cannot be categorized in this way.
+# Example: 
+# - Input: my walrus that does laugh doesn't giggle.
+# - Output: does my walrus that does laugh giggle?
+# - Categorization: p1d2 (for "prepose first, delete second")
 auxes = ["can", "could", "will", "would", "do", "does", "don't", "doesn't"]
 def crain(sentence, output):
         index1 = -1
@@ -43,9 +58,9 @@ def crain(sentence, output):
         aux2 = words[index2]
 
 
-        d1 = " ".join(words[:index1] + words[index1 + 1:-1]) # -1 added with removal of decl, quest
-        d2 = " ".join(words[:index2] + words[index2 + 1:-1]) # -1 added with removal of decl, quest
-        dn = " ".join(words[:-1]) # brackets added with removal of decl, quest
+        d1 = " ".join(words[:index1] + words[index1 + 1:-1])
+        d2 = " ".join(words[:index2] + words[index2 + 1:-1])
+        dn = " ".join(words[:-1]) 
         if d1[-1] != ".":
             d1 = d1 + " ."
         if d2[-1] != ".":
@@ -53,9 +68,6 @@ def crain(sentence, output):
         if dn[-1] != ".":
             dn = dn + " ."
 
-        #print(d1)
-        #print(d2)
-        #print(dn)
         output = output.replace("?", ".").replace("decl", "quest").replace("DECL", "quest").replace("QUEST", "quest")
         output_words = output.split()
         output_words_new = []
@@ -66,8 +78,6 @@ def crain(sentence, output):
 
         output =  " ".join(output_words_new)
 
-
-        #print(output)
         if output == aux1 + " " + d1:
                 return "d1p1"
         if output == aux2 + " " + d1:
@@ -90,14 +100,16 @@ def crain(sentence, output):
 
         return "other"
 
-
+# Given an auxiliary, return whether it is singular or plural
 def number_aux(aux_word):
     if aux_word == "do" or aux_word == "don't":
         return "PL"
     return "SG"
     
 
-
+# Determine whether a sentence contains exactly two auxiliaries
+# which must agree in number (i.e., 2 singular auxiliaries or 
+# 2 plural auxiliaries)
 def two_agreeing_auxes(sent):
     aux_list = []
     for word in sent.split():
@@ -119,7 +131,10 @@ nouns_pl = ["newts", "orangutans", "peacocks", "quails", "ravens", "salamanders"
 verbs_sg = ["giggles", "smiles", "sleeps", "swims", "waits", "moves", "changes", "reads", "eats", "entertains", "amuses", "high_fives", "applauds", "confuses", "admires", "accepts", "remembers", "comforts"]
 verbs_pl = ["giggle", "smile", "sleep", "swim", "wait", "move", "change", "read", "eat", "entertain", "amuse", "high_five", "applaud", "confuse", "admire", "accept", "remember", "comfort"]
 
-
+# Given an input past tense sentence, outputs
+# what the present-tense version would be if
+# verbs agreed with the most recent noun instead
+# of with their subjects.
 def tense_nearest(sent):
 	new_words = []
 	words = sent.split()
@@ -150,7 +165,7 @@ def tense_nearest(sent):
 	return " ".join(new_words)
 
 
-		
+# Converting a sentence to a list of part-of-speech tags
 posDictTense = {}
 fi = open("pos_tense.txt", "r")
 for line in fi:
@@ -158,7 +173,7 @@ for line in fi:
         posDictTense[parts[0].strip()] = parts[1].strip()
         
 posDict = {}
-fi = open("pos.txt", "r") # MIGHT NEED TO CHANGE BACK
+fi = open("pos.txt", "r")
 for line in fi:
         parts = line.split("\t")
         posDict[parts[0].strip()] = parts[1].strip()
@@ -177,7 +192,7 @@ def sent_to_pos(sent):
 
     return pos_tags
 
-
+# Determines whether an output is correct except for the verbs
 def right_besides_verbs(senta, sentb):
     pos_tags = sent_to_pos(senta)
     
@@ -198,6 +213,7 @@ def right_besides_verbs(senta, sentb):
             
     return all_good
     
+# Determines whether the main verb of the sentence has the correct tense
 def main_right_tense(senta, sentb):
     
     if not right_besides_verbs(senta, sentb):

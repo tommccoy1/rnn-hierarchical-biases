@@ -22,26 +22,12 @@ Here are descriptions of the arguments for seq2seq.py, the script that trains mo
   * `SRN`: Simple Recurrent Network 
   * `GRU`: Gated Recurrent Unit
   * `LSTM`: Long Short-Term Memory unit
-  * `MyLSTM`: (Ignore this - not used in the paper)
-  * `LSTMSqueeze`: (Ignore this - not used in the paper)
   * `LSTMBob`: Squashed LSTM
   * `ONLSTM`: Ordered Neurons LSTM
-  * `GRUUnsqueeze`: (Ignore this - not used in the paper)
-  * `GRUUnsqueeze2`: (Ignore this - not used in the paper)
   * `GRUBob`: Unsquashed GRU
-  * `TREE`: (Ignore this - not used in the paper)
-  * `TREEENC`: (Ignore this - not used in the paper)
-  * `TREEDEC`: (Ignore this - not used in the paper)
-  * `TREEBOTH`: (Ignore this - not used in the paper)
-  * `TREENew`: (Ignore this - not used in the paper)
-  * `TREEENCNew`: (Ignore this - not used in the paper)
-  * `TREENOPRE`: (Ignore this - not used in the paper)
-  * `TREEENCNOPRE`: (Ignore this - not used in the paper)
   * `TREEDECNOPRE`: Model with a linear GRU encoder and a tree-GRU decoder
-  * `TREEBOTHNOPRE`: (Ignore this - not used in the paper)
   * `TREENewNOPRE`: Model with a tree-GRU encoder and a tree-GRU decoder
   * `TREEENCNewNOPRE`: Model with a tree-GRU encoder and a linear GRU decoder
-  * `ONLSTMPROC`: (Ignore this - not used in the paper)
 - `attention`: The type of attention used by the model. Options:
   * `0`: No attention
   * `1`: Location-based attention

@@ -36,19 +36,24 @@ from parsing import *
 from training import *
 
 
-# Start-of-sentence and end-of-sentence tokens
-# The standard seq2seq version only has one EOS. This version has 
-# 2 EOS--one signalling that the original sentence should be returned,
-# the other signalling it should be reversed.
-# I use a 1-hot encoding for all tokens.
-SOS_token = 0
-EOS_tokenA = 1 # For DECL
-EOS_tokenB = 2 # For QUEST
+import argparse
 
-prefix = sys.argv[1] 
-directory = sys.argv[2] + "_" + sys.argv[3] + "_" + sys.argv[4] + "_" + sys.argv[5] + "_" + sys.argv[6]
+parser = argparse.ArgumentParser()
+parser.add_argument("--encoder", help="encoder type", type=str, default=None)
+parser.add_argument("--decoder", help="decoder type", type=str, default=None)
+parser.add_argument("--task", help="task", type=str, default=None)
+parser.add_argument("--attention", help="attention type", type=str, default=None)
+parser.add_argument("--lr", help="learning rate", type=float, default=None)
+parser.add_argument("--hs", help="hidden size", type=int, default=None)
+parser.add_argument("--seed", help="random seed", type=float, default=None)
+args = parser.parse_args()
 
 
+prefix = args.task
+directory = args.task + "_" + args.encoder + "_" + args.decoder  + "_" + args.attention + "_" + str(args.lr) + "_" + str(args.hs)
+
+
+# Create a directory where the outputs will be saved
 if __name__ == "__main__":
         wait_time = random.randint(0, 99)
         time.sleep(wait_time)
@@ -65,20 +70,29 @@ if __name__ == "__main__":
                 else:
                         counter += 1
 
-        random_seed = counter
-        random.seed(random_seed)
+# Implement the random seed
+if args.seed is None:
+    random_seed = counter
+
+random.seed(random_seed)
 
 # Reading the training data
-trainingFile = prefix + '.train'
-devFile = prefix + '.dev'
-testFile = prefix + '.test'
-genFile = prefix + '.gen'
+trainingFile = 'data/' + prefix + '.train'
+devFile = 'data/' + prefix + '.dev'
+testFile = 'data/' + prefix + '.test'
+genFile = 'data/' + prefix + '.gen'
 
+# Manually defining the batch size at 5
+# Except that, if the model is tree-based at all, the
+# batch size must be 1 because you can't easily batch with 
+# the Tree-RNNs we are using.
+# In those cases, the batching will instead be handled with
+# a for loop
 batch_size = 5
-if "TREE" in sys.argv[3]:
-	batch_size = 1 # ADDED
+if args.encoder == "Tree" or args.decoder == "Tree":
+	batch_size = 1 
 
-
+# Determine whether cuda is available
 use_cuda = torch.cuda.is_available()
 
 if use_cuda:
@@ -86,49 +100,32 @@ if use_cuda:
 else:
 	available_device = torch.device('cpu')
 
+# Create dictionaries for converting words to numerical
+# indices and vice versa
 word2index = {}
 index2word = {}
 
-#word2index["SOS"] = 0
-#word2index["."] = 1
-#word2index["?"] = 2
-#index2word[0] = "SOS"
-#index2word[1] = "."
-#index2word[2] = "?"
-
-if sys.argv[1] == "tense":
-	fi = open("index_tense.txt", "r")
-else:
-	fi = open("index.txt", "r")
-
+fi = open("index.txt", "r")
 
 for line in fi:
 	parts = line.strip().split("\t")
 	word2index[parts[0]] = int(parts[1])
 	index2word[int(parts[1])] = parts[0]
 
+# Function for preprocessing files into batches
+# that can be inputted into our models
 MAX_LENGTH = 20
-
-def file_to_batches(filename, MAX_LENGTH):
+def file_to_batches(filename, MAX_LENGTH, batch_size=5):
 	fi = open(filename, "r")
 	pairs = []
 
-	count_sents = 0 # DELETE
+        # Convert words into indices, and create a parse for each sentence
+        # Thus, each training "pair" is really a 4-tuple containing sentence1,
+        # sentence2, the parse for sentence1, and the parse for sentence2
 	for line in fi:
 		parts = line.strip().split("\t")
 		s1 = parts[0].strip().lower()
 		s2 = parts[1].strip().lower()
-
-		if sys.argv[1] != "tense" and (("TREE" in sys.argv[3] and "NOPRE" not in sys.argv[3]) or "PROC" in sys.argv[3]):
-			s1 = preprocess(s1)
-			s2 = preprocess(s2)
-
-
-		#for word in s1.split():
-		#	if word not in word2index:
-		#		index = len(word2index.keys())
-		#		word2index[word] = index
-		#		index2word[index] = word
 
 		words1 = [word2index[word] for word in s1.split()]
 		words2 = [word2index[word] for word in s2.split()]
@@ -137,16 +134,14 @@ def file_to_batches(filename, MAX_LENGTH):
 		words2 = Variable(torch.LongTensor(words2).view(-1, 1)).to(device=available_device)
 
 		if sys.argv[1] == "tense":
-			#fo = open("tense_dir/" + s1.replace(" ", "_"), "w")
-			#fo.write("blank")
 			pair = [words1, words2, parse_tense(s1), parse_tense(s2)]
 		else:
-			if "NOPRE" in sys.argv[3]:
-				pair = [words1, words2, parse_nopre(s1), parse_nopre(s2)]
-			else:
-				pair = [words1, words2, pos_to_parse(sent_to_pos_tree(s1)), pos_to_parse(sent_to_pos_tree(s2))]
+			pair = [words1, words2, parse_question(s1), parse_question(s2)]
 		pairs.append(pair)
 
+        # Now sort these sentence pairs by length, as each batch must
+        # have the same length within the batch (you could use padding to
+        # avoid this issue, but we didn't do that)
 	length_sorted_pairs_dict = {}
 	
 	for i in range(30):
@@ -175,7 +170,7 @@ def file_to_batches(filename, MAX_LENGTH):
 				this_set = []
 				random.shuffle(length_sorted_pairs_list)
 
-
+        # Convert each batch from a list into a single tensor
 	batch_list = []
 	for pre_batch in length_sorted_pairs_list:
 		tensorA = None
@@ -192,101 +187,38 @@ def file_to_batches(filename, MAX_LENGTH):
 		batch_list.append([tensorA, tensorB, elt[2], elt[3]])
 
 	return batch_list, MAX_LENGTH
+
+
+# Where the training actually happens
 if __name__ == "__main__":
+        # Convert the input files into batches
+        train_batches, MAX_LENGTH = file_to_batches(trainingFile, MAX_LENGTH, batch_size=batch_size)
+        dev_batches, MAX_LENGTH = file_to_batches(devFile, MAX_LENGTH, batch_size=batch_size)
+        test_batches, MAX_LENGTH = file_to_batches(testFile, MAX_LENGTH, batch_size=batch_size)
+        gen_batches, MAX_LENGTH = file_to_batches(genFile, MAX_LENGTH, batch_size=batch_size)
 
-	train_batches, MAX_LENGTH = file_to_batches(trainingFile, MAX_LENGTH)
-	dev_batches, MAX_LENGTH = file_to_batches(devFile, MAX_LENGTH)
-	test_batches, MAX_LENGTH = file_to_batches(testFile, MAX_LENGTH)
-	gen_batches, MAX_LENGTH = file_to_batches(genFile, MAX_LENGTH)
+        # Initialize the encoder and the decoder
+        if args.encoder == "Tree":
+            encoder = TreeEncoderRNN(len(word2index.keys()), args.hs)
+        else:
+            encoder = EncoderRNN(len(word2index.keys()), args.hs, args.encoder, max_length=MAX_LENGTH)
 
-	print("all batchified")
+        if args.decoder == "Tree":
+            # Note that attention is not implemented for the tree decoder
+            decoder = TreeDecoderRNN(len(word2index.keys()), args.hs)
+        else:
+            decoder = DecoderRNN(args.hs, len(word2index.keys()), args.decoder, attn=args.attention, n_layers=1, dropout_p=0.1, max_length=MAX_LENGTH)
 
+        encoder = encoder.to(device=available_device)
+        decoder = decoder.to(device=available_device)
 
+        # Give torch a random seed
+        torch.manual_seed(random_seed)
+        if use_cuda:
+            torch.cuda.manual_seed_all(random_seed)	
 
-	recurrent_unit = sys.argv[3] # Could be "SRN" or "LSTM" instead
-	attention = sys.argv[4]# Could be "n" instead
-
-	if attention == "0":
-        	attention = 0
-	elif attention == "1":
-        	attention = 1
-	elif attention == "2":
-		attention = 2
-	else:
-        	print("Please specify 'y' for attention or 'n' for no attention.")
-
-
-	# Where the actual running of the code happens
-	hidden_size = int(sys.argv[6]) # Default = 128
-
-	if recurrent_unit == "TREE":
-		encoder1 = TreeEncoderRNN(len(word2index.keys()), hidden_size)
-		decoder1 = TreeDecoderRNN(len(word2index.keys()), hidden_size)
-	elif recurrent_unit == "TREEENC":
-		encoder1 = TreeEncoderRNN(len(word2index.keys()), hidden_size)
-		decoder1 = DecoderRNN(hidden_size, len(word2index.keys()), "GRU", attn=attention, n_layers=1, dropout_p=0.1, max_length=MAX_LENGTH)
-	elif recurrent_unit == "TREEDEC":
-		encoder1 = EncoderRNN(len(word2index.keys()), hidden_size, "GRU", max_length=MAX_LENGTH)
-		decoder1 = TreeDecoderRNN(len(word2index.keys()), hidden_size)
-	elif recurrent_unit == "TREEBOTH":
-		encoder1 = EncoderRNN(len(word2index.keys()), hidden_size, "GRU", max_length=MAX_LENGTH)
-		decoder1 = DecoderRNN(hidden_size, len(word2index.keys()), "GRU", attn=attention, n_layers=1, dropout_p=0.1, max_length=MAX_LENGTH)
-	elif recurrent_unit == "TREENew":
-		encoder1 = TreeEncoderRNNNew(len(word2index.keys()), hidden_size)
-		decoder1 = TreeDecoderRNN(len(word2index.keys()), hidden_size)
-	elif recurrent_unit == "TREEENCNew":
-		encoder1 = TreeEncoderRNNNew(len(word2index.keys()), hidden_size)
-		decoder1 = DecoderRNN(hidden_size, len(word2index.keys()), "GRU", attn=attention, n_layers=1, dropout_p=0.1, max_length=MAX_LENGTH)	
-	elif recurrent_unit == "TREENOPRE":
-		encoder1 = TreeEncoderRNN(len(word2index.keys()), hidden_size)
-		decoder1 = TreeDecoderRNN(len(word2index.keys()), hidden_size)
-	elif recurrent_unit == "TREEENCNOPRE":
-		encoder1 = TreeEncoderRNN(len(word2index.keys()), hidden_size)
-		decoder1 = DecoderRNN(hidden_size, len(word2index.keys()), "GRU", attn=attention, n_layers=1, dropout_p=0.1, max_length=MAX_LENGTH)
-	elif recurrent_unit == "TREEDECNOPRE":
-		encoder1 = EncoderRNN(len(word2index.keys()), hidden_size, "GRU", max_length=MAX_LENGTH)
-		decoder1 = TreeDecoderRNN(len(word2index.keys()), hidden_size)
-	elif recurrent_unit == "TREEBOTHNOPRE":
-		encoder1 = EncoderRNN(len(word2index.keys()), hidden_size, "GRU", max_length=MAX_LENGTH)
-		decoder1 = DecoderRNN(hidden_size, len(word2index.keys()), "GRU", attn=attention, n_layers=1, dropout_p=0.1, max_length=MAX_LENGTH)
-	elif recurrent_unit == "TREENewNOPRE":
-		encoder1 = TreeEncoderRNNNew(len(word2index.keys()), hidden_size)
-		decoder1 = TreeDecoderRNN(len(word2index.keys()), hidden_size)
-	elif recurrent_unit == "TREEENCNewNOPRE":
-		encoder1 = TreeEncoderRNNNew(len(word2index.keys()), hidden_size)
-		decoder1 = DecoderRNN(hidden_size, len(word2index.keys()), "GRU", attn=attention, n_layers=1, dropout_p=0.1, max_length=MAX_LENGTH)
-	elif recurrent_unit == "ONLSTMPROC":
-		encoder1 = EncoderRNN(len(word2index.keys()), hidden_size, "ONLSTM", max_length=MAX_LENGTH)
-		decoder1 = DecoderRNN(hidden_size, len(word2index.keys()), "ONLSTM", attn=attention, n_layers=1, dropout_p=0.1, max_length=MAX_LENGTH)
-	else:
-		encoder1 = EncoderRNN(len(word2index.keys()), hidden_size, recurrent_unit, max_length=MAX_LENGTH)
-		decoder1 = DecoderRNN(hidden_size, len(word2index.keys()), recurrent_unit, attn=attention, n_layers=1, dropout_p=0.1, max_length=MAX_LENGTH)
-
-	encoder1 = encoder1.to(device=available_device)
-	decoder1 = decoder1.to(device=available_device)
-
-	manual_lr = float(sys.argv[5])
-	
-	torch.manual_seed(random_seed)
-	if use_cuda:
-		torch.cuda.manual_seed_all(random_seed)	
-
-	print("starting to train")
-
-	if recurrent_unit == "SRN":
-		# Default learning rate: 0.001
-		trainIters(encoder1, decoder1, 10000000, recurrent_unit, attention, train_batches, dev_batches, index2word, directory, prefix, print_every=1000, learning_rate=manual_lr)
-	elif attention == 2:
-		# Default learning rate: 0.005
-		trainIters(encoder1, decoder1, 10000000, recurrent_unit, attention, train_batches, dev_batches, index2word, directory, prefix, print_every=1000, learning_rate=manual_lr)
-	else:
-		# Default learning rate: 0.01
-		trainIters(encoder1, decoder1, 10000000, recurrent_unit, attention, train_batches, dev_batches, index2word, directory, prefix, print_every=1000, learning_rate=manual_lr)
-
-
-
-
-
+        # Train the model
+        trainIters(encoder, decoder, 10000000, args.encoder, args.decoder, args.attention, train_batches, dev_batches, index2word, directory, prefix, print_every=1000, learning_rate=args.lr)
 
 
 
