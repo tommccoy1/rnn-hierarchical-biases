@@ -70,7 +70,7 @@ The third line in `GRU_agr_1_0.01_256.scr` then tests the trained models and out
 
 # Variants on sequential RNNs (Section 3.3 / Figure 4)
 
-Run each of the following lines 100 times each:
+Run each of the following lines 100 times (the code will automatically generate a separate folder for each run):
 - `python seq2seq.py --encoder SRN --decoder SRN --task question --attention none --lr 0.001 --hs 256`
 - `python seq2seq.py --encoder SRN --decoder SRN --task question --attention location --lr 0.001 --hs 256`
 - `python seq2seq.py --encoder SRN --decoder SRN --task question --attention content --lr 0.001 --hs 256`
@@ -95,47 +95,88 @@ Then run these evaluation steps (just once):
 
 # Squashing experiments (Section 3.4 / Figure 5)
 
-python seq2seq.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256
-python seq2seq.py --encoder UnsquashedGRU --decoder UnsquashedGRU --task question --attention location --lr 0.001 --hs 256
-python seq2seq.py --encoder LSTM --decoder LSTM --task question --attention location --lr 0.001 --hs 256
-python seq2seq.py --encoder SquashedLSTM --decoder SquashedLSTM --task question --attention location --lr 0.001 --hs 256
-x 100 for each
+Run each of these training scripts 100 times (the plain GRU is the squashed GRU; the plain LSTM is the unsquashed LSTM):
+- `python seq2seq.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder UnsquashedGRU --decoder UnsquashedGRU --task question --attention location --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder LSTM --decoder LSTM --task question --attention location --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder SquashedLSTM --decoder SquashedLSTM --task question --attention location --lr 0.001 --hs 256`
+
+Then run each of these evaluation lines (just once each):
+- `python test_question.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256 > GRU_GRU_question_location_0.001_256.results`
+- `python test_question.py --encoder UnsquashedGRU --decoder UnsquashedGRU --task question --attention location --lr 0.001 --hs 256 > UnsquashedGRU_UnsquashedGRU_question_location_0.001_256.results`
+- `python test_question.py --encoder LSTM --decoder LSTM --task question --attention location --lr 0.001 --hs 256 > LSTM_LSTM_question_location_0.001_256.results`
+- `python test_question.py --encoder SquashedLSTM --decoder SquashedLSTM --task question --attention location --lr 0.001 --hs 256 > SquashedLSTM_SquashedLSTM_question_location_0.001_256.results`
 
 # Ordered Neurons model for question formation (Section 4.1)
-python seq2seq.py --encoder ONLSTM --decoder ONLSTM --task question --attention none --lr 0.001 --hs 256
-x 100
+
+Run this training step 100 times:
+- `python seq2seq.py --encoder ONLSTM --decoder ONLSTM --task question --attention none --lr 0.001 --hs 256`
+
+Run this evaluation step once:
+- `python test_question.py --encoder ONLSTM --decoder ONLSTM --task question --attention none --lr 0.001 --hs 256 > ONLSTM_ONLSTM_question_none_0.001_256.results`
 
 # Tree-GRUs for question formation (Section 4.2 / Figure 7)
-python seq2seq.py --encoder GRU --decoder GRU --task question --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder GRU --decoder Tree --task question --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder Tree --decoder GRU --task question --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder Tree --decoder Tree --task question --attention none --lr 0.001 --hs 256
+Run the following training steps 100 times each:
+- `python seq2seq.py --encoder GRU --decoder GRU --task question --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder Tree --task question --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder Tree --decoder GRU --task question --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder Tree --decoder Tree --task question --attention none --lr 0.001 --hs 256`
 
-x 100 each
+Run the following evaluations once each:
+- `python test_question.py --encoder GRU --decoder GRU --task question --attention none --lr 0.001 --hs 256 > GRU_GRU_question_none_0.001_256.results`
+- `python test_question.py --encoder GRU --decoder Tree --task question --attention none --lr 0.001 --hs 256 > GRU_Tree_question_none_0.001_256.results`
+- `python test_question.py --encoder Tree --decoder GRU --task question --attention none --lr 0.001 --hs 256 > Tree_GRU_question_none_0.001_256.results`
+- `python test_question.py --encoder Tree --decoder Tree --task question --attention none --lr 0.001 --hs 256 > Tree_Tree_question_none_0.001_256.results`
+
 
 # Tense reinflection (Section 5.1 / Figure 8)
-python seq2seq.py --encoder SRN --decoder SRN --task tense --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder SRN --decoder SRN --task tense --attention location --lr 0.001 --hs 256
-python seq2seq.py --encoder SRN --decoder SRN --task tense --attention content --lr 0.001 --hs 256
-python seq2seq.py --encoder GRU --decoder GRU --task tense --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder GRU --decoder GRU --task tense --attention location --lr 0.001 --hs 256
-python seq2seq.py --encoder GRU --decoder GRU --task tense --attention content --lr 0.001 --hs 256
-python seq2seq.py --encoder LSTM --decoder LSTM --task tense --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder LSTM --decoder LSTM --task tense --attention location --lr 0.001 --hs 256
-python seq2seq.py --encoder LSTM --decoder LSTM --task tense --attention content --lr 0.001 --hs 256
-python seq2seq.py --encoder ONLSTM --decoder ONLSTM --task tense --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder Tree --decoder Tree --task tense --attention none --lr 0.001 --hs 256
+Run the following training steps 100 times each:
+- `python seq2seq.py --encoder SRN --decoder SRN --task tense --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder SRN --decoder SRN --task tense --attention location --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder SRN --decoder SRN --task tense --attention content --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder GRU --task tense --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder GRU --task tense --attention location --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder GRU --task tense --attention content --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder LSTM --decoder LSTM --task tense --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder LSTM --decoder LSTM --task tense --attention location --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder LSTM --decoder LSTM --task tense --attention content --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder ONLSTM --decoder ONLSTM --task tense --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder Tree --decoder Tree --task tense --attention none --lr 0.001 --hs 256`
+
+Run the following evaluations once each:
+- `python test_tense.py --encoder SRN --decoder SRN --task tense --attention none --lr 0.001 --hs 256 > SRN_SRN_tense_none_0.001_256.results`
+- `python test_tense.py --encoder SRN --decoder SRN --task tense --attention location --lr 0.001 --hs 256 > SRN_SRN_tense_location_0.001_256.results`
+- `python test_tense.py --encoder SRN --decoder SRN --task tense --attention content --lr 0.001 --hs 256 > SRN_SRN_tense_content_0.001_256.results`
+- `python test_tense.py --encoder GRU --decoder GRU --task tense --attention none --lr 0.001 --hs 256 > GRU_GRU_tense_none_0.001_256.results`
+- `python test_tense.py --encoder GRU --decoder GRU --task tense --attention location --lr 0.001 --hs 256 > GRU_GRU_tense_location_0.001_256.results`
+- `python test_tense.py --encoder GRU --decoder GRU --task tense --attention content --lr 0.001 --hs 256 > GRU_GRU_tense_content_0.001_256.results`
+- `python test_tense.py --encoder LSTM --decoder LSTM --task tense --attention none --lr 0.001 --hs 256 > LSTM_LSTM_tense_none_0.001_256.results`
+- `python test_tense.py --encoder LSTM --decoder LSTM --task tense --attention location --lr 0.001 --hs 256 > LSTM_LSTM_tense_location_0.001_256.results`
+- `python test_tense.py --encoder LSTM --decoder LSTM --task tense --attention content --lr 0.001 --hs 256 > LSTM_LSTM_tense_content_0.001_256.results`
+- `python test_tense.py --encoder ONLSTM --decoder ONLSTM --task tense --attention none --lr 0.001 --hs 256 > ONLSTM_ONLSTM_tense_none_0.001_256.results`
+- `python test_tense.py --encoder Tree --decoder Tree --task tense --attention none --lr 0.001 --hs 256 > Tree_Tree_tense_none_0.001_256.results`
 
 
 # Unambiguous training sets (Section 6)
-python seq2seq.py --encoder GRU --decoder GRU --task question_main --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder GRU --decoder GRU --task question_first --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder Tree --decoder Tree --task question_main --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder Tree --decoder Tree --task question_first --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder GRU --decoder GRU --task tense_recent --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder GRU --decoder GRU --task tense_subject --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder Tree --decoder Tree --task tense_recent --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder Tree --decoder Tree --task tense_subject --attention none --lr 0.001 --hs 256
+Run the following training steps 100 times each:
+- `python seq2seq.py --encoder GRU --decoder GRU --task question_main --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder GRU --task question_first --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder Tree --decoder Tree --task question_main --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder Tree --decoder Tree --task question_first --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder GRU --task tense_recent --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder GRU --task tense_subject --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder Tree --decoder Tree --task tense_recent --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder Tree --decoder Tree --task tense_subject --attention none --lr 0.001 --hs 256`
+
+Run the following evaluations once each:
+- `python test_question.py --encoder GRU --decoder GRU --task question_main --attention none --lr 0.001 --hs 256 > GRU_GRU_question_main_none_0.001_256.results`
+- `python test_question.py --encoder GRU --decoder GRU --task question_first --attention none --lr 0.001 --hs 256 > GRU_GRU_question_first_none_0.001_256.results`
+- `python test_question.py --encoder Tree --decoder Tree --task question_main --attention none --lr 0.001 --hs 256 > Tree_Tree_question_main_none_0.001_256.results`
+- `python test_question.py --encoder Tree --decoder Tree --task question_first --attention none --lr 0.001 --hs 256 > Tree_Tree_question_first_none_0.001_256.results`
+- `python test_tense.py --encoder GRU --decoder GRU --task tense_recent --attention none --lr 0.001 --hs 256 > GRU_GRU_tense_recent_none_0.001_256.results`
+- `python test_tense.py --encoder GRU --decoder GRU --task tense_subject --attention none --lr 0.001 --hs 256 > GRU_GRU_tense_subject_none_0.001_256.results`
+- `python test_tense.py --encoder Tree --decoder Tree --task tense_recent --attention none --lr 0.001 --hs 256 > Tree_Tree_tense_recent_none_0.001_256.results`
+- `python test_tense.py --encoder Tree --decoder Tree --task tense_subject --attention none --lr 0.001 --hs 256 > Tree_Tree_tense_subject_none_0.001_256.results`
 
 
 # Tree structure vs. tree information (Section 7 / Figure 9)
@@ -143,13 +184,23 @@ To be added: Currently the server hosting this code is down.
 
 
 # Multitask learning (Section 8 / Figure 10)
-python seq2seq.py --encoder GRU --decoder GRU --task question --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder GRU --decoder GRU --task tense --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder GRU --decoder GRU --task question_tense_subject --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder GRU --decoder GRU --task question_main_tense --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder GRU --decoder GRU --task question_tense_aux_subject --attention none --lr 0.001 --hs 256
-python seq2seq.py --encoder GRU --decoder GRU --task question_main_tense_aux --attention none --lr 0.001 --hs 256
+Run the following training steps 100 times each:
+- `python seq2seq.py --encoder GRU --decoder GRU --task question --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder GRU --task tense --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder GRU --task question_tense_subject --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder GRU --task question_main_tense --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder GRU --task question_tense_aux_subject --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder GRU --task question_main_tense_aux --attention none --lr 0.001 --hs 256`
 
+Run the following evaluations once each:
+- `python test_question.py --encoder GRU --decoder GRU --task question --attention none --lr 0.001 --hs 256 > GRU_GRU_question_none_0.001_256.results`
+- `python test_tense.py --encoder GRU --decoder GRU --task tense --attention none --lr 0.001 --hs 256 > GRU_GRU_tense_main_none_0.001_256.results`
+- `python test_question.py --encoder GRU --decoder GRU --task question_tense_subject --attention none --lr 0.001 --hs 256 > GRU_GRU_question_tense_subject_none_0.001_256.results`
+- `python test_tense.py --encoder GRU --decoder GRU --task question_main_tense --attention none --lr 0.001 --hs 256 > GRU_GRU_question_main_tense_none_0.001_256.results`
+- `python test_question.py --encoder GRU --decoder GRU --task question_tense_aux_subject --attention none --lr 0.001 --hs 256 > GRU_GRU_question_tense_aux_subject_none_0.001_256.results`
+- `python test_tense.py --encoder GRU --decoder GRU --task question_main_tense_aux --attention none --lr 0.001 --hs 256 > GRU_GRU_question_main_tense_aux_none_0.001_256.results`
+
+(Do we need a different eval script for tense aux?)
 
 
 
