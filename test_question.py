@@ -67,9 +67,9 @@ genFile = 'data/' + prefix + '.gen'
 use_cuda = torch.cuda.is_available()
 
 if use_cuda:
-        available_device = torch.device('cuda')
+    available_device = torch.device('cuda')
 else:
-        available_device = torch.device('cpu')
+    available_device = torch.device('cpu')
 
 
 auxes = ["can", "could", "will", "would", "do", "does", "don't", "doesn't"]
@@ -83,9 +83,9 @@ index2word = {}
 fi = open("index.txt", "r")
 
 for line in fi:
-        parts = line.strip().split("\t")
-        word2index[parts[0]] = int(parts[1])
-        index2word[int(parts[1])] = parts[0]
+    parts = line.strip().split("\t")
+    word2index[parts[0]] = int(parts[1])
+    index2word[int(parts[1])] = parts[0]
 
 
 MAX_LENGTH = 20
@@ -157,173 +157,173 @@ srci_lst = []
 
 # Iterate over all re-runs of the same model type that has been specified
 while direcs_to_process:
-        if not os.path.exists(directory + "_" +  str(counter)):
-                direcs_to_process = 0
-        else:
-                directory_now = directory + "_" + str(counter)
-                counter += 1
+    if not os.path.exists(directory + "_" +  str(counter)):
+        direcs_to_process = 0
+    else:
+        directory_now = directory + "_" + str(counter)
+        counter += 1
 		
-                dec_list = sorted(os.listdir(directory_now))
-                dec = sorted(dec_list[:int(len(dec_list)/2)], key=lambda x:float(".".join(x.split(".")[2:4])))[0]
-                print("Directory being processed:", dec)
-                enc = dec.replace("decoder", "encoder")
+        dec_list = sorted(os.listdir(directory_now))
+        dec = sorted(dec_list[:int(len(dec_list)/2)], key=lambda x:float(".".join(x.split(".")[2:4])))[0]
+        print("Directory being processed:", dec)
+        enc = dec.replace("decoder", "encoder")
 
 
-                encoder.load_state_dict(torch.load(directory_now + "/" + enc))
-                decoder.load_state_dict(torch.load(directory_now + "/" + dec))
+        encoder.load_state_dict(torch.load(directory_now + "/" + enc))
+        decoder.load_state_dict(torch.load(directory_now + "/" + dec))
         
-                print("Test set example outputs")
-                evaluateRandomly(encoder, decoder, test_batches, index2word)
-                print("Gen set example outputs")
-                evaluateRandomly(encoder, decoder, gen_batches, index2word)
-                print("Evaluation of model")
+        print("Test set example outputs")
+        evaluateRandomly(encoder, decoder, test_batches, index2word)
+        print("Gen set example outputs")
+        evaluateRandomly(encoder, decoder, gen_batches, index2word)
+        print("Evaluation of model")
 
-                # Evaluate on the test set
-                right = 0
-                rightpos = 0
-                total = 0
+        # Evaluate on the test set
+        right = 0
+        rightpos = 0
+        total = 0
 
-                for this_batch in test_batches:
-                        input_sents = logits_to_sentence(this_batch[0], index2word, end_at_punc=False)
-                        target_sents = logits_to_sentence(this_batch[1], index2word)
-                        pred_sents = logits_to_sentence(evaluate(encoder, decoder, this_batch), index2word)
+        for this_batch in test_batches:
+            input_sents = logits_to_sentence(this_batch[0], index2word, end_at_punc=False)
+            target_sents = logits_to_sentence(this_batch[1], index2word)
+            pred_sents = logits_to_sentence(evaluate(encoder, decoder, this_batch), index2word)
 
-                        for trio in zip(input_sents, target_sents, pred_sents):
-                                input_sent = trio[0]
-                                target_sent = trio[1]
-                                pred_sent = trio[2]
+            for trio in zip(input_sents, target_sents, pred_sents):
+                input_sent = trio[0]
+                target_sent = trio[1]
+                pred_sent = trio[2]
 
-                                total += 1
+                total += 1
                                 
-                                if pred_sent == target_sent:
-                                        right += 1
-                                if sent_to_pos(pred_sent) == sent_to_pos(target_sent):
-                                        rightpos += 1
+                if pred_sent == target_sent:
+                    right += 1
+                if sent_to_pos(pred_sent) == sent_to_pos(target_sent):
+                    rightpos += 1
 
 			
-                print("Test number correct:", right)
-                print("Test total:", total)
+        print("Test number correct:", right)
+        print("Test total:", total)
 
-                test_full_sent.append(right * 1.0 / total)
-                test_full_sent_pos.append(rightpos * 1.0 / total)
+        test_full_sent.append(right * 1.0 / total)
+        test_full_sent_pos.append(rightpos * 1.0 / total)
 
-                # Evaluate on the generalization set
-                right = 0
-                first_aux = 0
-                other_aux = 0
-                other_word = 0
-                total = 0
-                other = 0
-                full_right = 0
-                full_right_pos = 0
-                this_d1p1 = 0
-                this_d1p2 = 0
-                this_d1po = 0
-                this_d2p1 = 0
-                this_d2p2 = 0
-                this_d2po = 0
-                this_dnp1 = 0
-                this_dnp2 = 0
-                this_dnpo = 0
-                this_other = 0
-                this_orc = 0
-                this_orc_total = 0
-                this_srct = 0
-                this_srct_total = 0
-                this_srci = 0
-                this_srci_total = 0
+        # Evaluate on the generalization set
+        right = 0
+        first_aux = 0
+        other_aux = 0
+        other_word = 0
+        total = 0
+        other = 0
+        full_right = 0
+        full_right_pos = 0
+        this_d1p1 = 0
+        this_d1p2 = 0
+        this_d1po = 0
+        this_d2p1 = 0
+        this_d2p2 = 0
+        this_d2po = 0
+        this_dnp1 = 0
+        this_dnp2 = 0
+        this_dnpo = 0
+        this_other = 0
+        this_orc = 0
+        this_orc_total = 0
+        this_srct = 0
+        this_srct_total = 0
+        this_srci = 0
+        this_srci_total = 0
 
-                for this_batch in gen_batches:
-                        input_sents = logits_to_sentence(this_batch[0], index2word, end_at_punc=False)
-                        target_sents = logits_to_sentence(this_batch[1], index2word)
-                        pred_sents = logits_to_sentence(evaluate(encoder, decoder, this_batch), index2word)
+        for this_batch in gen_batches:
+            input_sents = logits_to_sentence(this_batch[0], index2word, end_at_punc=False)
+            target_sents = logits_to_sentence(this_batch[1], index2word)
+            pred_sents = logits_to_sentence(evaluate(encoder, decoder, this_batch), index2word)
 
 
-                        for trio in zip(input_sents, target_sents, pred_sents):
-                                input_sent = trio[0]
-                                target_sent = trio[1]
-                                pred_sent = trio[2]
+            for trio in zip(input_sents, target_sents, pred_sents):
+                input_sent = trio[0]
+                target_sent = trio[1]
+                pred_sent = trio[2]
 
-                                correct_words = target_sent.split()
-                                if not two_agreeing_auxes(target_sent):
-                                    break
+                correct_words = target_sent.split()
+                if not two_agreeing_auxes(target_sent):
+                    break
 
-                                total += 1
+                total += 1
 
-                                rc_cat = rc_category(input_sent)
-                                if rc_cat == "ORC":
-                                    this_orc_total += 1
-                                elif rc_cat == "SRC_t":
-                                    this_srct_total += 1
-                                elif rc_cat == "SRC_i":
-                                    this_srci_total += 1
+                rc_cat = rc_category(input_sent)
+                if rc_cat == "ORC":
+                    this_orc_total += 1
+                elif rc_cat == "SRC_t":
+                    this_srct_total += 1
+                elif rc_cat == "SRC_i":
+                    this_srci_total += 1
                                                             
 
-                                if pred_sent.split()[0] == target_sent.split()[0]:
-                                    right += 1
-                                    if rc_cat == "ORC":
-                                        this_orc += 1
-                                    elif rc_cat == "SRC_t":
-                                        this_srct += 1
-                                    elif rc_cat == "SRC_i":
-                                        this_srci += 1
+                if pred_sent.split()[0] == target_sent.split()[0]:
+                    right += 1
+                    if rc_cat == "ORC":
+                        this_orc += 1
+                    elif rc_cat == "SRC_t":
+                        this_srct += 1
+                    elif rc_cat == "SRC_i":
+                        this_srci += 1
                                                             
 
-                                elif pred_sent.split()[0] in target_sent.split() and pred_sent.split()[0] in auxes:
-                                    first_aux += 1
-                                elif pred_sent.split()[0] in auxes:
-                                    other_aux += 1
-                                else:
-                                    other_word += 1
+                elif pred_sent.split()[0] in target_sent.split() and pred_sent.split()[0] in auxes:
+                    first_aux += 1
+                elif pred_sent.split()[0] in auxes:
+                    other_aux += 1
+                else:
+                    other_word += 1
 
-                                if pred_sent == target_sent:
-                                    full_right += 1
-                                if sent_to_pos(pred_sent) == sent_to_pos(target_sent):
-                                    full_right_pos += 1
+                if pred_sent == target_sent:
+                    full_right += 1
+                if sent_to_pos(pred_sent) == sent_to_pos(target_sent):
+                    full_right_pos += 1
 
-                                crain_class = crain(input_sent, pred_sent)
-                                if crain_class == "d1p1":
-                                    this_d1p1 += 1
-                                elif crain_class == "d1p2":
-                                    this_d1p2 += 1
-                                elif crain_class == "d1po":
-                                    this_d1po += 1
-                                elif crain_class == "d2p1":
-                                    this_d2p1 += 1
-                                elif crain_class == "d2p2":
-                                    this_d2p2 += 1
-                                elif crain_class == "d2po":
-                                    this_d2po += 1
-                                elif crain_class == "dnp1":
-                                    this_dnp1 += 1
-                                elif crain_class == "dnp2":
-                                    this_dnp2 += 1
-                                elif crain_class == "dnpo":
-                                    this_dnpo += 1
-                                else:
-                                    this_other += 1
+                crain_class = crain(input_sent, pred_sent)
+                if crain_class == "d1p1":
+                    this_d1p1 += 1
+                elif crain_class == "d1p2":
+                    this_d1p2 += 1
+                elif crain_class == "d1po":
+                    this_d1po += 1
+                elif crain_class == "d2p1":
+                    this_d2p1 += 1
+                elif crain_class == "d2p2":
+                    this_d2p2 += 1
+                elif crain_class == "d2po":
+                    this_d2po += 1
+                elif crain_class == "dnp1":
+                    this_dnp1 += 1
+                elif crain_class == "dnp2":
+                    this_dnp2 += 1
+                elif crain_class == "dnpo":
+                    this_dnpo += 1
+                else:
+                    this_other += 1
 
-                gen_full_sent.append(full_right * 1.0 / total)
-                gen_full_sent_pos.append(full_right_pos * 1.0 / total)
-                gen_first_word.append(right * 1.0 / total)
-                gen_first_word_first_aux.append(first_aux * 1.0/total)
-                gen_first_word_other_aux.append(other_aux * 1.0 / total)
-                gen_first_word_other_word.append(other_word * 1.0 / total)
+        gen_full_sent.append(full_right * 1.0 / total)
+        gen_full_sent_pos.append(full_right_pos * 1.0 / total)
+        gen_first_word.append(right * 1.0 / total)
+        gen_first_word_first_aux.append(first_aux * 1.0/total)
+        gen_first_word_other_aux.append(other_aux * 1.0 / total)
+        gen_first_word_other_word.append(other_word * 1.0 / total)
 
-                d1p1_lst.append(this_d1p1 * 1.0/total)
-                d1p2_lst.append(this_d1p2 * 1.0/total)
-                d1po_lst.append(this_d1po * 1.0/total)
-                d2p1_lst.append(this_d2p1 * 1.0/total)
-                d2p2_lst.append(this_d2p2 * 1.0/total)
-                d2po_lst.append(this_d2po * 1.0/total)
-                dnp1_lst.append(this_dnp1 * 1.0/total)
-                dnp2_lst.append(this_dnp2 * 1.0/total)
-                dnpo_lst.append(this_dnpo * 1.0/total)
-                other_lst.append(this_other * 1.0/total)
+        d1p1_lst.append(this_d1p1 * 1.0/total)
+        d1p2_lst.append(this_d1p2 * 1.0/total)
+        d1po_lst.append(this_d1po * 1.0/total)
+        d2p1_lst.append(this_d2p1 * 1.0/total)
+        d2p2_lst.append(this_d2p2 * 1.0/total)
+        d2po_lst.append(this_d2po * 1.0/total)
+        dnp1_lst.append(this_dnp1 * 1.0/total)
+        dnp2_lst.append(this_dnp2 * 1.0/total)
+        dnpo_lst.append(this_dnpo * 1.0/total)
+        other_lst.append(this_other * 1.0/total)
 
-                orc_lst.append(this_orc * 1.0/this_orc_total)
-                srct_lst.append(this_srct * 1.0/this_srct_total)
-                srci_lst.append(this_srci * 1.0/this_srci_total)
+        orc_lst.append(this_orc * 1.0/this_orc_total)
+        srct_lst.append(this_srct * 1.0/this_srct_total)
+        srci_lst.append(this_srci * 1.0/this_srci_total)
 
 
 print("Test full-sentence accuracy list:")

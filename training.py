@@ -25,9 +25,9 @@ from evaluation import *
 use_cuda = torch.cuda.is_available()
 
 if use_cuda:
-        available_device = torch.device('cuda')
+    available_device = torch.device('cuda')
 else:
-        available_device = torch.device('cpu')
+    available_device = torch.device('cpu')
 
 # Train on a single batch, returning the average loss for
 # that batch

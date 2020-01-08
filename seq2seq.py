@@ -90,15 +90,15 @@ genFile = 'data/' + prefix + '.gen'
 # a for loop
 batch_size = 5
 if args.encoder == "Tree" or args.decoder == "Tree":
-	batch_size = 1 
+    batch_size = 1 
 
 # Determine whether cuda is available
 use_cuda = torch.cuda.is_available()
 
 if use_cuda:
-	available_device = torch.device('cuda')
+    available_device = torch.device('cuda')
 else:
-	available_device = torch.device('cpu')
+    available_device = torch.device('cpu')
 
 # Create dictionaries for converting words to numerical
 # indices and vice versa
@@ -108,9 +108,9 @@ index2word = {}
 fi = open("index.txt", "r")
 
 for line in fi:
-	parts = line.strip().split("\t")
-	word2index[parts[0]] = int(parts[1])
-	index2word[int(parts[1])] = parts[0]
+    parts = line.strip().split("\t")
+    word2index[parts[0]] = int(parts[1])
+    index2word[int(parts[1])] = parts[0]
 
 # Function for preprocessing files into batches
 # that can be inputted into our models

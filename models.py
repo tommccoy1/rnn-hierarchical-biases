@@ -22,9 +22,9 @@ import math
 use_cuda = torch.cuda.is_available()
 
 if use_cuda:
-        available_device = torch.device('cuda')
+    available_device = torch.device('cuda')
 else:
-        available_device = torch.device('cpu')
+    available_device = torch.device('cpu')
 
 # Generic sequential encoder
 class EncoderRNN(nn.Module):

@@ -40,9 +40,9 @@ def loss(example_set, encoder, decoder, criterion, recurrent_unit, attention=Fal
         decoder_outputs = decoder(decoder_hidden, encoder_outputs, training_pair, attn=attention, tf_ratio=0.0)
 
         for di in range(target_length):
-                if len(decoder_outputs) < di:
-                    break
-                loss += criterion(decoder_outputs[di], target_variable[di])/target_length
+            if len(decoder_outputs) < di:
+                break
+            loss += criterion(decoder_outputs[di], target_variable[di])/target_length
 
     loss = loss * batch_size / len(dev_set)
 
@@ -71,22 +71,22 @@ def score(example_set, encoder1, decoder1, index2word):
 
 # Convert logits to a sentence
 def logits_to_sentence(pred_words, index2word, end_at_punc=True):
-	batch_size = pred_words.size()[1]
-	all_sents = []
-	for index in range(batch_size):
-		this_sent = []
-		for output_word in pred_words: 
-			this_sent.append(index2word[output_word[index].item()])
-		if end_at_punc:
-			if "." in this_sent:
-				this_sent = this_sent[:this_sent.index(".") + 1]
-			if "?" in this_sent:
-				this_sent = this_sent[:this_sent.index("?") + 1]
-		this_sent_final = " ".join(this_sent)
+    batch_size = pred_words.size()[1]
+    all_sents = []
+    for index in range(batch_size):
+        this_sent = []
+        for output_word in pred_words: 
+            this_sent.append(index2word[output_word[index].item()])
+        if end_at_punc:
+            if "." in this_sent:
+                this_sent = this_sent[:this_sent.index(".") + 1]
+            if "?" in this_sent:
+                this_sent = this_sent[:this_sent.index("?") + 1]
+        this_sent_final = " ".join(this_sent)
 
-		all_sents.append(this_sent_final)
+        all_sents.append(this_sent_final)
 
-	return all_sents
+    return all_sents
 
 # Given a batch as input, get the decoder's outputs (as argmax indices)
 MAX_EXAMPLE = 10000

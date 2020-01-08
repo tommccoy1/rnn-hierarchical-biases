@@ -69,9 +69,9 @@ genFile = 'data/' + prefix + '.gen'
 use_cuda = torch.cuda.is_available()
 
 if use_cuda:
-        available_device = torch.device('cuda')
+    available_device = torch.device('cuda')
 else:
-        available_device = torch.device('cpu')
+    available_device = torch.device('cpu')
 
 # Dictionaries for converting words to indices, and vice versa
 word2index = {}
@@ -80,9 +80,9 @@ index2word = {}
 fi = open("index.txt", "r")
 
 for line in fi:
-        parts = line.strip().split("\t")
-        word2index[parts[0]] = int(parts[1])
-        index2word[int(parts[1])] = parts[0]
+    parts = line.strip().split("\t")
+    word2index[parts[0]] = int(parts[1])
+    index2word[int(parts[1])] = parts[0]
 
 MAX_LENGTH = 20
 
@@ -146,116 +146,115 @@ gen_main_wrongnum = []
 
 # Iterate over all re-runs of the same model type that has been specified
 while direcs_to_process:
-        if not os.path.exists(directory + "_" +  str(counter)):
-                direcs_to_process = 0
-        else:
-                directory_now = directory + "_" + str(counter)
-                counter += 1
+    if not os.path.exists(directory + "_" +  str(counter)):
+        direcs_to_process = 0
+    else:
+        directory_now = directory + "_" + str(counter)
+        counter += 1
 		
-                dec_list = sorted(os.listdir(directory_now))
-                dec = sorted(dec_list[:int(len(dec_list)/2)], key=lambda x:float(".".join(x.split(".")[2:4])))[0]
-                print("Directory being processed::", dec)
-                enc = dec.replace("decoder", "encoder")
+        dec_list = sorted(os.listdir(directory_now))
+        dec = sorted(dec_list[:int(len(dec_list)/2)], key=lambda x:float(".".join(x.split(".")[2:4])))[0]
+        print("Directory being processed::", dec)
+        enc = dec.replace("decoder", "encoder")
 
 
-                encoder.load_state_dict(torch.load(directory_now + "/" + enc))
-                decoder.load_state_dict(torch.load(directory_now + "/" + dec))
+        encoder.load_state_dict(torch.load(directory_now + "/" + enc))
+        decoder.load_state_dict(torch.load(directory_now + "/" + dec))
 
                         
-                print("Test set example outputs")
-                evaluateRandomly(encoder, decoder, test_batches, index2word)
-                print("Gen set example outputs")
-                evaluateRandomly(encoder, decoder, gen_batches, index2word)
-                print("Evaluation of model")
+        print("Test set example outputs")
+        evaluateRandomly(encoder, decoder, test_batches, index2word)
+        print("Gen set example outputs")
+        evaluateRandomly(encoder, decoder, gen_batches, index2word)
+        print("Evaluation of model")
 
-                # Evaluation on the test set
-                right = 0
-                rightpos = 0
-                total = 0
+        # Evaluation on the test set
+        right = 0
+        rightpos = 0
+        total = 0
 
-                for this_batch in test_batches:
-                        input_sents = logits_to_sentence(this_batch[0], index2word, end_at_punc=False)
-                        target_sents = logits_to_sentence(this_batch[1], index2word)
-                        pred_sents = logits_to_sentence(evaluate(encoder, decoder, this_batch), index2word)
+        for this_batch in test_batches:
+            input_sents = logits_to_sentence(this_batch[0], index2word, end_at_punc=False)
+            target_sents = logits_to_sentence(this_batch[1], index2word)
+            pred_sents = logits_to_sentence(evaluate(encoder, decoder, this_batch), index2word)
 
-                        for trio in zip(input_sents, target_sents, pred_sents):
-                                input_sent = trio[0]
-                                target_sent = trio[1]
-                                pred_sent = trio[2]
+            for trio in zip(input_sents, target_sents, pred_sents):
+                input_sent = trio[0]
+                target_sent = trio[1]
+                pred_sent = trio[2]
 
-                                total += 1
+                total += 1
                                 
-                                if pred_sent == target_sent:
-                                        right += 1
-                                if sent_to_pos(pred_sent) == sent_to_pos(target_sent):
-                                        rightpos += 1
+                if pred_sent == target_sent:
+                    right += 1
+                if sent_to_pos(pred_sent) == sent_to_pos(target_sent):
+                    rightpos += 1
 
 			
-                print("Test number correct:", right)
-                print("Test total:", total)
+        print("Test number correct:", right)
+        print("Test total:", total)
 
-                test_full_sent.append(right * 1.0 / total)
-                test_full_sent_pos.append(rightpos * 1.0 / total)
+        test_full_sent.append(right * 1.0 / total)
+        test_full_sent_pos.append(rightpos * 1.0 / total)
 
-                # Evaluate on the generalization set
-                right = 0
-                first_aux = 0
-                other_aux = 0
-                other_word = 0
-                total = 0
-                other = 0
-                full_right = 0
-                full_right_pos = 0
+        # Evaluate on the generalization set
+        right = 0
+        first_aux = 0
+        other_aux = 0
+        other_word = 0
+        total = 0
+        other = 0
+        full_right = 0
+        full_right_pos = 0
                 
-                this_gen_right = 0
-                this_gen_lin = 0
-                this_gen_main_right = 0
-                this_gen_main_lin = 0
-                this_gen_main_wrongnum = 0
-                this_gen_main_rightnum = 0
+        this_gen_right = 0
+        this_gen_lin = 0
+        this_gen_main_right = 0
+        this_gen_main_lin = 0
+        this_gen_main_wrongnum = 0
+        this_gen_main_rightnum = 0
 
-                for this_batch in gen_batches:
-                        input_sents = logits_to_sentence(this_batch[0], index2word, end_at_punc=False)
-                        target_sents = logits_to_sentence(this_batch[1], index2word)
-                        pred_sents = logits_to_sentence(evaluate(encoder, decoder, this_batch), index2word)
+        for this_batch in gen_batches:
+            input_sents = logits_to_sentence(this_batch[0], index2word, end_at_punc=False)
+            target_sents = logits_to_sentence(this_batch[1], index2word)
+            pred_sents = logits_to_sentence(evaluate(encoder, decoder, this_batch), index2word)
 
+            for trio in zip(input_sents, target_sents, pred_sents):
+                input_sent = trio[0]
+                target_sent = trio[1]
+                pred_sent = trio[2]
 
-                        for trio in zip(input_sents, target_sents, pred_sents):
-                                input_sent = trio[0]
-                                target_sent = trio[1]
-                                pred_sent = trio[2]
+                correct_words = target_sent.split()
 
-                                correct_words = target_sent.split()
+                total += 1
 
-                                total += 1
-
-                                if pred_sent == target_sent:
-                                    full_right += 1
-                                    this_gen_right += 1
-                                if pred_sent == tense_nearest(target_sent):
-                                    this_gen_lin += 1
+                if pred_sent == target_sent:
+                    full_right += 1
+                    this_gen_right += 1
+                if pred_sent == tense_nearest(target_sent):
+                    this_gen_lin += 1
                                
-                                if main_right_tense(target_sent, pred_sent):
-                                    this_gen_main_right += 1
-                                if main_linear_tense(target_sent, pred_sent):
-                                    this_gen_main_lin += 1
-                                if main_rightnum_tense(target_sent, pred_sent):
-                                    this_gen_main_rightnum += 1
-                                if main_wrongnum_tense(target_sent, pred_sent):
-                                    this_gen_main_wrongnum += 1
+                if main_right_tense(target_sent, pred_sent):
+                    this_gen_main_right += 1
+                if main_linear_tense(target_sent, pred_sent):
+                    this_gen_main_lin += 1
+                if main_rightnum_tense(target_sent, pred_sent):
+                    this_gen_main_rightnum += 1
+                if main_wrongnum_tense(target_sent, pred_sent):
+                    this_gen_main_wrongnum += 1
 
-                                if sent_to_pos(pred_sent) == sent_to_pos(target_sent):
-                                    full_right_pos += 1
+                if sent_to_pos(pred_sent) == sent_to_pos(target_sent):
+                    full_right_pos += 1
 
-                gen_full_sent.append(full_right * 1.0 / total)
-                gen_full_sent_pos.append(full_right_pos * 1.0 / total)
+        gen_full_sent.append(full_right * 1.0 / total)
+        gen_full_sent_pos.append(full_right_pos * 1.0 / total)
                 
-                gen_right.append(this_gen_right * 1.0 / total)
-                gen_lin.append(this_gen_lin * 1.0 / total)
-                gen_main_right.append(this_gen_main_right * 1.0 / total)
-                gen_main_lin.append(this_gen_main_lin * 1.0 / total)
-                gen_main_rightnum.append(this_gen_main_rightnum * 1.0 / total)
-                gen_main_wrongnum.append(this_gen_main_wrongnum * 1.0 / total)
+        gen_right.append(this_gen_right * 1.0 / total)
+        gen_lin.append(this_gen_lin * 1.0 / total)
+        gen_main_right.append(this_gen_main_right * 1.0 / total)
+        gen_main_lin.append(this_gen_main_lin * 1.0 / total)
+        gen_main_rightnum.append(this_gen_main_rightnum * 1.0 / total)
+        gen_main_wrongnum.append(this_gen_main_wrongnum * 1.0 / total)
 
 print("Test full-sentence accuracy list:")
 print(", ".join([str(x) for x in test_full_sent]))

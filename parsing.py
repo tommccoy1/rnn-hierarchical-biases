@@ -5,14 +5,14 @@
 posDict = {}
 fi = open("pos.txt", "r") # MIGHT NEED TO CHANGE BACK
 for line in fi:
-        parts = line.split("\t")
-        posDict[parts[0].strip()] = parts[1].strip()
+    parts = line.split("\t")
+    posDict[parts[0].strip()] = parts[1].strip()
 
 posDict2 = {}
 fi = open("pos2.txt", "r")
 for line in fi:
-        parts = line.split("\t")
-        posDict2[parts[0].strip()] = parts[1].strip()
+    parts = line.split("\t")
+    posDict2[parts[0].strip()] = parts[1].strip()
 
 
 # Conert a sentence to part-of-speech tags
@@ -173,14 +173,14 @@ def pos_to_parse(pos_seq):
 
 # Parse a sentence from the question formation dataset
 def parse_question(sent):
-	return pos_to_parse(sent_to_posb(sent))
+    return pos_to_parse(sent_to_posb(sent))
 
 # Create a part-of-speech dictionary for tense reinflection sentences
 posDictTense = {}
 fi = open("pos_tense.txt", "r")
 for line in fi:
-        parts = line.split("\t")
-        posDictTense[parts[0].strip()] = parts[1].strip()
+    parts = line.split("\t")
+    posDictTense[parts[0].strip()] = parts[1].strip()
 
 # Convert a tense reinflection sentence into
 # a sequence of part-of-speech tags

@@ -6,20 +6,20 @@
 # clause (SRC_t), or an intransitive subject relative clause (SRC_i).
 dets = ["the", "some", "my", "your", "our", "her"]
 def rc_category(sent):
-        words_pre = sent.split()
-        words = []
-        for word in words_pre:
-            if word != "-q" and word != "-Q" and word != "+q" and word != "+Q" and word != "t":
-                words.append(word)
+    words_pre = sent.split()
+    words = []
+    for word in words_pre:
+        if word != "-q" and word != "-Q" and word != "+q" and word != "+Q" and word != "t":
+            words.append(word)
 
-        if words[3] in dets:
-                return "ORC"
+    if words[3] in dets:
+        return "ORC"
 
-        if words[5] in dets:
-                return "SRC_t"
+    if words[5] in dets:
+        return "SRC_t"
 
-        else:
-                return "SRC_i"
+    else:
+        return "SRC_i"
 
 
 
@@ -36,69 +36,69 @@ def rc_category(sent):
 # - Categorization: p1d2 (for "prepose first, delete second")
 auxes = ["can", "could", "will", "would", "do", "does", "don't", "doesn't"]
 def crain(sentence, output):
-        index1 = -1
-        index2 = -1
+    index1 = -1
+    index2 = -1
 
-        words_pre = sentence.replace("?", ".").replace("decl", "quest").replace("DECL", "quest").replace("QUEST", "quest").split()
+    words_pre = sentence.replace("?", ".").replace("decl", "quest").replace("DECL", "quest").replace("QUEST", "quest").split()
 
-        words = []
-        for word in words_pre:
-            if word != "-q" and word != "-Q" and word != "+q" and word != "+Q" and word != "t":
-                words.append(word)
-
-
-        for ind, word in enumerate(words):
-                if word in auxes:
-                        if index1 == -1:
-                                index1 = ind
-                        elif index2 == -1:
-                                index2 = ind
-
-        aux1 = words[index1]
-        aux2 = words[index2]
+    words = []
+    for word in words_pre:
+        if word != "-q" and word != "-Q" and word != "+q" and word != "+Q" and word != "t":
+            words.append(word)
 
 
-        d1 = " ".join(words[:index1] + words[index1 + 1:-1])
-        d2 = " ".join(words[:index2] + words[index2 + 1:-1])
-        dn = " ".join(words[:-1]) 
-        if d1[-1] != ".":
-            d1 = d1 + " ."
-        if d2[-1] != ".":
-            d2 = d2 + " ."
-        if dn[-1] != ".":
-            dn = dn + " ."
+    for ind, word in enumerate(words):
+        if word in auxes:
+            if index1 == -1:
+                index1 = ind
+            elif index2 == -1:
+                index2 = ind
 
-        output = output.replace("?", ".").replace("decl", "quest").replace("DECL", "quest").replace("QUEST", "quest")
-        output_words = output.split()
-        output_words_new = []
+    aux1 = words[index1]
+    aux2 = words[index2]
 
-        for word in output_words:
-            if word != "-q" and word != "-Q" and word != "+q" and word != "+Q" and word != "t":
-                output_words_new.append(word)
 
-        output =  " ".join(output_words_new)
+    d1 = " ".join(words[:index1] + words[index1 + 1:-1])
+    d2 = " ".join(words[:index2] + words[index2 + 1:-1])
+    dn = " ".join(words[:-1]) 
+    if d1[-1] != ".":
+        d1 = d1 + " ."
+    if d2[-1] != ".":
+        d2 = d2 + " ."
+    if dn[-1] != ".":
+        dn = dn + " ."
 
-        if output == aux1 + " " + d1:
-                return "d1p1"
-        if output == aux2 + " " + d1:
-                return "d1p2"
-        if output == aux1 + " " + d2:
-                return "d2p1"
-        if output == aux2 + " " + d2:
-                return "d2p2"
-        if output == aux1 + " " + dn:
-                return "dnp1"
-        if output == aux2 + " " + dn:
-                return "dnp2"
-        if output.split()[0] in auxes:
-                if output.split()[1:] == d1:
-                        return "d1po"
-                if output.split()[1:] == d2:
-                        return "d2po"
-                if output.split()[1:] == dn:
-                        return "dnpo"
+    output = output.replace("?", ".").replace("decl", "quest").replace("DECL", "quest").replace("QUEST", "quest")
+    output_words = output.split()
+    output_words_new = []
 
-        return "other"
+    for word in output_words:
+        if word != "-q" and word != "-Q" and word != "+q" and word != "+Q" and word != "t":
+            output_words_new.append(word)
+
+    output =  " ".join(output_words_new)
+
+    if output == aux1 + " " + d1:
+        return "d1p1"
+    if output == aux2 + " " + d1:
+        return "d1p2"
+    if output == aux1 + " " + d2:
+        return "d2p1"
+    if output == aux2 + " " + d2:
+        return "d2p2"
+    if output == aux1 + " " + dn:
+        return "dnp1"
+    if output == aux2 + " " + dn:
+        return "dnp2"
+    if output.split()[0] in auxes:
+        if output.split()[1:] == d1:
+            return "d1po"
+        if output.split()[1:] == d2:
+            return "d2po"
+        if output.split()[1:] == dn:
+            return "dnpo"
+
+    return "other"
 
 # Given an auxiliary, return whether it is singular or plural
 def number_aux(aux_word):
@@ -136,47 +136,47 @@ verbs_pl = ["giggle", "smile", "sleep", "swim", "wait", "move", "change", "read"
 # verbs agreed with the most recent noun instead
 # of with their subjects.
 def tense_nearest(sent):
-	new_words = []
-	words = sent.split()
+    new_words = []
+    words = sent.split()
 
-	tense_agr = "sg"
-	for word in words:
-		if word in nouns_sg:
-			tense_agr = "sg"
-			new_words.append(word)
-		elif word in nouns_pl:
-			tense_agr = "pl"
-			new_words.append(word)
-		elif word in verbs_sg:
-			verb_ind = verbs_sg.index(word)
-			if tense_agr == "sg":
-				new_words.append(verbs_sg[verb_ind])
-			else:
-				new_words.append(verbs_pl[verb_ind])
-		elif word in verbs_pl:
-			verb_ind = verbs_pl.index(word)
-			if tense_agr == "sg":
-				new_words.append(verbs_sg[verb_ind])
-			else:
-				new_words.append(verbs_pl[verb_ind])
-		else:
-			new_words.append(word)
+    tense_agr = "sg"
+    for word in words:
+        if word in nouns_sg:
+            tense_agr = "sg"
+            new_words.append(word)
+        elif word in nouns_pl:
+            tense_agr = "pl"
+            new_words.append(word)
+        elif word in verbs_sg:
+            verb_ind = verbs_sg.index(word)
+            if tense_agr == "sg":
+                new_words.append(verbs_sg[verb_ind])
+            else:
+                new_words.append(verbs_pl[verb_ind])
+        elif word in verbs_pl:
+            verb_ind = verbs_pl.index(word)
+            if tense_agr == "sg":
+                new_words.append(verbs_sg[verb_ind])
+            else:
+                new_words.append(verbs_pl[verb_ind])
+        else:
+            new_words.append(word)
 
-	return " ".join(new_words)
+    return " ".join(new_words)
 
 
 # Converting a sentence to a list of part-of-speech tags
 posDictTense = {}
 fi = open("pos_tense.txt", "r")
 for line in fi:
-        parts = line.split("\t")
-        posDictTense[parts[0].strip()] = parts[1].strip()
+    parts = line.split("\t")
+    posDictTense[parts[0].strip()] = parts[1].strip()
         
 posDict = {}
 fi = open("pos.txt", "r")
 for line in fi:
-        parts = line.split("\t")
-        posDict[parts[0].strip()] = parts[1].strip()
+    parts = line.split("\t")
+    posDict[parts[0].strip()] = parts[1].strip()
         
 
 def sent_to_pos(sent):
