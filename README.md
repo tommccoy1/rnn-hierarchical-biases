@@ -71,17 +71,27 @@ The third line in `GRU_agr_1_0.01_256.scr` then tests the trained models and out
 # Variants on sequential RNNs (Section 3.3 / Figure 4)
 
 Run each of the following lines 100 times each:
-- python seq2seq.py --encoder SRN --decoder SRN --task question --attention none --lr 0.001 --hs 256
-- python seq2seq.py --encoder SRN --decoder SRN --task question --attention location --lr 0.001 --hs 256
-- python seq2seq.py --encoder SRN --decoder SRN --task question --attention content --lr 0.001 --hs 256
-- python seq2seq.py --encoder GRU --decoder GRU --task question --attention none --lr 0.001 --hs 256
-- python seq2seq.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256
-- python seq2seq.py --encoder GRU --decoder GRU --task question --attention content --lr 0.001 --hs 256
-- python seq2seq.py --encoder LSTM --decoder LSTM --task question --attention none --lr 0.001 --hs 256
-- python seq2seq.py --encoder LSTM --decoder LSTM --task question --attention location --lr 0.001 --hs 256
-- python seq2seq.py --encoder LSTM --decoder LSTM --task question --attention content --lr 0.001 --hs 256
-x 100 for each of these 9
+- `python seq2seq.py --encoder SRN --decoder SRN --task question --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder SRN --decoder SRN --task question --attention location --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder SRN --decoder SRN --task question --attention content --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder GRU --task question --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder GRU --decoder GRU --task question --attention content --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder LSTM --decoder LSTM --task question --attention none --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder LSTM --decoder LSTM --task question --attention location --lr 0.001 --hs 256`
+- `python seq2seq.py --encoder LSTM --decoder LSTM --task question --attention content --lr 0.001 --hs 256`
   
+Then run these evaluation steps (just once):
+- `python test_question.py --encoder SRN --decoder SRN --task question --attention none --lr 0.001 --hs 256 > SRN_SRN_question_none_0.001_256.results`
+- `python test_question.py --encoder SRN --decoder SRN --task question --attention location --lr 0.001 --hs 256 > SRN_SRN_question_location_0.001_256.results`
+- `python test_question.py --encoder SRN --decoder SRN --task question --attention content --lr 0.001 --hs 256 > SRN_SRN_question_content_0.001_256.results`
+- `python test_question.py --encoder GRU --decoder GRU --task question --attention none --lr 0.001 --hs 256 > GRU_GRU_question_none_0.001_256.results`
+- `python test_question.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256 > GRU_GRU_question_location_0.001_256.results`
+- `python test_question.py --encoder GRU --decoder GRU --task question --attention content --lr 0.001 --hs 256 > GRU_GRU_question_content_0.001_256.results`
+- `python test_question.py --encoder LSTM --decoder LSTM --task question --attention none --lr 0.001 --hs 256 > LSTM_LSTM_question_none_0.001_256.results`
+- `python test_question.py --encoder LSTM --decoder LSTM --task question --attention location --lr 0.001 --hs 256 > LSTM_LSTM_question_location_0.001_256.results`
+- `python test_question.py --encoder LSTM --decoder LSTM --task question --attention content --lr 0.001 --hs 256 > LSTM_LSTM_question_content_0.001_256.results`
+
 
 # Squashing experiments (Section 3.4 / Figure 5)
 
