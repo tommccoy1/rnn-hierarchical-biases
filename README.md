@@ -68,8 +68,79 @@ This repo contains the output of one small example. The example was created by r
 The third line in `GRU_agr_1_0.01_256.scr` then tests the trained models and outputs the results to `test_agr_GRU_1_0.01_256.out`. There is a lot of information in `test_agr_GRU_1_0.01_256.out`, but the most important data are that the test set full-sentence accuracy had a median of 0.974 and that the generalization set first-word accuracy had a median of 0.926.
 
 
+# Variants on sequential RNNs (Section 3.3 / Figure 4)
 
+Run each of the following lines 100 times each:
+- python seq2seq.py --encoder SRN --decoder SRN --task question --attention none --lr 0.001 --hs 256
+- python seq2seq.py --encoder SRN --decoder SRN --task question --attention location --lr 0.001 --hs 256
+- python seq2seq.py --encoder SRN --decoder SRN --task question --attention content --lr 0.001 --hs 256
+- python seq2seq.py --encoder GRU --decoder GRU --task question --attention none --lr 0.001 --hs 256
+- python seq2seq.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256
+- python seq2seq.py --encoder GRU --decoder GRU --task question --attention content --lr 0.001 --hs 256
+- python seq2seq.py --encoder LSTM --decoder LSTM --task question --attention none --lr 0.001 --hs 256
+- python seq2seq.py --encoder LSTM --decoder LSTM --task question --attention location --lr 0.001 --hs 256
+- python seq2seq.py --encoder LSTM --decoder LSTM --task question --attention content --lr 0.001 --hs 256
+x 100 for each of these 9
   
+
+# Squashing experiments (Section 3.4 / Figure 5)
+
+python seq2seq.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256
+python seq2seq.py --encoder UnsquashedGRU --decoder UnsquashedGRU --task question --attention location --lr 0.001 --hs 256
+python seq2seq.py --encoder LSTM --decoder LSTM --task question --attention location --lr 0.001 --hs 256
+python seq2seq.py --encoder SquashedLSTM --decoder SquashedLSTM --task question --attention location --lr 0.001 --hs 256
+x 100 for each
+
+# Ordered Neurons model for question formation (Section 4.1)
+python seq2seq.py --encoder ONLSTM --decoder ONLSTM --task question --attention none --lr 0.001 --hs 256
+x 100
+
+# Tree-GRUs for question formation (Section 4.2 / Figure 7)
+python seq2seq.py --encoder GRU --decoder GRU --task question --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder GRU --decoder Tree --task question --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder Tree --decoder GRU --task question --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder Tree --decoder Tree --task question --attention none --lr 0.001 --hs 256
+
+x 100 each
+
+# Tense reinflection (Section 5.1 / Figure 8)
+python seq2seq.py --encoder SRN --decoder SRN --task tense --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder SRN --decoder SRN --task tense --attention location --lr 0.001 --hs 256
+python seq2seq.py --encoder SRN --decoder SRN --task tense --attention content --lr 0.001 --hs 256
+python seq2seq.py --encoder GRU --decoder GRU --task tense --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder GRU --decoder GRU --task tense --attention location --lr 0.001 --hs 256
+python seq2seq.py --encoder GRU --decoder GRU --task tense --attention content --lr 0.001 --hs 256
+python seq2seq.py --encoder LSTM --decoder LSTM --task tense --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder LSTM --decoder LSTM --task tense --attention location --lr 0.001 --hs 256
+python seq2seq.py --encoder LSTM --decoder LSTM --task tense --attention content --lr 0.001 --hs 256
+python seq2seq.py --encoder ONLSTM --decoder ONLSTM --task tense --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder Tree --decoder Tree --task tense --attention none --lr 0.001 --hs 256
+
+
+# Unambiguous training sets (Section 6)
+python seq2seq.py --encoder GRU --decoder GRU --task question_main --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder GRU --decoder GRU --task question_first --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder Tree --decoder Tree --task question_main --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder Tree --decoder Tree --task question_first --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder GRU --decoder GRU --task tense_recent --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder GRU --decoder GRU --task tense_subject --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder Tree --decoder Tree --task tense_recent --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder Tree --decoder Tree --task tense_subject --attention none --lr 0.001 --hs 256
+
+
+# Tree structure vs. tree information (Section 7 / Figure 9)
+To be added: Currently the server hosting this code is down.
+
+
+# Multitask learning (Section 8 / Figure 10)
+python seq2seq.py --encoder GRU --decoder GRU --task question --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder GRU --decoder GRU --task tense --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder GRU --decoder GRU --task question_tense_subject --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder GRU --decoder GRU --task question_main_tense --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder GRU --decoder GRU --task question_tense_aux_subject --attention none --lr 0.001 --hs 256
+python seq2seq.py --encoder GRU --decoder GRU --task question_main_tense_aux --attention none --lr 0.001 --hs 256
+
+
 
 
 
