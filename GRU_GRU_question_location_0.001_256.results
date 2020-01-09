@@ -1,0 +1,363 @@
+Directory being processed: question.decoder.0.0.0
+Test set example outputs
+her newts don't admire her yaks above our xylophones . quest
+don't her newts admire her yaks above our xylophones ?
+don't her newts admire her yaks above our xylophones ?
+
+some tyrannosaurus behind our salamander does comfort some newts who don't change . quest
+does some tyrannosaurus behind our salamander comfort some newts who don't change ?
+doesn't some tyrannosaurus behind our salamander comfort some newts who don't sleep ?
+
+some salamanders don't remember our xylophone that does high_five our zebras . quest
+don't some salamanders remember our xylophone that does high_five our zebras ?
+don't some salamanders remember our xylophone that does high_five our zebras ?
+
+her salamander doesn't comfort her newt that some xylophone does accept . quest
+doesn't her salamander comfort her newt that some xylophone does accept ?
+doesn't her salamander comfort her newt that some xylophone does accept ?
+
+your unicorns do high_five our walruses around the salamanders . quest
+do your unicorns high_five our walruses around the salamanders ?
+do your unicorns high_five our walruses around the salamanders ?
+
+her unicorn doesn't entertain her yak . decl
+her unicorn doesn't entertain her yak .
+her unicorn doesn't entertain her yak .
+
+your quail doesn't entertain her peacock that does giggle . quest
+doesn't your quail entertain her peacock that does giggle ?
+doesn't your quail entertain her peacock that does giggle ?
+
+the peacock doesn't remember our xylophones who some vultures do amuse . decl
+the peacock doesn't remember our xylophones who some vultures do amuse .
+the peacock doesn't remember our xylophones who some vultures do amuse .
+
+her walrus does amuse some xylophone above my peacocks . quest
+does her walrus amuse some xylophone above my peacocks ?
+does her walrus amuse some xylophone above my peacocks ?
+
+her peacock doesn't confuse your newts below her quail . decl
+her peacock doesn't confuse your newts below her quail .
+her peacock doesn't confuse your newts below her quail .
+
+Gen set example outputs
+my salamander that doesn't accept my salamanders does smile . quest
+does my salamander that doesn't accept my salamanders smile ?
+does my salamander that doesn't accept my salamanders does smile ?
+
+her salamander that some tyrannosaurus doesn't admire does confuse your xylophones below some salamander . quest
+does her salamander that some tyrannosaurus doesn't admire confuse your xylophones below some salamander ?
+doesn't her salamander that some tyrannosaurus doesn't admire does confuse your xylophones ?
+
+her vulture that does high_five your salamander doesn't eat . quest
+doesn't her vulture that does high_five your salamander eat ?
+doesn't her vulture that does high_five your salamander ?
+
+some vultures who the orangutans do applaud don't remember our quail around some orangutans . quest
+don't some vultures who the orangutans do applaud remember our quail around some orangutans ?
+don't some vultures who the orangutans applaud don't remember our quail ?
+
+your ravens that don't remember the salamander do read . quest
+do your ravens that don't remember the salamander read ?
+do your ravens that don't remember the salamander do read ?
+
+my tyrannosaurus that our xylophone doesn't accept does giggle . quest
+does my tyrannosaurus that our xylophone doesn't accept giggle ?
+does my tyrannosaurus that our xylophone doesn't accept does giggle ?
+
+our newt who doesn't applaud your newts does entertain your xylophone around some zebras . quest
+does our newt who doesn't applaud your newts entertain your xylophone around some zebras ?
+does our newt who doesn't applaud your newts applaud your xylophone ?
+
+her newt that does smile doesn't eat . quest
+doesn't her newt that does smile eat ?
+doesn't her newt that does smile doesn't eat ?
+
+our vultures that her unicorns do accept don't applaud your orangutan near her unicorns . quest
+don't our vultures that her unicorns do accept applaud your orangutan near her unicorns ?
+don't our vultures that her unicorns do accept don't applaud your orangutan ?
+
+her xylophone that the raven does accept doesn't amuse our peacocks behind your tyrannosauruses . quest
+doesn't her xylophone that the raven does accept amuse our peacocks behind your tyrannosauruses ?
+doesn't her xylophone that the raven does accept doesn't amuse our peacocks ?
+
+Evaluation of model
+Test number correct: 7591
+Test total: 10000
+Directory being processed: question.decoder.0.0.0
+Test set example outputs
+your yaks by our tyrannosauruses do comfort our orangutan that my unicorns don't amuse . decl
+your yaks by our tyrannosauruses do comfort our orangutan that my unicorns don't amuse .
+your yaks by our tyrannosauruses do comfort our orangutan that my yak doesn't amuse .
+
+the quails don't admire your walrus that your vultures do comfort . decl
+the quails don't admire your walrus that your vultures do comfort .
+the quails don't admire your walrus that your vultures do comfort .
+
+my yak behind the orangutans doesn't giggle . quest
+doesn't my yak behind the orangutans giggle ?
+doesn't my yak behind the orangutans giggle ?
+
+our vulture doesn't high_five the yak near her salamanders . quest
+doesn't our vulture high_five the yak near her salamanders ?
+doesn't our vulture high_five the yak near her salamanders ?
+
+her xylophones behind her quail do admire my orangutans . decl
+her xylophones behind her quail do admire my orangutans .
+her xylophones behind her quail do admire my orangutans .
+
+her quail does entertain your walrus with your tyrannosauruses . decl
+her quail does entertain your walrus with your tyrannosauruses .
+her quail does entertain your walrus with your tyrannosauruses .
+
+her tyrannosauruses do remember some peacocks that do eat . decl
+her tyrannosauruses do remember some peacocks that do eat .
+her tyrannosauruses do remember some peacocks that do eat .
+
+her walrus upon her orangutan does confuse our quail that does wait . quest
+does her walrus upon her orangutan confuse our quail that does wait ?
+does her walrus upon her orangutan confuse our quail that does wait ?
+
+her quails who my vultures don't applaud don't entertain the unicorn . decl
+her quails who my vultures don't applaud don't entertain the unicorn .
+her quails who my vultures don't applaud don't entertain the unicorn .
+
+your tyrannosauruses that do admire her salamanders don't amuse your zebra who your yak doesn't amuse . decl
+your tyrannosauruses that do admire her salamanders don't amuse your zebra who your yak doesn't amuse .
+your tyrannosauruses that do admire her salamanders don't amuse your zebra that your yak doesn't amuse .
+
+Gen set example outputs
+her salamander who your vulture doesn't confuse does accept my salamander . quest
+does her salamander who your vulture doesn't confuse accept my salamander ?
+doesn't her salamander who your vulture does confuse does accept my salamander ?
+
+her peacocks that don't smile do high_five our peacock by my walruses . quest
+do her peacocks that don't smile high_five our peacock by my walruses ?
+do her peacocks that don't smile do high_five my peacock by my walruses ?
+
+our unicorn who our unicorn does confuse doesn't sleep . quest
+doesn't our unicorn who our unicorn does confuse sleep ?
+doesn't our unicorn who our unicorn does confuse doesn't sleep ?
+
+our vultures that don't entertain our newt do change . quest
+do our vultures that don't entertain our newt change ?
+do our vultures that don't entertain our newt do ?
+
+your peacock that our quail doesn't amuse does accept her tyrannosauruses by the salamander . quest
+does your peacock that our quail doesn't amuse accept her tyrannosauruses by the salamander ?
+doesn't your peacock that our quail does amuse does accept her tyrannosauruses ?
+
+the newt who doesn't remember our xylophones does sleep . quest
+does the newt who doesn't remember our xylophones sleep ?
+does the newt who doesn't remember our xylophones does ?
+
+my xylophones who don't smile do eat . quest
+do my xylophones who don't smile eat ?
+do my xylophones who don't smile do eat ?
+
+my xylophones who don't eat do giggle . quest
+do my xylophones who don't eat giggle ?
+do my xylophones who don't eat ?
+
+some newt who the vulture doesn't admire does eat . quest
+does some newt who the vulture doesn't admire eat ?
+doesn't some newt who the vulture does admire does eat ?
+
+our walruses that do accept her ravens don't eat . quest
+don't our walruses that do accept her ravens eat ?
+don't our walruses that do accept don't eat ?
+
+Evaluation of model
+Test number correct: 8928
+Test total: 10000
+Directory being processed: question.decoder.0.0.0
+Test set example outputs
+your walrus around some yak doesn't remember my tyrannosaurus with the yaks . decl
+your walrus around some yak doesn't remember my tyrannosaurus with the yaks .
+your walrus around some yak doesn't remember my tyrannosaurus with some xylophone .
+
+some newts do high_five the zebras around some quails . quest
+do some newts high_five the zebras around some quails ?
+do some newts high_five the zebras around some quails ?
+
+our newts that my xylophones don't applaud do admire my unicorns with her peacocks . decl
+our newts that my xylophones don't applaud do admire my unicorns with her peacocks .
+our newts that my xylophones don't applaud do admire my peacocks .
+
+the orangutans who do eat do amuse our salamanders by my orangutan . decl
+the orangutans who do eat do amuse our salamanders by my orangutan .
+the orangutans who do eat do amuse our salamanders by the orangutan .
+
+our raven who our newts don't high_five doesn't giggle . decl
+our raven who our newts don't high_five doesn't giggle .
+our raven who our newts don't high_five doesn't giggle .
+
+the orangutans who don't smile do applaud my tyrannosaurus above our xylophone . decl
+the orangutans who don't smile do applaud my tyrannosaurus above our xylophone .
+the orangutans who don't smile do applaud my tyrannosaurus above some xylophone .
+
+my xylophone around our tyrannosauruses doesn't move . decl
+my xylophone around our tyrannosauruses doesn't move .
+my xylophone around our tyrannosauruses doesn't move .
+
+our salamander above the yaks does accept some walruses . quest
+does our salamander above the yaks accept some walruses ?
+does our salamander above the yaks accept some walruses ?
+
+my unicorn around our zebras doesn't confuse my zebras . decl
+my unicorn around our zebras doesn't confuse my zebras .
+my unicorn around our zebras doesn't confuse my zebras .
+
+the peacocks do accept my walruses . quest
+do the peacocks accept my walruses ?
+do the peacocks accept my walruses ?
+
+Gen set example outputs
+some xylophones who her peacocks don't confuse do move . quest
+do some xylophones who her peacocks don't confuse move ?
+don't some xylophones who her peacocks don't confuse do move ?
+
+the salamander that my vulture does applaud doesn't confuse her zebra . quest
+doesn't the salamander that my vulture does applaud confuse her zebra ?
+don't the salamander that my vulture does applaud doesn't confuse her zebra ?
+
+your quail who does smile doesn't smile . quest
+doesn't your quail who does smile smile ?
+doesn't your quail who does smile ?
+
+our tyrannosaurus that doesn't giggle does accept my zebra upon some newt . quest
+does our tyrannosaurus that doesn't giggle accept my zebra upon some newt ?
+don't our tyrannosaurus that doesn't giggle does accept my zebra upon some newt ?
+
+some quails that the quails don't amuse do accept the quail . quest
+do some quails that the quails don't amuse accept the quail ?
+don't some quails that the quails don't amuse do accept the quail ?
+
+her walrus that your zebra does amuse doesn't entertain our yaks below our unicorn . quest
+doesn't her walrus that your zebra does amuse entertain our yaks below our unicorn ?
+don't her walrus that your zebra doesn't amuse doesn't entertain our unicorn ?
+
+her quails who don't confuse your unicorn do read . quest
+do her quails who don't confuse your unicorn read ?
+do her quails who don't confuse your unicorn do read ?
+
+some walruses who our ravens do admire don't comfort some zebras near our salamander . quest
+don't some walruses who our ravens do admire comfort some zebras near our salamander ?
+don't some walruses who our ravens don't admire don't comfort some salamander ?
+
+our newt that doesn't eat does admire your salamander behind her yaks . quest
+does our newt that doesn't eat admire your salamander behind her yaks ?
+doesn't our newt that doesn't eat does admire your salamander behind her yaks ?
+
+the walruses who do move don't wait . quest
+don't the walruses who do move wait ?
+don't the walruses who do move don't wait ?
+
+Evaluation of model
+Test number correct: 7971
+Test total: 10000
+Test full-sentence accuracy list:
+0.7591, 0.8928, 0.7971
+Mean: 0.8163333333333332
+Median: 0.7971
+ 
+Test full-sentence POS accuracy list:
+0.8962, 0.9495, 0.8926
+Mean: 0.9127666666666666
+Median: 0.8962
+ 
+Gen first word accuracy list:
+0.8487, 0.9016, 0.6506
+Mean: 0.8003
+Median: 0.8487
+ 
+Gen proportion of outputs where the first word was the first auxiliary:
+0.151, 0.0984, 0.2526
+Mean: 0.16733333333333333
+Median: 0.151
+ 
+Gen proportion of outputs where the first word was an auxiliary not in the input:
+0.0003, 0.0, 0.0968
+Mean: 0.03236666666666666
+Median: 0.0003
+ 
+Gen proportion of outputs where the first word was not an auxiliary:
+0.0, 0.0, 0.0
+Mean: 0.0
+Median: 0.0
+ 
+Gen full sentence accuracy list:
+0.0249, 0.0161, 0.0098
+Mean: 0.01693333333333333
+Median: 0.0161
+ 
+Gen full sentence POS accuracy list:
+0.0595, 0.0259, 0.0147
+Mean: 0.03336666666666667
+Median: 0.0259
+ 
+d1p1 list:
+0.0028, 0.0015, 0.0009
+Mean: 0.0017333333333333333
+Median: 0.0015
+ 
+d1p2 list:
+0.0152, 0.0042, 0.0009
+Mean: 0.006766666666666667
+Median: 0.0042
+ 
+d1po list:
+0.0, 0.0, 0.0
+Mean: 0.0
+Median: 0.0
+ 
+d2p1 list:
+0.0036, 0.0014, 0.0004
+Mean: 0.0018000000000000002
+Median: 0.0014
+ 
+d2p2 list:
+0.0249, 0.0161, 0.0098
+Mean: 0.01693333333333333
+Median: 0.0161
+ 
+d2po list:
+0.0, 0.0, 0.0
+Mean: 0.0
+Median: 0.0
+ 
+dnp1 list:
+0.0733, 0.0198, 0.1298
+Mean: 0.07429999999999999
+Median: 0.0733
+ 
+dnp2 list:
+0.4995, 0.3134, 0.366
+Mean: 0.3929666666666667
+Median: 0.366
+ 
+dnpo list:
+0.0, 0.0, 0.0
+Mean: 0.0
+Median: 0.0
+ 
+other list:
+0.3807, 0.6436, 0.4922
+Mean: 0.5055
+Median: 0.4922
+
+ORC list:
+0.8214821482148215, 0.8007800780078008, 0.48514851485148514
+Mean: 0.7024702470247025
+Median: 0.8007800780078008
+
+SRC_t list:
+0.8914236211377419, 0.9887380883626913, 0.8645682933872365
+Mean: 0.9149100009625566
+Median: 0.8914236211377419
+
+SRC_i list:
+0.8308364544319601, 0.9122971285892634, 0.5914481897627965
+Mean: 0.7781939242613399
+Median: 0.8308364544319601
+

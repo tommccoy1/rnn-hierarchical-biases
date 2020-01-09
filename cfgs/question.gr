@@ -1,0 +1,113 @@
+
+
+1	ROOT	S .
+
+1	S	NP_M_S VP_M_S
+1	S	NP_M_P VP_M_P
+
+1	NP_M_S	Det N_S
+1	NP_M_S	Det N_S Prep Det N
+1	NP_M_S	Det N_S RC_S
+
+1	NP_M_P	Det N_P
+1	NP_M_P	Det N_P Prep Det N
+1	NP_M_P	Det N_P RC_P
+
+1	NP_O	Det N_S
+1	NP_O	Det N_P
+1	NP_O	Det N_S Prep Det N
+1	NP_O	Det N_P Prep Det N
+1	NP_O	Det N_S RC_S
+1	NP_O	Det N_P RC_P
+
+1	N	N_S
+1	N	N_P
+
+1	VP_M_S	Aux_S V_intrans
+1	VP_M_S	Aux_S V_trans NP_O
+
+1	VP_M_P	Aux_P V_intrans
+1	VP_M_P	Aux_P V_trans NP_O
+
+2	RC_S	Rel Aux_S V_intrans
+1	RC_S	Rel Det N_S Aux_S V_trans
+1	RC_S	Rel Det N_P Aux_P V_trans
+2	RC_S	Rel Aux_S V_trans Det N
+
+2	RC_P	Rel Aux_P V_intrans
+1	RC_P	Rel Det N_S Aux_S V_trans
+1	RC_P	Rel Det N_P Aux_P V_trans
+2	RC_P	Rel Aux_P V_trans Det N
+
+1	Det	the
+1	Det	some
+1	Det	my
+1	Det	your
+1	Det	our
+1	Det	her
+
+1	N_S	newt
+1	N_S	orangutan
+1	N_S	peacock
+1	N_S	quail
+1	N_S	raven
+1	N_S	salamander
+1	N_S	tyrannosaurus
+1	N_S	unicorn
+1	N_S	vulture
+1	N_S	walrus
+1	N_S	xylophone
+1	N_S	yak
+1	N_S	zebra
+
+1	N_P	newts
+1	N_P	orangutans
+1	N_P	peacocks
+1	N_P	quails
+1	N_P	ravens
+1	N_P	salamanders
+1	N_P	tyrannosauruses
+1	N_P	unicorns
+1	N_P	vultures
+1	N_P	walruses
+1	N_P	xylophones
+1	N_P	yaks
+1	N_P	zebras
+
+1	V_intrans	giggle
+1	V_intrans	smile
+1	V_intrans	sleep
+1	V_intrans	swim
+1	V_intrans	wait
+1	V_intrans	move
+1	V_intrans	change
+1	V_intrans	read
+1	V_intrans	eat
+
+1	V_trans	entertain
+1	V_trans	amuse
+1	V_trans	high_five
+1	V_trans	applaud
+1	V_trans	confuse
+1	V_trans	admire
+1	V_trans	accept
+1	V_trans	remember
+1	V_trans	comfort
+
+1	Aux_P	do
+1	Aux_S	does
+1	Aux_P	don't
+1	Aux_S	doesn't
+
+1	Prep	around
+1	Prep	near
+1	Prep	with
+1	Prep	upon
+1	Prep	by
+1	Prep	behind
+1	Prep	above
+1	Prep	below
+
+1	Rel	who
+1	Rel	that	
+

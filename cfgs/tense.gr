@@ -1,0 +1,137 @@
+
+
+1	ROOT	S .
+
+1	S	NP_M_sg VP_M_sg
+1	S	NP_M_pl VP_M_pl
+
+1	NP_M_sg	Det N_sg
+0.5	NP_M_sg	Det N_sg Prep Det N_sg
+0.5	NP_M_sg	Det N_sg Prep Det N_pl
+1	NP_M_sg	Det N_sg RC_sg
+
+1	NP_M_pl	Det N_pl
+0.5	NP_M_pl	Det N_pl Prep Det N_sg
+0.5	NP_M_pl	Det N_pl Prep Det N_pl
+1	NP_M_pl	Det N_pl RC_pl
+
+1	NP_O_sg	Det N_sg
+0.5	NP_O_sg	Det N_sg Prep Det N_sg
+0.5	NP_O_sg	Det N_sg Prep Det N_pl
+1	NP_O_sg	Det N_sg RC_sg
+
+1	NP_O_pl	Det N_pl
+0.5	NP_O_pl	Det N_pl Prep Det N_sg
+0.5	NP_O_pl	Det N_pl Prep Det N_pl
+1	NP_O_pl	Det N_pl RC_pl
+
+1	VP_M_sg	V_intrans_sg
+0.5	VP_M_sg	V_trans_sg NP_O_sg
+0.5	VP_M_sg	V_trans_sg NP_O_pl
+
+1	VP_M_pl	V_intrans_pl
+0.5	VP_M_pl	V_trans_pl NP_O_sg
+0.5	VP_M_pl	V_trans_pl NP_O_pl
+
+1	RC_sg	Rel V_intrans_sg
+0.5	RC_sg	Rel Det N_sg V_trans_sg
+0.5	RC_sg	Rel Det N_pl V_trans_pl
+0.5	RC_sg	Rel V_trans_sg Det N_sg
+0.5	RC_sg	Rel V_trans_sg Det N_pl
+
+1	RC_pl	Rel V_intrans_pl
+0.5	RC_pl	Rel Det N_sg V_trans_sg
+0.5	RC_pl	Rel Det N_pl V_trans_pl
+0.5	RC_pl	Rel V_trans_pl Det N_sg
+0.5	RC_pl	Rel V_trans_pl Det N_pl
+
+
+
+1	Det	the
+1	Det	some
+1	Det	my
+1	Det	your
+1	Det	our
+1	Det	her
+
+1	N_sg	newt
+1	N_sg	orangutan
+1	N_sg	peacock
+1	N_sg	quail
+1	N_sg	raven
+1	N_sg	salamander
+1	N_sg	tyrannosaurus
+1	N_sg	unicorn
+1	N_sg	vulture
+1	N_sg	walrus
+1	N_sg	xylophone
+1	N_sg	yak
+1	N_sg	zebra
+
+1	N_pl	newts
+1	N_pl	orangutans
+1	N_pl	peacocks
+1	N_pl	quails
+1	N_pl	ravens
+1	N_pl	salamanders
+1	N_pl	tyrannosauruses
+1	N_pl	unicorns
+1	N_pl	vultures
+1	N_pl	walruses
+1	N_pl	xylophones
+1	N_pl	yaks
+1	N_pl	zebras
+
+1	V_intrans_sg	giggles
+1	V_intrans_sg	smiles
+1	V_intrans_sg	sleeps
+1	V_intrans_sg	swims
+1	V_intrans_sg	waits
+1	V_intrans_sg	moves
+1	V_intrans_sg	changes
+1	V_intrans_sg	reads
+1	V_intrans_sg	eats
+
+1	V_trans_sg	entertains
+1	V_trans_sg	amuses
+1	V_trans_sg	high_fives
+1	V_trans_sg	applauds
+1	V_trans_sg	confuses
+1	V_trans_sg	admires
+1	V_trans_sg	accepts
+1	V_trans_sg	remembers
+1	V_trans_sg	comforts
+
+
+1	V_intrans_pl	giggle
+1	V_intrans_pl	smile
+1	V_intrans_pl	sleep
+1	V_intrans_pl	swim
+1	V_intrans_pl	wait
+1	V_intrans_pl	move
+1	V_intrans_pl	change
+1	V_intrans_pl	read
+1	V_intrans_pl	eat
+
+1	V_trans_pl	entertain
+1	V_trans_pl	amuse
+1	V_trans_pl	high_five
+1	V_trans_pl	applaud
+1	V_trans_pl	confuse
+1	V_trans_pl	admire
+1	V_trans_pl	accept
+1	V_trans_pl	remember
+1	V_trans_pl	comfort
+
+1	Prep	around
+1	Prep	near
+1	Prep	with
+1	Prep	upon
+1	Prep	by
+1	Prep	behind
+1	Prep	above
+1	Prep	below
+
+1	Rel	who
+1	Rel	that	
+

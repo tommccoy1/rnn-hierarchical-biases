@@ -164,6 +164,39 @@ def tense_nearest(sent):
 
     return " ".join(new_words)
 
+# Same as tense_nearest, but when the sentence has auxes
+def tense_nearest_aux(sent):
+    new_words = []
+    words = sent.split()
+
+    tense_agr = "sg"
+    for word in words:
+        if word in nouns_sg:
+            tense_agr = "sg"
+            new_words.append(word)
+        elif word in nouns_pl:
+            tense_agr = "pl"
+            new_words.append(word)
+        elif word in auxes_sg:
+            aux_ind = auxes_sg.index(word)
+            if tense_agr == "sg":
+                new_words.append(auxes_sg[aux_ind])
+            else:
+                new_words.append(auxes_pl[aux_ind])
+        elif word in auxes_pl:
+            aux_ind = auxes_pl.index(word)
+            if tense_agr == "sg":
+                new_words.append(auxes_sg[aux_ind])
+            else:
+                new_words.append(auxes_pl[aux_ind])
+        else:
+            new_words.append(word)
+
+    return " ".join(new_words)
+
+
+
+
 
 # Converting a sentence to a list of part-of-speech tags
 posDictTense = {}
@@ -212,11 +245,48 @@ def right_besides_verbs(senta, sentb):
             all_good = False
             
     return all_good
-    
-# Determines whether the main verb of the sentence has the correct tense
+
+# Does the sentence have the correct sequence of
+# part of speech tags?
+def right_pos(senta, sentb):
+    pos_tags_a = sent_to_pos(senta)
+    pos_tags_b = sent_to_pos(sentb)
+
+    if pos_tags_a == pos_tags_b:
+        return True
+    else:
+        return False
+
+# Is the sentence correct except for the identity
+# of the auxiliaries?
+def right_besides_auxes(senta, sentb):
+    pos_tags = sent_to_pos(senta)
+
+    wordsa = senta.split()
+    wordsb = sentb.split()
+
+    if len(wordsb) != len(wordsa):
+        return False
+
+    all_good = True
+
+    for index, word in enumerate(wordsa):
+        if pos_tags[index] == "A":
+            continue
+
+        if word != wordsb[index]:
+            all_good = False
+
+    return all_good
+
+
+
+
+
+# Determines whether the main verb of the sentence is correct
 def main_right_tense(senta, sentb):
     
-    if not right_besides_verbs(senta, sentb):
+    if not right_pos(senta, sentb):
         return False
     
     wordsa = senta.split()
@@ -246,5 +316,116 @@ def main_right_tense(senta, sentb):
     
     return verbb == verba
     
-    
+# Determines whether the main verb of the sentence is the one predicted by agree-recent
+def main_linear_tense(senta, sentb):
+
+    if not right_pos(senta, sentb): 
+        return False
+
+    wordsa = senta.split()
+    wordsb = sentb.split()
+
+    pos_tags = sent_to_pos(senta)
+
+    if pos_tags[2] == "R":
+        seen_v = 0
+        for index, tag in enumerate(pos_tags):
+            if tag == "V":
+                if seen_v:
+                    ind_v = index
+                    break
+                else:
+                    seen_v = 1
+
+
+    else:
+        for index, tag in enumerate(pos_tags):
+            if tag == "V":
+                ind_v = index
+                break
+
+    verba = wordsa[ind_v]
+    verbb = wordsb[ind_v]
+
+    if verbb + "s" == verba:
+       return True
+    if verbb == verba + "s":
+       return True
+    return False
+
+# Determines whether the main verb of the sentence has the number predicted by agree-recent
+def main_wrongnum_tense(senta, sentb):
+
+    if not right_pos(senta, sentb): 
+        return False
+
+    wordsa = senta.split()
+    wordsb = sentb.split()
+
+    pos_tags = sent_to_pos(senta)
+
+    if pos_tags[2] == "R":
+        seen_v = 0
+        for index, tag in enumerate(pos_tags):
+            if tag == "V":
+                if seen_v:
+                    ind_v = index
+                    break
+                else:
+                    seen_v = 1
+
+
+    else:
+        for index, tag in enumerate(pos_tags):
+            if tag == "V":
+                ind_v = index
+                break
+
+    verba = wordsa[ind_v]
+    verbb = wordsb[ind_v]
+
+    if verbb[-1] == "s" and verba[-1] != "s":
+       return True
+    if verbb[-1] != "s" and verba[-1] == "s":
+       return True
+    return False
+
+# Determines whether the main verb of the sentence has the correct number
+def main_rightnum_tense(senta, sentb):
+
+    if not right_pos(senta, sentb): 
+        return False
+
+    wordsa = senta.split()
+    wordsb = sentb.split()
+
+    pos_tags = sent_to_pos(senta)
+
+    if pos_tags[2] == "R":
+        seen_v = 0
+        for index, tag in enumerate(pos_tags):
+            if tag == "V":
+                if seen_v:
+                    ind_v = index
+                    break
+                else:
+                    seen_v = 1
+
+
+    else:
+        for index, tag in enumerate(pos_tags):
+            if tag == "V":
+                ind_v = index
+                break
+
+    verba = wordsa[ind_v]
+    verbb = wordsb[ind_v]
+
+    if verba[-1] == "s" and verbb[-1] == "s":
+        return True
+    if verba[-1] != "s" and verbb[-1] != "s":
+        return True
+    return False
+
+
 

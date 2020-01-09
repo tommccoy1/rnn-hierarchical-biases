@@ -1,73 +1,136 @@
 # rnn-hierarchical-biases
-Code for "Does syntax need to grow on trees? Sources of hierarchical inductive bias in sequence to sequence networks"
+Code for "Does syntax need to grow on trees? Sources of hierarchical inductive bias in sequence to sequence networks." The paper can be found at [LINK NOT YET AVAILABLE]. There is also a website containing detailed results at [http://rtmccoy.com/rnn_hierarchical_biases.html](http://rtmccoy.com/rnn_hierarchical_biases.html).
 
 # Dependencies
 We ran this with PyTorch version 0.4.0, but other versions may well work. It should run on either a GPU or CPU (though at least some experiments will be markedly faster on a GPU).
 
-# Data
-Files ending in `.train`, `.dev`, `.test`, and `.gen` are training, development, test, and generalization sets, respectively. Files starting `agr` are the data for the question formation task, and file starting with `tense` are the data for the tense reinflection task.
+# Basic description of the code
 
-# Running the code
-Each experiment is broken into 2 parts (training and testing) as follows:
+Each model consists of two sub-models, the encoder and the decoder. An experiment is split into two parts: First, the script `seq2seq.py` trains the encoder and decoder and saves their weights in a directory that is automatically generated for that experiment. Second, the test scripts (`test_question.py` for evaluating question formation, `test_tense.py` for evaluating tense reinflection, and `test_tense_aux.py` for evaluating tense reinflection with auxiliaries included) evaluate the trained models. If you want to run multiple random restarts of a given model, simply launch `seq2seq.py` multiple times; the code will automatically generate a different directory for each restart. You will still only need to run the test script once, however, as it will compile together all initializations that have been run for the provided hyperparameters.
 
-```
-python seq2seq.py task1 task2 model attention lr hs seed
-python test.py task1 task2 model attention lr hs > outfile
-```
+Both the training and testing scripts take the same set of options:
+- `--encoder`: Encoder type. Options:
+    * `SRN`: Simple Recurrent Network.
+    * `GRU`: Gated Recurrent Unit.
+    * `LSTM`: Long Short-Term Memory unit.
+    * `SquashedLSTM`: Squashed Long Short-Term Memory unit (see section 3.4 of the paper).
+    * `UnsquashedGRU`: Unsquashed Gated Recurrent Unit (see section 3.4 of the paper).
+    * `ONLSTM`: Ordered Neurons LSTM.
+    * `Tree`: Tree-based GRU.
+- `--decoder`: Decoder type. Options:
+    * `SRN`: Simple Recurrent Network.
+    * `GRU`: Gated Recurrent Unit.
+    * `LSTM`: Long Short-Term Memory unit.
+    * `SquashedLSTM`: Squashed Long Short-Term Memory unit (see section 3.4 of the paper).
+    * `UnsquashedGRU`: Unsquashed Gated Recurrent Unit (see section 3.4 of the paper).
+    * `ONLSTM`: Ordered Neurons LSTM.
+    * `Tree`: Tree-based GRU.
+- `--task`: Task. The options that can be used here are the datasets listed in the "Data" section of this README (e.g., `question`, `tense`, `question_tense_aux_subject`, etc.)
+- `--attention`: Type of attention. Options:
+    * `none`: No attention.
+    * `location`: Location-based attention.
+    * `content`: Content-based attention.
+- `--lr`: Learning rate. Can be any float value. Most of our experiments were run with a learning rate of 0.001.
+- `--hs`: Hidden size. Can be any integer value. Most of our experiments were run with a hidden size of 256.
+- `--seed`: Random seed. If not provided manually, the code will internally generate a random seed.
+- `--parse_strategy`: If using a tree-based model, the type of parse that will be used. Options:
+    * `correct`: The correct parses (default option).
+    * `right_branching`: Uniformly right-branching trees.
+- `--patience`: Number of evaluation steps without improvement to go through before early stopping. Can take any integer value; default value is 3.
 
-Here are descriptions of the arguments for seq2seq.py, the script that trains models:
-- `task1`: The training task. Can either be `agr` (for question formation) or `tense` (for tense reinflection)
-- `task2`: This is a duplicate of the first `task` option and should be identical to whatever you choose for `task`. (To-do: Get rid of this, since it's redundant).
-- `model`: The type of model to be used. Options (a given option will select that option as the architecture for both the encoder and the decoder, unless otherwise noted):
-  * `SRN`: Simple Recurrent Network 
-  * `GRU`: Gated Recurrent Unit
-  * `LSTM`: Long Short-Term Memory unit
-  * `LSTMBob`: Squashed LSTM
-  * `ONLSTM`: Ordered Neurons LSTM
-  * `GRUBob`: Unsquashed GRU
-  * `TREEDECNOPRE`: Model with a linear GRU encoder and a tree-GRU decoder
-  * `TREENewNOPRE`: Model with a tree-GRU encoder and a tree-GRU decoder
-  * `TREEENCNewNOPRE`: Model with a tree-GRU encoder and a linear GRU decoder
-- `attention`: The type of attention used by the model. Options:
-  * `0`: No attention
-  * `1`: Location-based attention
-  * `2`: Content-based attention
-- `lr`: The learning rate
-- `hs`: The size of the hidden state
-- `seed`: The random seed
-
-To test a trained model (or models), use `test.py`. This script will compile together the results from all random initializations of the architecture that you specify with the arguments; for example, even if you ran 100 different random initializations of a model, you would still only need to run `test.py` once because it would gather the results for all 100 initializations. All of the arguments for `test.py` are the same as for `seq2seq.py`. Note: `test.py` is only for the question formation task. To test a model trained on tense reinflection, use `test_tense.py` instead. The output will print to the command line, unless you specify an output file (as illustrated above with `> outfile').
-
-Example: Suppose you wanted to test a GRU without attention on the question formation task with 5 random initializations, a hidden size of 256, and a learning rate of 0.001. The commands you would run to do this would be as follows (note that the first 5 lines are all the same except for the random seeds, to give you 5 different initializations of the same model):
-
-```
-python seq2seq.py agr agr GRU 0 0.001 256 0
-python seq2seq.py agr agr GRU 0 0.001 256 1
-python seq2seq.py agr agr GRU 0 0.001 256 2
-python seq2seq.py agr agr GRU 0 0.001 256 3
-python seq2seq.py agr agr GRU 0 0.001 256 4
-
-python test.py agr agr GRU 0 0.001 256 > outfile
-```
+The section of this README entitled "How to replicate the experiments in the paper" gives the specific commands you would need to run to replicate the experiments reported in our paper.
 
 # Understanding the test output
-The output of the test script is currently not very user-friendly (I'll be cleaning it up soon). The two most important things indicated in the output are the two metrics we focus on in the paper, namely test set full-sentence accuracy and generalization set first-word accuracy. Here is how to find each of these in the test script output:
-- Test set full-sentence accuracy: If you search for "Overall test correct:", that will be the start of a block of results about test set full-sentence accuracy. At the end of that block will be 4 lines starting with "Mean:", "Median:", "Mean10:", and "Median10:". The first 2 of those are the most relevant: "Mean:" gives the mean test set full-sentence accuracy across all the random initializations, and "Median:" gives the median.
-- Generalization set first-word accuracy: Same as above, except that the relevant block for this one is the one starting with "Overall gen first word correct aux:"
 
-# Notes on running
+The evaluation scripts (`test_question.py` for evaluating question formation, `test_tense.py` for evaluating tense reinflection, and `test_tense_aux.py` for evaluating tense reinflection with auxiliaries included) need to only be run once for a given type of model; a single run of the script will evaluate all instances that have been trained for the model with the specified hyperparameters. The output of these scripts first gives example outputs for each trained model; for each model there are first some example outputs from the test set, under the heading "Test set example outputs," followed by some example outputs from the generalization set, under the heading "Generalization set example outputs." Each example has 3 lines: first the input, then the target output, then the model's predicted output.
 
-The non-tree-based models run reasonably quickly; on an NVIDIA k80 GPU, these models will converge in roughly 30 minutes to 1 hour (on a CPU, they train more slowly, but should still converge within a few hours). Models with content-based attention are significantly slower than models with no attention or position-based attention (but should still converge within a few hours).
+At the bottom of the document are the metrics used to evaluate the models. For each metric, there is first a list of each model's result on that metric (e.g., if you ran 100 instances of the model, each of those lists will have length 100). Under the list are then the mean and median values for that list. The metrics given are:
 
-The tree-based models take much longer to train (over 1 day, whether on a CPU or GPU; GPUs do not bring about much speedup for these models because their batches are not implemented in a way that GPUs can take advantage of).
+- Question formation metrics:
+    * Test full-sentence accuracy: Proportion of test set examples for which the output was exactly correct.
+    * Test full-sentence POS accuracy list: Proportion of test set examples for which the output words all had the correct part-of-speech tag (but might not be the correct member of that part of speech).
+    * Gen first word accuracy: Proportion of generalization set examples for which the first word of the output was the correct word (i.e., the main auxiliary of the input)
+    * Gen proportion of outputs where the first word was the first auxiliary: Self-explanatory
+    * Gen proportion of outputs where the first word was an auxiliary not in the input: Self-explanatory
+    * Gen proportion of outputs where the first word was not an auxiliary: Self-explanatory
+    * Gen full sentence accuracy: Proportion of generalization set examples for which the output was exactly correct
+    * Gen full sentence POS accuracy: Proportion of generalization set examples for which the output had exactly the correct sequence of parts of speech
+    * Output categorizations: Categorizing the outputs based on which auxiliary was placed at the front and which was deleted from within the sentence. Note that, for the generalization set, the second auxiliary is always also the main auxiliary. The categories are:
+        - d1p1: First auxiliary deleted, first auxiliary preposed. Example: my walrus that does laugh doesn't giggle. -> does my walrus that laugh doesn't giggle?
+        - d1p2: First auxiliary deleted, second auxiliary preposed. Example: my walrus that does laugh doesn't giggle. -> doesn't my walrus that laugh doesn't giggle?
+        - d1po: First auxiliary deleted, auxiliary not in the input preposed. Example: my walrus that does laugh doesn't giggle. -> do my walrus that laugh doesn't giggle?
+        - d2p1: Second auxiliary deleted, first auxiliary preposed. Example: my walrus that does laugh doesn't giggle. -> does my walrus that does laugh giggle?
+        - d2p2: Second auxiliary deleted, second auxiliary preposed (correct output). Example: my walrus that does laugh doesn't giggle. -> doesn't my walrus that does laugh giggle?
+        - d2po: Second auxiliary deleted, auxiliary not in the input preposed. Example: my walrus that does laugh doesn't giggle. -> don't my walrus that does laugh giggle?
+        - dnp1: No auxiliary deleted, first auxiliary preposed. Example: my walrus that does laugh doesn't giggle. -> does my walrus that does laugh doesn't giggle?
+        - dnp2: No auxiliary deleted, second auxiliary preposed. Example: my walrus that does laugh doesn't giggle. -> doesn't my walrus that does laugh doesn't giggle?
+        - dnpo: No auxiliary deleted, auxiliary not in the input preposed. Example: my walrus that does laugh doesn't giggle. -> don't my walrus that does laugh doesn't giggle?
+        - other: Output does not fit into any of the above categories.
+    * ORC: The first-word accuracy across examples in the generalization set for which the relative clause modifying the subject is an object relative clause (that is, a relative clause in which the verb is transitive and the element moved out of the relative clause is the object of the verb; e.g., "that the walrus does visit").
+    * SRC_t: The first-word accuracy across examples in the generalization set for which the relative clause modifying the subject is a transitive subject relative clause (that is, a relative clause in which the verb is transitive and the element moved out of the relative clause is the subject of the verb; e.g., "that does visit the walrus").
+    * SRC_i: The first-word accuracy across examples in the generalization set for which the relative clause modifying the subject is an intransitive subject relative clause (that is, a relative clause in which the verb is intransitive and the element moved out of the relative clause is the subject of the verb; e.g., "that does giggle").
+- Tense reinflection metrics:
+    * Test full-sentence accuracy: Proportion of test set examples for which the output was exactly correct.
+    * Test full-sentence POS accuracy list: Proportion of test set examples for which the output words all had the correct part-of-speech tag (but might not be the correct member of that part of speech).
+    * Gen full sentence accuracy: Proportion of generalization set examples for which the output was exactly correct
+    * Gen full sentence POS accuracy: Proportion of generalization set examples for which the output was exactly correct sequence of parts of speec
+    * Gen proportion of full-sentence outputs that follow agree-recent: Self-explanatory. Example: my walrus by the yaks giggled. -< my walrus by the yaks giggle.
+    * Gen proportion of outputs that have the correct main verb: Self-explanatory. Note: This presupposes that the output has the correct sequence of part-of-speech tags. If it doesn't, the sentence will not be counted as having the correct main verb or the incorrect main verb. 
+    * Gen proportion of outputs that have the main verb predicted by agree-recent: Self-explanatory. Note: This presupposes that the output has the correct sequence of part-of-speech tags. If it doesn't, the sentence will not be counted as having the correct main verb or the incorrect main verb.
+    * Gen proportion of outputs that have the correct number for the main verb: Self-explanatory. Note: This presupposes that the output has the correct sequence of part-of-speech tags. If it doesn't, the sentence will not be counted as having the correct main verb number or the incorrect main verb number.
+    * Gen proportion of outputs that have the incorrect number for the main verb: Self-explanatory. Note: This presupposes that the output has the correct sequence of part-of-speech tags. If it doesn't, the sentence will not be counted as having the correct main verb number or the incorrect main verb number.
+
 
 # Example
 
-This repo contains the output of one small example. The example was created by running the commands in `GRU_agr_1_0.01_256.scr`. The first 2 commands in that script train 2 instances of a GRU with location-based attention, a hidden size of 256, and a learning rate of 0.01 on the task of question formation. These commands create the subdirectories `agr_GRU_1_0.01_256_0` and `agr_GRU_1_0.01_256_1`. Each of these subdirectories contains the saved weights of the model being trained by that command (these weights are split into 2 files, one for the encoder's weights and one for the decoder's weights). The remaining files in these subdirectories are empty and only serve as indicators of progress during training.
+This repo contains one example, where we have trained and evaluated 3 instances of a GRU with location-based attention trained to perform question formation. These three instances were trained by running the following commands:
 
-The third line in `GRU_agr_1_0.01_256.scr` then tests the trained models and outputs the results to `test_agr_GRU_1_0.01_256.out`. There is a lot of information in `test_agr_GRU_1_0.01_256.out`, but the most important data are that the test set full-sentence accuracy had a median of 0.974 and that the generalization set first-word accuracy had a median of 0.926.
+```
+python seq2seq.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256
+python seq2seq.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256
+python seq2seq.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256
 
-# Basic description of the code
+```
+
+Notice that this is just the same command repeated 3 times; `seq2seq.py` will automatically create 3 separate folders for these 3 runs. These folders are named `question_GRU_GRU_location_0.001_256_0`, `question_GRU_GRU_location_0.001_256_1`, and `question_GRU_GRU_location_0.001_256_0`. Each one contains the saved weights of the trained encoder, named `question.encoder.0.0.0`, and the saved weights of the decoder, named `question.decoder.0.0.0` (more specifically, the weights that were saved were the weights from the evaluation step that achieved the highest accuracy on the development set).
+
+All 3 of these trained models were then evaluated together using the following command:
+
+```
+python test_question.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256 > GRU_GRU_question_location_0.001_256.results
+``` 
+
+The evaluation results are in `GRU_GRU_question_location_0.001_256.results`. This document first gives example outputs for each of the 3 models: For each model, there are first some example outputs for the test set under the heading "Test set example outputs" (most of these are exactly correct) followed by some example outputs for the generalization set under the heading "Generalization set example outputs" (most of these are incorrect in various ways). Each of these examples has the input on the first line, followed by the target output on the second line, followed by the model's output on the third line. 
+
+After these examples, the bottom of the document contains several evaluation metrics for all 3 models. For each metric, there is first a list of each model's value for that metric; since there are 3 instances of the model in this case, each of these lists is 3 elements long. Below that are then the mean and median values for that metric across models.
+
+# Data
+
+All of the datasets are in `data/`. Each task is split across 4 files, namely a training set, a development set, a test set, and a generalization set, marked by the suffixes `.train`, `.dev`, `.test`, and `.gen`. Each task is indicated by a prefix:
+
+- Basic datasets:
+    * `question`: The basic question formation dataset
+    * `tense`: The basic tense reinflection dataset
+    * `tense_aux`: The basic tense reinflection dataset, but with auxiliaries before the verbs instead of inflected verbs (e.g., *does swim* instead of *swims*)
+- Unambiguous datasets:
+    * `question_main`: Question formation that is unambiguously governed by move-main.
+    * `question_first`: Question formation that is unambiguously governed by move-first.
+    * `tense_subject`: Tense reinflection that is unambiguously governed by agree-subject.
+    * `tense_recent`: Tense reinflection that is unambiguously governed by agree-recent.
+    * `tense_aux_subject`: Tense reinflection that is unambiguously governed by agree-subject and that has auxiliaries before the verbs instead of inflected verbs.
+- Datasets with brackets:
+    * `question_bracket`: Question formation with brackets in the input and output.
+    * `tense_bracket`: Tense reinflection with brackets in the input and output.
+- Multitask datasets:
+    * `question_main_tense`: Question formation that is unambiguously governed by move-main, plus tense reinflection that is ambiguous between agree-subject and agree-recent.
+    * `question_main_tense_aux`: Question formation that is unambiguously governed by move-main, plus tense reinflection that is ambiguous between agre
+e-subject and agree-recent and that (unlike the basic tense reinflection, but like the basic question formation) has auxiliaries in the sentences.
+    * `question_tense_subject`: Question formation that is ambiguous between move-main and move-first, plus tense reinflection that is unambiguously governed by agree-subject.
+    * `question_tense_aux_subject`: Question formation that is ambiguous between move-main and move-first, plus tense reinflection that is unambiguously governed by agree-subject and that (unlike the basic tense reinflection, but like the basic question formation) has auxiliaries in the sentences.
+
+These datasets were generated from context free grammars; the grammars used for the basic question formation and tense reinflection datasets are given in `cfgs/`. Each file is a PCFG, with one rule per line, in the form probability-tab-left_hand_side-tab-right_hand_side. Sentences from these basic grammars were then post-processed to give the datasets in `data/` (where the post-processing filtered the datasets to withhold the types of examples necessary to make the training sets ambiguous).
+
+
 
 # How to replicate the experiments in the paper
 
@@ -221,17 +284,13 @@ Run the following evaluations once each:
 - `python test_question.py --encoder GRU --decoder GRU --task question_tense_aux_subject --attention none --lr 0.001 --hs 256 > GRU_GRU_question_tense_aux_subject_none_0.001_256.results`
 - `python test_tense_aux.py --encoder GRU --decoder GRU --task question_main_tense_aux --attention none --lr 0.001 --hs 256 > GRU_GRU_question_main_tense_aux_none_0.001_256.results`
 
-# CFG
-
-
-# Contact
-
-Questions? Comments? Email [tom.mccoy@jhu.edu](mailto:tom.mccoy@jhu.edu).
 
 # Citing this code
 
-If you use this code in your work, please cite the following paper ([bibtex](http://tommccoy1.github.io/rnn-hierarchical-biases/bibtex.html)):
+If you use this code in your work, please cite the following paper ([bibtex](http://tommccoy1.github.io/bibtex/rnn-hierarchical-biases.html)):
 
 R. Thomas McCoy, Robert Frank, and Tal Linzen. 2020. Does Syntax Need to Grow on Trees? Sources of Hierarchical Inductive Bias in Sequence-to-Sequence Networks. To appear in *Transactions of the Association for Computational Linguistics*.
 
+
+*Questions? Comments? Email [tom.mccoy@jhu.edu](mailto:tom.mccoy@jhu.edu).*
 

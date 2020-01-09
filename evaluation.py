@@ -106,7 +106,7 @@ def evaluate(encoder, decoder, batch, max_length=30):
 
     decoder_hidden = encoder_hidden
 
-    decoder_outputs = decoder(decoder_hidden, encoder_outputs, batch, tf_ratio=0.0)
+    decoder_outputs = decoder(decoder_hidden, encoder_outputs, batch, tf_ratio=0.0, evaluation=True)
 
 
     output_indices = []

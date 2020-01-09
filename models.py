@@ -194,7 +194,7 @@ class DecoderRNN(nn.Module):
         return output, hidden, attn_weights
 
     # Perform the full forward pass
-    def forward(self, hidden, encoder_outputs, training_set, tf_ratio=0.5):
+    def forward(self, hidden, encoder_outputs, training_set, tf_ratio=0.5, evaluation=False):
         input_variable = training_set[0]
         target_variable = training_set[1]
 
@@ -217,7 +217,12 @@ class DecoderRNN(nn.Module):
                 decoder_outputs.append(decoder_output)
 
         else: # Not using teacher forcing
-            for di in range(target_variable.size()[0]): 
+            if evaluation:
+                end_num = 100
+            else:
+                end_num = target_variable.size()[0]
+
+            for di in range(end_num): 
                 decoder_output, decoder_hidden, decoder_attention = self.forward_step(
                             decoder_input, decoder_hidden, encoder_outputs, input_variable) 
 
@@ -419,7 +424,7 @@ class TreeDecoderRNN(nn.Module):
         self.rnn_l = nn.GRU(hidden_size, hidden_size)
         self.rnn_r = nn.GRU(hidden_size, hidden_size)
 
-    def forward(self, hidden, encoder_outputs, training_set, tf_ratio=0.5): #(self, encoding, tree):
+    def forward(self, hidden, encoder_outputs, training_set, tf_ratio=0.5, evaluation=False): 
         encoding = hidden
         tree = training_set[3]
 
