@@ -4,20 +4,20 @@ Code for "Does syntax need to grow on trees? Sources of hierarchical inductive b
 
 Contents of this README:
 - [Dependencies](#dependencies)
-- [Basic description of the code](#description)
-- [Understanding the test output](#understanding-output)
-- [Example experiment](#example)
+- [Basic description of the code](#basic-description-of-the-code)
+- [Understanding the test output](#understanding-the-test-output)
+- [Example experiment](#example-experiment)
 - [Data](#data)
-- [How to replicate the experiments in the paper](#replication) (section and figure numbers refer to the paper):
-    * [Variants on sequential RNNs (Section 3.3 / Figure 4)](#seq)
-    * [Squashing experiments (Section 3.4 / Figure 5)](#squashing)
-    * [Ordered Neurons model for question formation (Section 4.1)](#onlstm)
-    * [Tree-GRUs for question formation (Section 4.2 / Figure 7)](#tree)
-    * [Tense reinflection (Section 5.1 / Figure 8)](#tense)
-    * [Unambiguous training sets (Section 6)](#unambiguous)
-    * [Tree structure vs. tree information (Section 7 / Figure 9)](#structureinfo)
-    * [Multitask learning (Section 8 / Figure 10)](#multitask)
-- [Citing this code](#citing)
+- [How to replicate the experiments in the paper](#how-to-replicate-the-experiments-in-the-paper) (section and figure numbers refer to the paper):
+    * [Variants on sequential RNNs (Section 3.3 / Figure 4)](#variants-on-sequential-rnns-section-33--figure-4)
+    * [Squashing experiments (Section 3.4 / Figure 5)](#squashing-experiments-section-34--figure-5)
+    * [Ordered Neurons model for question formation (Section 4.1)](#ordered-neurons-model-for-question-formation-section-41)
+    * [Tree-GRUs for question formation (Section 4.2 / Figure 7)](#tree-grus-for-question-formation-section-42--figure-7)
+    * [Tense reinflection (Section 5.1 / Figure 8)](#tense-reinflection-section-51--figure-8)
+    * [Unambiguous training sets (Section 6)](#unambiguous-training-sets-section-6)
+    * [Tree structure vs. tree information (Section 7 / Figure 9)](#tree-structure-vs-tree-information-section-7--figure-9)
+    * [Multitask learning (Section 8 / Figure 10)](#multitask-learning-section-8--figure-10)
+- [Citing this code](#citing-this-code)
 
 # Dependencies
 We ran this with PyTorch version 0.4.0, but other versions may well work. It should run on either a GPU or CPU.
@@ -62,7 +62,7 @@ In case you want to run your own experiments with different combinations of argu
 - Using a Tree encoder or decoder with the tasks `tense_aux`, `tense_aux_subject`, `question_bracket`, `tense_bracket`, 'question_main_tense_aux`, and `question_tense_aux_subject`.
 - Using attention (whether location-based or content-based) with a Tree encoder or decoder.
 
-# [Understanding the test output](#understanding-output)
+# Understanding the test output
 
 The evaluation scripts (`test_question.py` for evaluating question formation, `test_tense.py` for evaluating tense reinflection, and `test_tense_aux.py` for evaluating tense reinflection with auxiliaries included) need to only be run once for a given type of model; a single run of the script will evaluate all instances that have been trained for the model with the specified hyperparameters. The output of these scripts first gives example outputs for each trained model; for each model there are first some example outputs from the test set, under the heading "Test set example outputs," followed by some example outputs from the generalization set, under the heading "Generalization set example outputs." Each example has 3 lines: first the input, then the target output, then the model's predicted output.
 
@@ -103,7 +103,7 @@ At the bottom of the document are the metrics used to evaluate the models. For e
     * Gen proportion of outputs that have the incorrect number for the main verb: Self-explanatory. Note: This presupposes that the output has the correct sequence of part-of-speech tags. If it doesn't, the sentence will not be counted as having the correct main verb number or the incorrect main verb number.
 
 
-# [Example experiment](#example)
+# Example experiment
 
 This repo contains one example, where we have trained and evaluated 3 instances of a GRU with location-based attention trained to perform question formation. These three instances were trained by running the following commands:
 
@@ -154,11 +154,11 @@ These datasets were generated from context free grammars; the grammars used for 
 
 
 
-# [How to replicate the experiments in the paper](#replication)
+# How to replicate the experiments in the paper
 
 The section numbers and figure numbers in the headings below refer to the paper.
 
-### [Variants on sequential RNNs (Section 3.3 / Figure 4)](#seq)
+### Variants on sequential RNNs (Section 3.3 / Figure 4)
 
 Run each of the following lines 100 times (the code will automatically generate a separate folder for each run):
 - `python seq2seq.py --encoder SRN --decoder SRN --task question --attention none --lr 0.001 --hs 256`
@@ -183,7 +183,7 @@ Then run these evaluation steps (just once):
 - `python test_question.py --encoder LSTM --decoder LSTM --task question --attention content --lr 0.001 --hs 256 > LSTM_LSTM_question_content_0.001_256.results`
 
 
-### [Squashing experiments (Section 3.4 / Figure 5)](#squashing)
+### Squashing experiments (Section 3.4 / Figure 5)
 
 Run each of these training scripts 100 times (the plain GRU is the squashed GRU; the plain LSTM is the unsquashed LSTM):
 - `python seq2seq.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256`
@@ -197,7 +197,7 @@ Then run each of these evaluation lines (just once each):
 - `python test_question.py --encoder LSTM --decoder LSTM --task question --attention location --lr 0.001 --hs 256 > LSTM_LSTM_question_location_0.001_256.results`
 - `python test_question.py --encoder SquashedLSTM --decoder SquashedLSTM --task question --attention location --lr 0.001 --hs 256 > SquashedLSTM_SquashedLSTM_question_location_0.001_256.results`
 
-### [Ordered Neurons model for question formation (Section 4.1)](#onlstm)
+### Ordered Neurons model for question formation (Section 4.1)
 
 Run this training step 100 times:
 - `python seq2seq.py --encoder ONLSTM --decoder ONLSTM --task question --attention none --lr 0.001 --hs 256`
@@ -205,7 +205,7 @@ Run this training step 100 times:
 Run this evaluation step once:
 - `python test_question.py --encoder ONLSTM --decoder ONLSTM --task question --attention none --lr 0.001 --hs 256 > ONLSTM_ONLSTM_question_none_0.001_256.results`
 
-### [Tree-GRUs for question formation (Section 4.2 / Figure 7)](#tree)
+### Tree-GRUs for question formation (Section 4.2 / Figure 7)
 Run the following training steps 100 times each:
 - `python seq2seq.py --encoder GRU --decoder GRU --task question --attention none --lr 0.001 --hs 256`
 - `python seq2seq.py --encoder GRU --decoder Tree --task question --attention none --lr 0.001 --hs 256`
@@ -219,7 +219,7 @@ Run the following evaluations once each:
 - `python test_question.py --encoder Tree --decoder Tree --task question --attention none --lr 0.001 --hs 256 > Tree_Tree_question_none_0.001_256.results`
 
 
-### [Tense reinflection (Section 5.1 / Figure 8)](#tense)
+### Tense reinflection (Section 5.1 / Figure 8)
 Run the following training steps 100 times each:
 - `python seq2seq.py --encoder SRN --decoder SRN --task tense --attention none --lr 0.001 --hs 256`
 - `python seq2seq.py --encoder SRN --decoder SRN --task tense --attention location --lr 0.001 --hs 256`
@@ -247,7 +247,7 @@ Run the following evaluations once each:
 - `python test_tense.py --encoder Tree --decoder Tree --task tense --attention none --lr 0.001 --hs 256 > Tree_Tree_tense_none_0.001_256.results`
 
 
-### [Unambiguous training sets (Section 6)](#unambiguous)
+### Unambiguous training sets (Section 6)
 Run the following training steps 100 times each:
 - `python seq2seq.py --encoder GRU --decoder GRU --task question_main --attention none --lr 0.001 --hs 256`
 - `python seq2seq.py --encoder GRU --decoder GRU --task question_first --attention none --lr 0.001 --hs 256`
@@ -269,7 +269,7 @@ Run the following evaluations once each:
 - `python test_tense.py --encoder Tree --decoder Tree --task tense_subject --attention none --lr 0.001 --hs 256 > Tree_Tree_tense_subject_none_0.001_256.results`
 
 
-### [Tree structure vs. tree information (Section 7 / Figure 9)](#structureinfo)
+### Tree structure vs. tree information (Section 7 / Figure 9)
 Run the following training steps 100 times each:
 - `python seq2seq.py --encoder GRU --decoder GRU --task question --attention none --lr 0.001 --hs 256`
 - `python seq2seq.py --encoder GRU --decoder GRU --task question_bracket --attention none --lr 0.001 --hs 256 --patience 6`
@@ -291,7 +291,7 @@ Run the following evaluations once each:
 - `python test_tense.py --encoder Tree --decoder Tree --task tense --attention none --lr 0.001 --hs 256 > Tree_Tree_question_none_0.001_256.results`
 
 
-### [Multitask learning (Section 8 / Figure 10)](#multitask)
+### Multitask learning (Section 8 / Figure 10)
 Run the following training steps 100 times each:
 - `python seq2seq.py --encoder GRU --decoder GRU --task question --attention none --lr 0.001 --hs 256`
 - `python seq2seq.py --encoder GRU --decoder GRU --task tense --attention none --lr 0.001 --hs 256`
@@ -309,7 +309,7 @@ Run the following evaluations once each:
 - `python test_tense_aux.py --encoder GRU --decoder GRU --task question_main_tense_aux --attention none --lr 0.001 --hs 256 > GRU_GRU_question_main_tense_aux_none_0.001_256.results`
 
 
-# [Citing this code](#citing)
+# Citing this code
 
 If you use this code in your work, please cite the following paper ([bibtex](http://tommccoy1.github.io/bibtex/rnn-hierarchical-biases.html)):
 
