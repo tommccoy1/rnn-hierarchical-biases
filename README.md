@@ -19,11 +19,10 @@ Contents of this README:
     * [Multitask learning (Section 8 / Figure 10)](#multitask)
 - [Citing this code](#citing)
 
-# [Dependencies](#dependencies)
+# Dependencies
 We ran this with PyTorch version 0.4.0, but other versions may well work. It should run on either a GPU or CPU.
 
 # Basic description of the code
-[](#description)
 
 Each model consists of two sub-models, the encoder and the decoder. An experiment is split into two parts: First, the script `seq2seq.py` trains the encoder and decoder and saves their weights in a directory that is automatically generated for that experiment. Second, the test scripts (`test_question.py` for evaluating question formation, `test_tense.py` for evaluating tense reinflection, and `test_tense_aux.py` for evaluating tense reinflection with auxiliaries included) evaluate the trained models. If you want to run multiple random restarts of a given model, simply launch `seq2seq.py` multiple times; the code will automatically generate a different directory for each restart. You will still only need to run the test script once, however, as it will compile together all initializations that have been run for the provided hyperparameters.
 
