@@ -230,7 +230,7 @@ Questions? Comments? Email [tom.mccoy@jhu.edu](mailto:tom.mccoy@jhu.edu).
 
 # Citing this code
 
-If you use this code in your work, please cite the following paper (bibtex):
+If you use this code in your work, please cite the following paper ([bibtex](http://tommccoy1.github.io/rnn-hierarchical-biases/bibtex.html)):
 
 R. Thomas McCoy, Robert Frank, and Tal Linzen. 2020. Does Syntax Need to Grow on Trees? Sources of Hierarchical Inductive Bias in Sequence-to-Sequence Networks. To appear in *Transactions of the Association for Computational Linguistics*.
 
