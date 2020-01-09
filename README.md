@@ -1,8 +1,15 @@
 # rnn-hierarchical-biases
-Code for "Does syntax need to grow on trees? Sources of hierarchical inductive bias in sequence to sequence networks." The paper can be found at [LINK NOT YET AVAILABLE]. There is also a website containing detailed results at [http://rtmccoy.com/rnn_hierarchical_biases.html](http://rtmccoy.com/rnn_hierarchical_biases.html).
+Code for "Does syntax need to grow on trees? Sources of hierarchical inductive bias in sequence to sequence networks." The paper can be found at [LINK NOT YET AVAILABLE], with an earlier paper available [here](https://arxiv.org/pdf/1802.09091.pdf) (the experiments in the earlier paper are mostly a subset of the ones in the newer paper, but the older one does contain some analyses that are not in the newer one). There is also a website containing detailed results at [http://rtmccoy.com/rnn_hierarchical_biases.html](http://rtmccoy.com/rnn_hierarchical_biases.html).
 
-# Dependencies
-We ran this with PyTorch version 0.4.0, but other versions may well work. It should run on either a GPU or CPU (though at least some experiments will be markedly faster on a GPU).
+
+Contents of this README:
+[Dependencies](#dependencies)
+[Dependencies](dependencies)
+[Dependencies](https://github.com/tommccoy1/rnn-hierarchical-biases#dependencies)
+
+
+# [Dependencies](#dependencies)
+We ran this with PyTorch version 0.4.0, but other versions may well work. It should run on either a GPU or CPU.
 
 # Basic description of the code
 
@@ -39,6 +46,10 @@ Both the training and testing scripts take the same set of options:
 - `--patience`: Number of evaluation steps without improvement to go through before early stopping. Can take any integer value; default value is 3.
 
 The section of this README entitled "How to replicate the experiments in the paper" gives the specific commands you would need to run to replicate the experiments reported in our paper.
+
+In case you want to run your own experiments with different combinations of arguments, note that the following combinations are currently unsupported:
+- Using a Tree encoder or decoder with the tasks `tense_aux`, `tense_aux_subject`, `question_bracket`, `tense_bracket`, 'question_main_tense_aux`, and `question_tense_aux_subject`.
+- Using attention (whether location-based or content-based) with a Tree encoder or decoder.
 
 # Understanding the test output
 
