@@ -126,7 +126,7 @@ The evaluation results are in `GRU_GRU_question_location_0.001_256.results`. Thi
 
 After these examples, the bottom of the document contains several evaluation metrics for all 3 models. For each metric, there is first a list of each model's value for that metric; since there are 3 instances of the model in this case, each of these lists is 3 elements long. Below that are then the mean and median values for that metric across models.
 
-# [Data](#data)
+# Data
 
 All of the datasets are in `data/`. Each task is split across 4 files, namely a training set, a development set, a test set, and a generalization set, marked by the suffixes `.train`, `.dev`, `.test`, and `.gen`. Each task is indicated by a prefix:
 
