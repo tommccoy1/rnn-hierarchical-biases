@@ -1,5 +1,5 @@
-# rnn-bias
-Code for "Does syntax need to grow on trees? Sources of inductive bias in sequence to sequence networks"
+# rnn-hierarchical-biases
+Code for "Does syntax need to grow on trees? Sources of hierarchical inductive bias in sequence to sequence networks"
 
 # Dependencies
 We ran this with PyTorch version 0.4.0, but other versions may well work. It should run on either a GPU or CPU (though at least some experiments will be markedly faster on a GPU).
@@ -222,5 +222,16 @@ Run the following evaluations once each:
 - `python test_tense_aux.py --encoder GRU --decoder GRU --task question_main_tense_aux --attention none --lr 0.001 --hs 256 > GRU_GRU_question_main_tense_aux_none_0.001_256.results`
 
 # CFG
+
+
+# Contact
+
+Questions? Comments? Email [tom.mccoy@jhu.edu](mailto:tom.mccoy@jhu.edu).
+
+# Citing this code
+
+If you use this code in your work, please cite the following paper (bibtex):
+
+R. Thomas McCoy, Robert Frank, and Tal Linzen. 2020. Does Syntax Need to Grow on Trees? Sources of Hierarchical Inductive Bias in Sequence-to-Sequence Networks. To appear in *Transactions of the Association for Computational Linguistics*.
 
 
