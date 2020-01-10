@@ -91,6 +91,9 @@ def pos_to_parse(pos_seq):
             elif node == "V" and current_nodes[index + 1] == "VP": 
                 new_nodes.append("VP")
                 current_parse.append([index])
+            elif node == "VP" and current_nodes[index + 1] == "VP_f": # turn V to VP
+                new_nodes.append("VP_f")
+                current_parse.append([index])
             elif node == "NP" and current_nodes[index + 1] == "T": 
                 new_nodes.append("NP_f")
                 current_parse.append([index])
@@ -106,6 +109,10 @@ def pos_to_parse(pos_seq):
                 new_nodes.append("A_S_bar") 
                 current_parse.append([index, index + 1]) 
                 skip_next = 1 
+            elif node == "A" and current_nodes[index + 1] == "S": 
+                new_nodes.append("A_S_bar") 
+                current_parse.append([index, index + 1]) 
+                skip_next = 1
             elif node == "K" and current_nodes[index + 1] == "ROOT":
                 new_nodes.append("ROOT")
                 current_parse.append([index, index + 1])
