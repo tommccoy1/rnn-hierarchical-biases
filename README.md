@@ -6,7 +6,7 @@ Contents of this README:
 - [Dependencies](#dependencies)
 - [Basic description of the code](#basic-description-of-the-code)
 - [Understanding the test output](#understanding-the-test-output)
-- [Example experiment](#example-experiment)
+- [Trained models and example results](#trained-models-and-example-results)
 - [Data](#data)
 - [How to replicate the experiments in the paper](#how-to-replicate-the-experiments-in-the-paper) (section and figure numbers refer to the paper):
     * [Variants on sequential RNNs (Section 3.3 / Figure 4)](#variants-on-sequential-rnns-section-33--figure-4)
