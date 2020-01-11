@@ -103,28 +103,33 @@ At the bottom of the document are the metrics used to evaluate the models. For e
     * Gen proportion of outputs that have the incorrect number for the main verb: Self-explanatory. Note: This presupposes that the output has the correct sequence of part-of-speech tags. If it doesn't, the sentence will not be counted as having the correct main verb number or the incorrect main verb number.
 
 
-# Example experiment
+# Trained models and example results
 
-This repo contains one example, where we have trained and evaluated 3 instances of a GRU with location-based attention trained to perform question formation. These three instances were trained by running the following commands:
+For each of the training commands in [the replication section](#how-to-replicate-the-experiments-in-the-paper), we have included one trained model under `models/`, and the results for that trained model under `results/`.
+
+In the paper, for each type of model we tested, we ran 100 instances of that model and took the median across these instances, to control for variability across restarts. To give an example of what this looks like, we also included an example of one experiment that had 5 restarts. This experiment was training GRUs with location-based attention to perform question formation. First, these models were trained by running the following commands:
+
 
 ```
 python seq2seq.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256
 python seq2seq.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256
 python seq2seq.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256
+python seq2seq.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256
+python seq2seq.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256
 
 ```
 
-Notice that this is just the same command repeated 3 times; `seq2seq.py` will automatically create 3 separate folders for these 3 runs. These folders are named `question_GRU_GRU_location_0.001_256_0`, `question_GRU_GRU_location_0.001_256_1`, and `question_GRU_GRU_location_0.001_256_0`. Each one contains the saved weights of the trained encoder, named `question.encoder.0.0.0`, and the saved weights of the decoder, named `question.decoder.0.0.0` (more specifically, the weights that were saved were the weights from the evaluation step that achieved the highest accuracy on the development set).
+Notice that this is just the same command repeated 5 times; `seq2seq.py` will automatically create 5 separate folders for these 5 runs. These folders are named `models/question_GRU_GRU_location_0.001_256_0`, `models/question_GRU_GRU_location_0.001_256_1`, `models/question_GRU_GRU_location_0.001_256_2` `models/question_GRU_GRU_location_0.001_256_3`, and `models/question_GRU_GRU_location_0.001_256_4`. Each one contains the saved weights of the trained encoder, named `question.encoder.0.0.0`, and the saved weights of the decoder, named `question.decoder.0.0.0` (more specifically, the weights that were saved were the weights from the evaluation step that achieved the highest accuracy on the development set).
 
-All 3 of these trained models were then evaluated together using the following command:
+All 5 of these trained models were then evaluated together using the following command:
 
 ```
-python test_question.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256 > GRU_GRU_question_location_0.001_256.results
+python test_question.py --encoder GRU --decoder GRU --task question --attention location --lr 0.001 --hs 256 > results/GRU_GRU_question_location_0.001_256.results
 ``` 
 
-The evaluation results are in `GRU_GRU_question_location_0.001_256.results`. This document first gives example outputs for each of the 3 models: For each model, there are first some example outputs for the test set under the heading "Test set example outputs" (most of these are exactly correct) followed by some example outputs for the generalization set under the heading "Generalization set example outputs" (most of these are incorrect in various ways). Each of these examples has the input on the first line, followed by the target output on the second line, followed by the model's output on the third line. 
+The evaluation results are in `results/GRU_GRU_question_location_0.001_256.results`. This document first gives example outputs for each of the 5 models: For each model, there are first some example outputs for the test set under the heading "Test set example outputs" (most of these are exactly correct) followed by some example outputs for the generalization set under the heading "Generalization set example outputs" (most of these are incorrect in various ways). Each of these examples has the input on the first line, followed by the target output on the second line, followed by the model's output on the third line. 
 
-After these examples, the bottom of the document contains several evaluation metrics for all 3 models. For each metric, there is first a list of each model's value for that metric; since there are 3 instances of the model in this case, each of these lists is 3 elements long. Below that are then the mean and median values for that metric across models.
+After these examples, the bottom of the document contains several evaluation metrics for all 5 models. For each metric, there is first a list of each model's value for that metric; since there are 5 instances of the model in this case, each of these lists is 5 elements long. Below that are then the mean and median values for that metric across models.
 
 # Data
 
