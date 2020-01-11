@@ -57,9 +57,9 @@ args = parser.parse_args()
 
 prefix = args.task
 if args.parse_strategy == "right_branching": 
-    directory = args.task + "_" + args.encoder + "_" + args.decoder  + "_" + "RB" + "_" + args.attention + "_" + str(args.lr) + "_" + str(args.hs)
+    directory = "models/" + args.task + "_" + args.encoder + "_" + args.decoder  + "_" + "RB" + "_" + args.attention + "_" + str(args.lr) + "_" + str(args.hs)
 else:
-    directory = args.task + "_" + args.encoder + "_" + args.decoder  + "_" + args.attention + "_" + str(args.lr) + "_" + str(args.hs)
+    directory = "models/" + args.task + "_" + args.encoder + "_" + args.decoder  + "_" + args.attention + "_" + str(args.lr) + "_" + str(args.hs)
 
 
 # Reading the training data

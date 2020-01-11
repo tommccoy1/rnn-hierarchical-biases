@@ -51,6 +51,7 @@ parser.add_argument("--patience", help="patience", type=int, default=3)
 args = parser.parse_args()
 
 
+
 prefix = args.task
 if args.parse_strategy == "right_branching":
     directory = "models/" + args.task + "_" + args.encoder + "_" + args.decoder  + "_" + "RB" + "_" + args.attention + "_" + str(args.lr) + "_" + str(args.hs)
@@ -81,6 +82,8 @@ if __name__ == "__main__":
 
     random.seed(random_seed)
 
+
+
 # Reading the training data
 trainingFile = 'data/' + prefix + '.train'
 devFile = 'data/' + prefix + '.dev'
@@ -105,6 +108,9 @@ if use_cuda:
 else:
     available_device = torch.device('cpu')
 
+
+
+
 # Create dictionaries for converting words to numerical
 # indices and vice versa
 word2index = {}
@@ -116,6 +122,9 @@ for line in fi:
     parts = line.strip().split("\t")
     word2index[parts[0]] = int(parts[1])
     index2word[int(parts[1])] = parts[0]
+
+
+
 
 # Function for preprocessing files into batches
 # that can be inputted into our models
@@ -217,6 +226,8 @@ if __name__ == "__main__":
         test_batches, MAX_LENGTH = file_to_batches(testFile, MAX_LENGTH, batch_size=batch_size)
         gen_batches, MAX_LENGTH = file_to_batches(genFile, MAX_LENGTH, batch_size=batch_size)
 
+
+
         # Initialize the encoder and the decoder
         if args.encoder == "Tree":
             encoder = TreeEncoderRNN(len(word2index.keys()), args.hs)
@@ -229,6 +240,7 @@ if __name__ == "__main__":
         else:
             decoder = DecoderRNN(args.hs, len(word2index.keys()), args.decoder, attn=args.attention, n_layers=1, dropout_p=0.1, max_length=MAX_LENGTH)
 
+
         encoder = encoder.to(device=available_device)
         decoder = decoder.to(device=available_device)
 
@@ -236,6 +248,7 @@ if __name__ == "__main__":
         torch.manual_seed(random_seed)
         if use_cuda:
             torch.cuda.manual_seed_all(random_seed)	
+
 
         # Train the model
         trainIters(encoder, decoder, 10000000, args.encoder, args.decoder, args.attention, train_batches, dev_batches, index2word, directory, prefix, print_every=1000, learning_rate=args.lr, patience=args.patience)

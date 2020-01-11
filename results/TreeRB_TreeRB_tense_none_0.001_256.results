@@ -1,0 +1,131 @@
+Directory being processed:: tense.decoder.0.0.0
+Test set example outputs
+her vultures that admired your peacocks high_fived the zebras . present
+her vultures that admire your peacocks high_five the zebras .
+her vultures that admire your peacocks high_five the zebras .
+
+my quails who swam admired her vulture that confused some xylophones . past
+my quails who swam admired her vulture that confused some xylophones .
+my quails who swam admired her vulture that confused some xylophones .
+
+your walruses around some xylophones entertained your xylophones around her unicorns . present
+your walruses around some xylophones entertain your xylophones around her unicorns .
+your walruses around some xylophones entertain your xylophones around her unicorns .
+
+her tyrannosauruses that slept ate . present
+her tyrannosauruses that sleep eat .
+her tyrannosauruses that sleep eat .
+
+the xylophone with her orangutan applauded her vultures . past
+the xylophone with her orangutan applauded her vultures .
+the xylophone with her orangutan applauded her vultures .
+
+our walruses remembered your orangutan . present
+our walruses remember your orangutan .
+our walruses remember your orangutan .
+
+our zebra that our tyrannosaurus applauded comforted your walrus that your quail accepted . present
+our zebra that our tyrannosaurus applauds comforts your walrus that your quail accepts .
+our zebra that our tyrannosaurus applauds comforts your walrus that your quail accepts .
+
+her quails with our unicorns accepted my zebras by your ravens . present
+her quails with our unicorns accept my zebras by your ravens .
+her quails with our unicorns accept my zebras by your ravens .
+
+my ravens near the peacock amused her salamanders who the xylophone amused . past
+my ravens near the peacock amused her salamanders who the xylophone amused .
+my ravens near the peacock amused her salamanders who the xylophone amused .
+
+my quail below her peacock waited . past
+my quail below her peacock waited .
+my quail below her peacock waited .
+
+Gen set example outputs
+some peacocks by some zebra slept . present
+some peacocks by some zebra sleep .
+some peacocks by some zebra sleeps .
+
+some peacocks that applauded her walrus confused her vulture who some walruses accepted . present
+some peacocks that applaud her walrus confuse her vulture who some walruses accept .
+some peacocks that confuses her walrus applauds her vulture who some walruses accept .
+
+some vulture behind my ravens applauded her peacocks . present
+some vulture behind my ravens applauds her peacocks .
+some vulture behind my ravens applaud her peacocks .
+
+some xylophone above your orangutans admired the walruses . present
+some xylophone above your orangutans admires the walruses .
+some xylophone above your orangutans admire the walruses .
+
+your orangutan below the walruses confused her yak . present
+your orangutan below the walruses confuses her yak .
+your orangutan below the walruses confuse her yak .
+
+my zebra below her unicorns entertained the raven above her vultures . present
+my zebra below her unicorns entertains the raven above her vultures .
+my zebra below her unicorns entertain the raven above her vultures .
+
+your zebra above some vultures amused her yak who some ravens high_fived . present
+your zebra above some vultures amuses her yak who some ravens high_five .
+your zebra above some vultures amuse her yak who some ravens high_five .
+
+the ravens that comforted your zebra amused some peacock near our quails . present
+the ravens that comfort your zebra amuse some peacock near our quails .
+the ravens that comforts your zebra amuses some peacock near our quails .
+
+my walrus upon my ravens comforted her raven around your yaks . present
+my walrus upon my ravens comforts her raven around your yaks .
+my walrus upon my ravens comfort her raven around your yaks .
+
+my peacocks who applauded my peacock entertained her peacock . present
+my peacocks who applaud my peacock entertain her peacock .
+my peacocks who applaud my peacock entertains her peacock .
+
+Evaluation of model
+Test number correct: 9748
+Test total: 10000
+Test full-sentence accuracy list:
+0.9748
+Mean: 0.9748
+Median: 0.9748
+ 
+Test full-sentence POS accuracy list:
+0.9993
+Mean: 0.9993
+Median: 0.9993
+ 
+Gen full-sentence accuracy list:
+0.0932
+Mean: 0.0932
+Median: 0.0932
+ 
+Gen full-sentence POS accuracy list:
+0.994
+Mean: 0.994
+Median: 0.994
+ 
+Gen proportion of full-sentence outputs that follow agree-recent:
+0.7657
+Mean: 0.7657
+Median: 0.7657
+ 
+Gen proportion of outputs that have the correct main verb:
+0.1193
+Mean: 0.1193
+Median: 0.1193
+ 
+Gen proportion of outputs that have the main verb predicted by agree-recent:
+0.8598
+Mean: 0.8598
+Median: 0.8598
+ 
+Gen proportion of outputs that have the correct number for the main verb:
+0.1219
+Mean: 0.1219
+Median: 0.1219
+ 
+Gen proportion of outputs that have the incorrect number for the main verb:
+0.8721
+Mean: 0.8721
+Median: 0.8721
+ 

@@ -1,0 +1,131 @@
+Directory being processed:: tense.decoder.0.0.0
+Test set example outputs
+her vultures that admired your peacocks high_fived the zebras . present
+her vultures that admire your peacocks high_five the zebras .
+her vultures that admire your peacocks high_five the zebras .
+
+your walruses around some xylophones entertained your xylophones around her unicorns . present
+your walruses around some xylophones entertain your xylophones around her unicorns .
+your walruses around some xylophones entertain your xylophones around her unicorns .
+
+the xylophone with her orangutan applauded her vultures . past
+the xylophone with her orangutan applauded her vultures .
+the xylophone with her orangutan applauded her vultures .
+
+her quails with our unicorns accepted my zebras by your ravens . present
+her quails with our unicorns accept my zebras by your ravens .
+her quails with our unicorns accept my zebras by your ravens .
+
+the yak that swam high_fived your quails who moved . present
+the yak that swims high_fives your quails who move .
+the yak that swims high_fives your quails who move .
+
+your salamanders who smiled high_fived some salamanders below your tyrannosauruses . present
+your salamanders who smile high_five some salamanders below your tyrannosauruses .
+your salamanders who smile high_five some salamanders below your tyrannosauruses .
+
+my xylophone confused my tyrannosaurus . present
+my xylophone confuses my tyrannosaurus .
+my xylophone confuses my tyrannosaurus .
+
+your walrus that slept swam . present
+your walrus that sleeps swims .
+your walrus that sleeps swims .
+
+some peacock that changed amused your tyrannosaurus above our xylophone . present
+some peacock that changes amuses your tyrannosaurus above our xylophone .
+some peacock that changes amuses your tyrannosaurus above our xylophone .
+
+some yaks confused some newt that moved . past
+some yaks confused some newt that moved .
+some yaks confused some newt that moved .
+
+Gen set example outputs
+our unicorn that her quails high_fived admired the newt above some yaks . present
+our unicorn that her quails high_five admires the newt above some yaks .
+our unicorn that her quails high_five admires the yaks above some newt .
+
+my raven behind my peacocks admired the walrus above her yak . present
+my raven behind my peacocks admires the walrus above her yak .
+my raven behind my peacocks admire the walrus above her yak .
+
+the peacock who our xylophones applauded remembered our yak . present
+the peacock who our xylophones applaud remembers our yak .
+the peacock who our xylophones applaud remember our yak .
+
+my peacocks that admired our yak accepted my unicorns that our zebras entertained . present
+my peacocks that admire our yak accept my unicorns that our zebras entertain .
+my peacocks that admire our yak accepts my unicorns that our zebras entertain .
+
+our newts around some tyrannosaurus amused some vultures . present
+our newts around some tyrannosaurus amuse some vultures .
+our newts around some tyrannosaurus amuses some vultures .
+
+the quail near your vultures amused your yak . present
+the quail near your vultures amuses your yak .
+the quail near your vultures amuse your yak .
+
+our xylophones near our newt entertained my orangutans upon her zebra . present
+our xylophones near our newt entertain my orangutans upon her zebra .
+our xylophones near our newt entertains my orangutans upon her zebra .
+
+some unicorn that amused your salamanders waited . present
+some unicorn that amuses your salamanders waits .
+some unicorn that amuses your salamanders wait .
+
+my salamanders with my walrus confused the walruses below our yaks . present
+my salamanders with my walrus confuse the walruses below our yaks .
+my salamanders with my walrus confuses the walruses below our yaks .
+
+my zebra that applauded your peacocks high_fived our ravens who our ravens amused . present
+my zebra that applauds your peacocks high_fives our ravens who our ravens amuse .
+my zebra that applauds your peacocks high_five our ravens who our ravens amuse .
+
+Evaluation of model
+Test number correct: 9272
+Test total: 10000
+Test full-sentence accuracy list:
+0.9272
+Mean: 0.9272
+Median: 0.9272
+ 
+Test full-sentence POS accuracy list:
+0.9971
+Mean: 0.9971
+Median: 0.9971
+ 
+Gen full-sentence accuracy list:
+0.0213
+Mean: 0.0213
+Median: 0.0213
+ 
+Gen full-sentence POS accuracy list:
+0.9906
+Mean: 0.9906
+Median: 0.9906
+ 
+Gen proportion of full-sentence outputs that follow agree-recent:
+0.8473
+Mean: 0.8473
+Median: 0.8473
+ 
+Gen proportion of outputs that have the correct main verb:
+0.0406
+Mean: 0.0406
+Median: 0.0406
+ 
+Gen proportion of outputs that have the main verb predicted by agree-recent:
+0.8943
+Mean: 0.8943
+Median: 0.8943
+ 
+Gen proportion of outputs that have the correct number for the main verb:
+0.0459
+Mean: 0.0459
+Median: 0.0459
+ 
+Gen proportion of outputs that have the incorrect number for the main verb:
+0.9447
+Mean: 0.9447
+Median: 0.9447
+ 

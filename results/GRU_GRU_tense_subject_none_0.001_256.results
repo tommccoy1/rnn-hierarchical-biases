@@ -1,0 +1,131 @@
+Directory being processed:: tense_subject.decoder.0.0.0
+Test set example outputs
+the yaks upon the yaks admired some quails . present
+the yaks upon the yaks admire some quails .
+the yaks upon the yaks admire some quails .
+
+your walruses comforted her unicorns below our peacocks . past
+your walruses comforted her unicorns below our peacocks .
+your walruses comforted her unicorns below our peacocks .
+
+the newt that amused our xylophone changed . present
+the newt that amuses our xylophone changes .
+the newt that amuses our xylophone changes .
+
+your yaks near the zebras applauded my unicorns . present
+your yaks near the zebras applaud my unicorns .
+your yaks near the zebras applaud my unicorns .
+
+her quail with her newt read . past
+her quail with her newt read .
+her quail with her newt read .
+
+my tyrannosaurus below some salamander moved . past
+my tyrannosaurus below some salamander moved .
+my tyrannosaurus below some salamander moved .
+
+the xylophone that your xylophone admired remembered my vultures . past
+the xylophone that your xylophone admired remembered my vultures .
+the xylophone that your xylophone admired remembered my vultures .
+
+my peacocks who your salamanders confused slept . present
+my peacocks who your salamanders confuse sleep .
+my peacocks who your salamanders confuse sleep .
+
+some newts who her unicorns comforted remembered your walruses above the quails . present
+some newts who her unicorns comfort remember your walruses above the quails .
+some newts who her unicorns comfort remember your walruses above the quails .
+
+her unicorn with your xylophone swam . past
+her unicorn with your xylophone swam .
+her unicorn with your xylophone swam .
+
+Gen set example outputs
+some salamanders near the orangutan ate . present
+some salamanders near the orangutan eat .
+some salamanders near the orangutan eat .
+
+some unicorns who her unicorn applauded accepted her yak who her peacock confused . present
+some unicorns who her unicorn applauds accept her yak who her peacock confuses .
+some unicorns who her unicorn accepts applaud her yak who her peacock confuses .
+
+our quails that amused the walrus entertained some ravens who confused your peacocks . present
+our quails that amuse the walrus entertain some ravens who confuse your peacocks .
+our quails that amuse the walrus confuse some peacocks who entertain your unicorns .
+
+your tyrannosauruses that my salamander confused slept . present
+your tyrannosauruses that my salamander confuses sleep .
+your tyrannosauruses that my salamander confuses sleep .
+
+her yaks that comforted your quail admired our zebras . present
+her yaks that comfort your quail admire our zebras .
+her yaks that comfort your quail admire our zebras .
+
+my zebras upon my tyrannosaurus applauded our quail who your yak applauded . present
+my zebras upon my tyrannosaurus applaud our quail who your yak applauds .
+my zebras upon my tyrannosaurus applaud our quail who your yak applauds .
+
+some quails around my yak confused my vulture who amused the salamanders . present
+some quails around my yak confuse my vulture who amuses the salamanders .
+some quails around my yak confuse my vulture who amuses the salamanders .
+
+my newts upon the orangutan entertained some unicorn upon my salamander . present
+my newts upon the orangutan entertain some unicorn upon my salamander .
+my newts upon the orangutan entertain some salamander upon my unicorn .
+
+her yaks upon my quail confused her xylophones that smiled . present
+her yaks upon my quail confuse her xylophones that smile .
+her yaks upon my quail confuse her xylophones that smile .
+
+our vultures behind her raven comforted some xylophones . present
+our vultures behind her raven comfort some xylophones .
+our vultures behind her raven comfort some xylophones .
+
+Evaluation of model
+Test number correct: 9209
+Test total: 10000
+Test full-sentence accuracy list:
+0.9209
+Mean: 0.9209
+Median: 0.9209
+ 
+Test full-sentence POS accuracy list:
+0.9976
+Mean: 0.9976
+Median: 0.9976
+ 
+Gen full-sentence accuracy list:
+0.8609492089925063
+Mean: 0.860949208993
+Median: 0.860949208993
+ 
+Gen full-sentence POS accuracy list:
+0.9950041631973355
+Mean: 0.995004163197
+Median: 0.995004163197
+ 
+Gen proportion of full-sentence outputs that follow agree-recent:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+Gen proportion of outputs that have the correct main verb:
+0.9217318900915903
+Mean: 0.921731890092
+Median: 0.921731890092
+ 
+Gen proportion of outputs that have the main verb predicted by agree-recent:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+Gen proportion of outputs that have the correct number for the main verb:
+0.9925062447960034
+Mean: 0.992506244796
+Median: 0.992506244796
+ 
+Gen proportion of outputs that have the incorrect number for the main verb:
+0.002497918401332223
+Mean: 0.00249791840133
+Median: 0.00249791840133
+ 

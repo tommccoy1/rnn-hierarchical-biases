@@ -1,0 +1,152 @@
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:454: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  words_out.append(nn.LogSoftmax()(self.word_out(elt).view(-1).unsqueeze(0)))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:454: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  words_out.append(nn.LogSoftmax()(self.word_out(elt).view(-1).unsqueeze(0)))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:454: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  words_out.append(nn.LogSoftmax()(self.word_out(elt).view(-1).unsqueeze(0)))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:454: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  words_out.append(nn.LogSoftmax()(self.word_out(elt).view(-1).unsqueeze(0)))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:156: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  attn_weights = F.softmax(self.attn(torch.cat((output[0], hidden[0]), 1)))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:156: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  attn_weights = F.softmax(self.attn(torch.cat((output[0], hidden[0]), 1)))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:156: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  attn_weights = F.softmax(self.attn(torch.cat((output[0], hidden[0]), 1)))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:154: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  attn_weights = F.softmax(self.attn(torch.cat((output[0], hidden[0][0]), 1)))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:454: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  words_out.append(nn.LogSoftmax()(self.word_out(elt).view(-1).unsqueeze(0)))
+/software/apps/anaconda/5.2/python/3.6/envs/marcc-python3.6-pytorch0.4.1/lib/python3.5/site-packages/torch/nn/functional.py:1006: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+/software/apps/anaconda/5.2/python/3.6/envs/marcc-python3.6-pytorch0.4.1/lib/python3.5/site-packages/torch/nn/functional.py:995: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:154: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  attn_weights = F.softmax(self.attn(torch.cat((output[0], hidden[0][0]), 1)))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:154: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  attn_weights = F.softmax(self.attn(torch.cat((output[0], hidden[0][0]), 1)))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/software/apps/anaconda/5.2/python/3.6/envs/marcc-python3.6-pytorch0.4.1/lib/python3.5/site-packages/torch/nn/functional.py:1006: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+/software/apps/anaconda/5.2/python/3.6/envs/marcc-python3.6-pytorch0.4.1/lib/python3.5/site-packages/torch/nn/functional.py:995: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:156: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  attn_weights = F.softmax(self.attn(torch.cat((output[0], hidden[0]), 1)))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:454: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  words_out.append(nn.LogSoftmax()(self.word_out(elt).view(-1).unsqueeze(0)))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:454: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  words_out.append(nn.LogSoftmax()(self.word_out(elt).view(-1).unsqueeze(0)))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:454: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  words_out.append(nn.LogSoftmax()(self.word_out(elt).view(-1).unsqueeze(0)))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:454: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  words_out.append(nn.LogSoftmax()(self.word_out(elt).view(-1).unsqueeze(0)))
+/software/apps/anaconda/5.2/python/3.6/envs/marcc-python3.6-pytorch0.4.1/lib/python3.5/site-packages/torch/nn/functional.py:1006: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+/software/apps/anaconda/5.2/python/3.6/envs/marcc-python3.6-pytorch0.4.1/lib/python3.5/site-packages/torch/nn/functional.py:995: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/software/apps/anaconda/5.2/python/3.6/envs/marcc-python3.6-pytorch0.4.1/lib/python3.5/site-packages/torch/nn/functional.py:1006: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+/software/apps/anaconda/5.2/python/3.6/envs/marcc-python3.6-pytorch0.4.1/lib/python3.5/site-packages/torch/nn/functional.py:995: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:138: UserWarning: nn.init.uniform is now deprecated in favor of nn.init.uniform_.
+  nn.init.uniform(self.v, -1, 1) # maybe need cuda
+/software/apps/anaconda/5.2/python/3.6/envs/marcc-python3.6-pytorch0.4.1/lib/python3.5/site-packages/torch/nn/functional.py:995: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:181: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  a_i = F.softmax(u_i.transpose(0,1))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:138: UserWarning: nn.init.uniform is now deprecated in favor of nn.init.uniform_.
+  nn.init.uniform(self.v, -1, 1) # maybe need cuda
+/software/apps/anaconda/5.2/python/3.6/envs/marcc-python3.6-pytorch0.4.1/lib/python3.5/site-packages/torch/nn/functional.py:995: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:181: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  a_i = F.softmax(u_i.transpose(0,1))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:138: UserWarning: nn.init.uniform is now deprecated in favor of nn.init.uniform_.
+  nn.init.uniform(self.v, -1, 1) # maybe need cuda
+/software/apps/anaconda/5.2/python/3.6/envs/marcc-python3.6-pytorch0.4.1/lib/python3.5/site-packages/torch/nn/functional.py:995: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:181: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  a_i = F.softmax(u_i.transpose(0,1))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:138: UserWarning: nn.init.uniform is now deprecated in favor of nn.init.uniform_.
+  nn.init.uniform(self.v, -1, 1) # maybe need cuda
+/software/apps/anaconda/5.2/python/3.6/envs/marcc-python3.6-pytorch0.4.1/lib/python3.5/site-packages/torch/nn/functional.py:995: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:181: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  a_i = F.softmax(u_i.transpose(0,1))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:138: UserWarning: nn.init.uniform is now deprecated in favor of nn.init.uniform_.
+  nn.init.uniform(self.v, -1, 1) # maybe need cuda
+/software/apps/anaconda/5.2/python/3.6/envs/marcc-python3.6-pytorch0.4.1/lib/python3.5/site-packages/torch/nn/functional.py:995: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:181: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  a_i = F.softmax(u_i.transpose(0,1))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:138: UserWarning: nn.init.uniform is now deprecated in favor of nn.init.uniform_.
+  nn.init.uniform(self.v, -1, 1) # maybe need cuda
+/software/apps/anaconda/5.2/python/3.6/envs/marcc-python3.6-pytorch0.4.1/lib/python3.5/site-packages/torch/nn/functional.py:995: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:181: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  a_i = F.softmax(u_i.transpose(0,1))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:156: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  attn_weights = F.softmax(self.attn(torch.cat((output[0], hidden[0]), 1)))
+/scratch/users/rmccoy20@jhu.edu/rnn-hierarchical-biases/models.py:193: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  output = F.log_softmax(self.out(output[0]))

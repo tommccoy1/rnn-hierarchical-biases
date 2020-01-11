@@ -1,0 +1,191 @@
+Directory being processed: question_bracket.decoder.0.0.0
+Test set example outputs
+[ [ [ her peacocks ] [ do [ confuse [ [ my quail ] [ above [ our zebra ] ] ] ] ] ] . ] decl
+[ [ her peacocks ] [ do [ confuse [ [ my quail ] [ above [ our zebra ] ] ] ] ] ] .
+[ her newts ] [ do [ amuse [ [ my tyrannosaurus ] [ upon [ our peacock ] ] ] ] ] ] .
+
+[ [ [ my quails ] [ don't [ confuse [ [ the xylophones ] [ with [ our orangutans ] ] ] ] ] ] . ] quest
+[ don't [ [ my quails ] [ confuse [ [ the xylophones ] [ with [ our orangutans ] ] ] ] ] ] ?
+don't [ [ my peacocks ] [ amuse [ [ the peacocks ] [ upon [ our orangutans ] ] ] ] ] ] ?
+
+[ [ [ the unicorn ] [ doesn't [ comfort [ the orangutans ] ] ] ] . ] quest
+[ doesn't [ [ the unicorn ] [ comfort [ the orangutans ] ] ] ] ?
+doesn't [ [ the tyrannosaurus ] [ amuse [ the unicorns ] ] ] ] ?
+
+[ [ [ [ the ravens ] [ that [ don't eat ] ] ] [ do swim ] ] . ] decl
+[ [ [ the ravens ] [ that [ don't eat ] ] ] [ do swim ] ] .
+[ [ the yaks ] [ who [ do swim ] ] ] [ do swim ] ] .
+
+[ [ [ [ the peacock ] [ with [ my newt ] ] ] [ doesn't [ confuse [ your ravens ] ] ] ] . ] decl
+[ [ [ the peacock ] [ with [ my newt ] ] ] [ doesn't [ confuse [ your ravens ] ] ] ] .
+[ [ the peacock ] [ upon [ my tyrannosauruses ] ] ] [ doesn't [ remember [ your peacock ] ] ] ] .
+
+[ [ [ some salamanders ] [ don't [ high_five [ some walruses ] ] ] ] . ] decl
+[ [ some salamanders ] [ don't [ high_five [ some walruses ] ] ] ] .
+[ some newts ] [ don't [ amuse [ some newts ] ] ] ] .
+
+[ [ [ my quail ] [ doesn't [ applaud [ [ my raven ] [ that [ does eat ] ] ] ] ] ] . ] decl
+[ [ my quail ] [ doesn't [ applaud [ [ my raven ] [ that [ does eat ] ] ] ] ] ] .
+[ my tyrannosaurus ] [ doesn't [ entertain [ [ my tyrannosaurus ] [ who [ does wait ] ] ] ] ] ] .
+
+[ [ [ the ravens ] [ don't [ admire [ [ our vultures ] [ who [ do smile ] ] ] ] ] ] . ] decl
+[ [ the ravens ] [ don't [ admire [ [ our vultures ] [ who [ do smile ] ] ] ] ] ] .
+[ the newts ] [ don't [ admire [ [ our salamanders ] [ who [ do read ] ] ] ] ] ] .
+
+[ [ [ my xylophones ] [ don't [ applaud [ [ her xylophone ] [ around [ our peacocks ] ] ] ] ] ] . ] quest
+[ don't [ [ my xylophones ] [ applaud [ [ her xylophone ] [ around [ our peacocks ] ] ] ] ] ] ?
+don't [ [ my peacocks ] [ amuse [ [ her tyrannosaurus ] [ upon [ her orangutans ] ] ] ] ] ] ?
+
+[ [ [ [ your yaks ] [ above [ her quails ] ] ] [ do [ applaud [ her xylophone ] ] ] ] . ] quest
+[ do [ [ [ your yaks ] [ above [ her quails ] ] ] [ applaud [ her xylophone ] ] ] ] ?
+do [ [ [ your zebras ] [ upon [ her quails ] ] ] [ comfort [ her quails ] ] ] ] ?
+
+Gen set example outputs
+[ [ [ [ your xylophones ] [ that [ do [ entertain [ some quails ] ] ] ] ] [ don't move ] ] . ] quest
+[ don't [ [ [ your xylophones ] [ that [ do [ entertain [ some quails ] ] ] ] ] move ] ] ?
+don't [ [ [ your yaks ] [ who [ [ some newts ] [ don't high_five ] ] ] ] [ do swim ] ] ?
+
+[ [ [ [ some newt ] [ that [ does read ] ] ] [ doesn't [ applaud [ some orangutans ] ] ] ] . ] quest
+[ doesn't [ [ [ some newt ] [ that [ does read ] ] ] [ applaud [ some orangutans ] ] ] ] ?
+doesn't [ [ [ some vulture ] [ upon [ your tyrannosauruses ] ] ] [ admire [ some tyrannosauruses ] ] ] ] ?
+
+[ [ [ [ your walrus ] [ who [ does swim ] ] ] [ doesn't swim ] ] . ] quest
+[ doesn't [ [ [ your walrus ] [ who [ does swim ] ] ] swim ] ] ?
+doesn't [ [ [ your walrus ] [ upon [ your salamander ] ] ] swim ] ] ?
+
+[ [ [ [ your ravens ] [ who [ [ our walruses ] [ don't entertain ] ] ] ] [ do move ] ] . ] quest
+[ do [ [ [ your ravens ] [ who [ [ our walruses ] [ don't entertain ] ] ] ] move ] ] ?
+don't [ [ [ your newts ] [ who [ [ our newts ] [ don't amuse ] ] ] ] [ do read ] ] ?
+
+[ [ [ [ your peacock ] [ that [ doesn't [ accept [ my orangutans ] ] ] ] ] [ does sleep ] ] . ] quest
+[ does [ [ [ your peacock ] [ that [ doesn't [ accept [ my orangutans ] ] ] ] ] sleep ] ] ?
+does [ [ [ your zebra ] [ who [ [ my peacocks ] [ don't high_five ] ] ] ] [ does smile ] ] ?
+
+[ [ [ [ the quail ] [ that [ doesn't wait ] ] ] [ does wait ] ] . ] quest
+[ does [ [ [ the quail ] [ that [ doesn't wait ] ] ] wait ] ] ?
+does [ [ [ the quail ] [ that [ does wait ] ] ] read ] ] ?
+
+[ [ [ [ some salamanders ] [ that [ don't [ comfort [ the tyrannosauruses ] ] ] ] ] [ do wait ] ] . ] quest
+[ do [ [ [ some salamanders ] [ that [ don't [ comfort [ the tyrannosauruses ] ] ] ] ] wait ] ] ?
+don't [ [ [ the xylophones ] [ who [ [ the salamanders ] [ do amuse ] ] ] ] [ do read ] ] ?
+
+[ [ [ [ my unicorns ] [ who [ do read ] ] ] [ don't [ remember [ your yaks ] ] ] ] . ] quest
+[ don't [ [ [ my unicorns ] [ who [ do read ] ] ] [ remember [ your yaks ] ] ] ] ?
+don't [ [ [ my orangutans ] [ who [ your yaks ] ] ] [ admire [ your orangutans ] ] ] ] ?
+
+[ [ [ [ your walruses ] [ who [ don't sleep ] ] ] [ do change ] ] . ] quest
+[ do [ [ [ your walruses ] [ who [ don't sleep ] ] ] change ] ] ?
+don't [ [ [ your tyrannosauruses ] [ who [ do sleep ] ] ] sleep ] ] ?
+
+[ [ [ [ my zebra ] [ who [ does change ] ] ] [ doesn't swim ] ] . ] quest
+[ doesn't [ [ [ my zebra ] [ who [ does change ] ] ] swim ] ] ?
+doesn't [ [ [ my yak ] [ who [ does swim ] ] ] sleep ] ] ?
+
+Evaluation of model
+Test number correct: 19
+Test total: 6086
+Test full-sentence accuracy list:
+0.0031219191587249424
+Mean: 0.00312191915872
+Median: 0.00312191915872
+ 
+Test full-sentence POS accuracy list:
+0.9756818928688794
+Mean: 0.975681892869
+Median: 0.975681892869
+ 
+Gen first word accuracy list:
+0.7619338111941437
+Mean: 0.761933811194
+Median: 0.761933811194
+ 
+Gen proportion of outputs where the first word was the first auxiliary:
+0.23806618880585634
+Mean: 0.238066188806
+Median: 0.238066188806
+ 
+Gen proportion of outputs where the first word was an auxiliary not in the input:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+Gen proportion of outputs where the first word was not an auxiliary:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+Gen full sentence accuracy list:
+0.0009150526155253927
+Mean: 0.000915052615525
+Median: 0.000915052615525
+ 
+Gen full sentence POS accuracy list:
+0.26948299527222813
+Mean: 0.269482995272
+Median: 0.269482995272
+ 
+d1p1 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+d1p2 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+d1po list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+d2p1 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+d2p2 list:
+0.0009150526155253927
+Mean: 0.000915052615525
+Median: 0.000915052615525
+ 
+d2po list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+dnp1 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+dnp2 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+dnpo list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+other list:
+0.9990849473844746
+Mean: 0.999084947384
+Median: 0.999084947384
+
+ORC list:
+0.7506297229219143
+Mean: 0.750629722922
+Median: 0.750629722922
+
+SRC_t list:
+0.7559668777398928
+Mean: 0.75596687774
+Median: 0.75596687774
+
+SRC_i list:
+0.7757046447002779
+Mean: 0.7757046447
+Median: 0.7757046447
+

@@ -1,0 +1,131 @@
+Directory being processed:: tense_recent.decoder.0.0.0
+Test set example outputs
+your vultures who giggled remembered your yaks who your salamander applauded . past
+your vultures who giggled remembered your yaks who your salamander applauded .
+your vultures who giggled remembered your yaks who your salamander applauded .
+
+our zebras that slept amused your quails that entertained our salamanders . present
+our zebras that sleep amuse your quails that entertain our salamanders .
+our zebras that smile amuse your salamanders that amuse our salamanders .
+
+some salamander confused her unicorns . past
+some salamander confused her unicorns .
+some salamander confused her unicorns .
+
+our orangutans who waited applauded the vultures that high_fived my salamanders . present
+our orangutans who wait applaud the vultures that high_five my salamanders .
+our orangutans who wait applaud the vultures that high_five my salamanders .
+
+her quails upon your peacocks changed . present
+her quails upon your peacocks change .
+her quails upon your peacocks change .
+
+the yaks by her peacocks ate . present
+the yaks by her peacocks eat .
+the yaks by her peacocks eat .
+
+our raven that her newt confused slept . present
+our raven that her newt confuses sleeps .
+our raven that her newt confuses sleeps .
+
+her tyrannosauruses with some salamanders accepted some vultures below my newt . past
+her tyrannosauruses with some salamanders accepted some vultures below my newt .
+her tyrannosauruses with some salamanders accepted some vultures below my newt .
+
+my newts who smiled giggled . present
+my newts who smile giggle .
+my newts who smile giggle .
+
+her yak behind your salamander comforted our newt that your zebras admired . present
+her yak behind your salamander comforts our newt that your zebras admire .
+her yak behind your salamander comforts our newt that your zebras admire .
+
+Gen set example outputs
+our salamander that the walruses high_fived moved . present
+our salamander that the walruses high_five move .
+our salamander that the walruses high_five move .
+
+the salamanders around the walrus remembered your tyrannosaurus that entertained her tyrannosaurus . present
+the salamanders around the walrus remembers your tyrannosaurus that entertains her tyrannosaurus .
+the salamanders around the walrus entertains your tyrannosaurus that remembers her tyrannosaurus .
+
+her vultures that her tyrannosaurus high_fived reads . present
+her vultures that her tyrannosaurus high_fives reads .
+her vultures that her tyrannosaurus high_fives reads .
+
+our unicorns who remembered her newt changed . present
+our unicorns who remember her newt changes .
+our unicorns who remember her newt changes .
+
+our vultures upon your orangutan remembered some peacock . present
+our vultures upon your orangutan remembers some peacock .
+our vultures upon your orangutan remembers some peacock .
+
+your peacocks that my tyrannosaurus applauded applauded some newts who swam . present
+your peacocks that my tyrannosaurus applauds applauds some newts who swim .
+your peacocks that my tyrannosaurus applauds applauds some newts who swim .
+
+your unicorn that her walruses admired swam . present
+your unicorn that her walruses admire swim .
+your unicorn that her walruses admire swim .
+
+our tyrannosauruses who admired her newt comforted the newt around some salamander . present
+our tyrannosauruses who admire her newt comforts the newt around some salamander .
+our tyrannosauruses who comfort her newt admires the newt around some salamander .
+
+my peacocks below your yak comforted our newts upon the orangutan . present
+my peacocks below your yak comforts our newts upon the orangutan .
+my peacocks below your yak comforts our newts upon the orangutan .
+
+her tyrannosaurus who amused some tyrannosauruses accepted your zebras that accepted some peacocks . present
+her tyrannosaurus who amuses some tyrannosauruses accept your zebras that accept some peacocks .
+her tyrannosaurus who amuses some tyrannosauruses accept your zebras that accept some peacocks .
+
+Evaluation of model
+Test number correct: 8781
+Test total: 10000
+Test full-sentence accuracy list:
+0.8781
+Mean: 0.8781
+Median: 0.8781
+ 
+Test full-sentence POS accuracy list:
+0.9974
+Mean: 0.9974
+Median: 0.9974
+ 
+Gen full-sentence accuracy list:
+0.8129251700680272
+Mean: 0.812925170068
+Median: 0.812925170068
+ 
+Gen full-sentence POS accuracy list:
+0.9906462585034014
+Mean: 0.990646258503
+Median: 0.990646258503
+ 
+Gen proportion of full-sentence outputs that follow agree-recent:
+0.8129251700680272
+Mean: 0.812925170068
+Median: 0.812925170068
+ 
+Gen proportion of outputs that have the correct main verb:
+0.9005102040816326
+Mean: 0.900510204082
+Median: 0.900510204082
+ 
+Gen proportion of outputs that have the main verb predicted by agree-recent:
+0.008503401360544218
+Mean: 0.00850340136054
+Median: 0.00850340136054
+ 
+Gen proportion of outputs that have the correct number for the main verb:
+0.9770408163265306
+Mean: 0.977040816327
+Median: 0.977040816327
+ 
+Gen proportion of outputs that have the incorrect number for the main verb:
+0.013605442176870748
+Mean: 0.0136054421769
+Median: 0.0136054421769
+ 

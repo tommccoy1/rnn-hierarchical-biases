@@ -1,0 +1,191 @@
+Directory being processed: question.decoder.0.0.0
+Test set example outputs
+her newts don't admire her yaks above our xylophones . quest
+don't her newts admire her yaks above our xylophones ?
+don't her newts admire her yaks above our xylophones ?
+
+your peacocks don't entertain the salamanders . decl
+your peacocks don't entertain the salamanders .
+your peacocks don't entertain the salamanders .
+
+some tyrannosaurus behind our salamander does comfort some newts who don't change . quest
+does some tyrannosaurus behind our salamander comfort some newts who don't change ?
+does some tyrannosaurus behind our salamander comfort some newts who don't change ?
+
+some tyrannosaurus does entertain the unicorn who some quail doesn't comfort . decl
+some tyrannosaurus does entertain the unicorn who some quail doesn't comfort .
+some tyrannosaurus does entertain the unicorn who some quail doesn't comfort .
+
+some salamanders don't remember our xylophone that does high_five our zebras . quest
+don't some salamanders remember our xylophone that does high_five our zebras ?
+don't some salamanders remember our xylophone that does high_five our zebras ?
+
+our xylophone near her orangutans does swim . decl
+our xylophone near her orangutans does swim .
+our xylophone near her orangutans does swim .
+
+your walruses don't remember your salamanders that some yak doesn't amuse . decl
+your walruses don't remember your salamanders that some yak doesn't amuse .
+your walruses don't remember your salamanders that some walrus doesn't amuse .
+
+her salamander doesn't comfort her newt that some xylophone does accept . quest
+doesn't her salamander comfort her newt that some xylophone does accept ?
+doesn't her salamander comfort her newt that some xylophone does accept ?
+
+your unicorn doesn't remember our newts that do swim . decl
+your unicorn doesn't remember our newts that do swim .
+your unicorn doesn't remember our newts that do swim .
+
+her walrus doesn't remember the quail that does eat . decl
+her walrus doesn't remember the quail that does eat .
+her walrus doesn't remember the quail that does eat .
+
+Gen set example outputs
+our yaks who do remember your peacock don't smile . quest
+don't our yaks who do remember your peacock smile ?
+don't our yaks who your remember your peacock smile ?
+
+some unicorn who some vulture does admire doesn't comfort my salamander with her walrus . quest
+doesn't some unicorn who some vulture does admire comfort my salamander with her walrus ?
+doesn't some unicorn that some vulture does comfort comfort my salamander with her walrus ?
+
+my yaks that don't sleep do remember our tyrannosauruses . quest
+do my yaks that don't sleep remember our tyrannosauruses ?
+do my yaks that don't sleep remember our tyrannosauruses ?
+
+our unicorns who don't high_five some yak do move . quest
+do our unicorns who don't high_five some yak move ?
+do our unicorns who don't comfort some yak move ?
+
+the newts who don't move do confuse your quails behind her unicorn . quest
+do the newts who don't move confuse your quails behind her unicorn ?
+do the newts that don't move confuse your quails behind her unicorn ?
+
+some salamanders that do change don't change . quest
+don't some salamanders that do change change ?
+don't some salamanders that do change change ?
+
+our xylophones who do eat don't swim . quest
+don't our xylophones who do eat swim ?
+don't our xylophones who do eat swim ?
+
+your walruses that my zebras do comfort don't admire her ravens upon the tyrannosaurus . quest
+don't your walruses that my zebras do comfort admire her ravens upon the tyrannosaurus ?
+don't your walruses that my zebras do comfort admire her ravens upon the tyrannosaurus ?
+
+the vulture who does applaud your tyrannosaurus doesn't applaud your unicorns . quest
+doesn't the vulture who does applaud your tyrannosaurus applaud your unicorns ?
+doesn't the vulture that does applaud your tyrannosaurus applaud your unicorns ?
+
+some salamander who does eat doesn't amuse the salamander . quest
+doesn't some salamander who does eat amuse the salamander ?
+doesn't some salamander who does eat amuse the salamander ?
+
+Evaluation of model
+Test number correct: 9803
+Test total: 10000
+Test full-sentence accuracy list:
+0.9803
+Mean: 0.9803
+Median: 0.9803
+ 
+Test full-sentence POS accuracy list:
+0.9996
+Mean: 0.9996
+Median: 0.9996
+ 
+Gen first word accuracy list:
+0.9949
+Mean: 0.9949
+Median: 0.9949
+ 
+Gen proportion of outputs where the first word was the first auxiliary:
+0.0051
+Mean: 0.0051
+Median: 0.0051
+ 
+Gen proportion of outputs where the first word was an auxiliary not in the input:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+Gen proportion of outputs where the first word was not an auxiliary:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+Gen full sentence accuracy list:
+0.5664
+Mean: 0.5664
+Median: 0.5664
+ 
+Gen full sentence POS accuracy list:
+0.7346
+Mean: 0.7346
+Median: 0.7346
+ 
+d1p1 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+d1p2 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+d1po list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+d2p1 list:
+0.0018
+Mean: 0.0018
+Median: 0.0018
+ 
+d2p2 list:
+0.5664
+Mean: 0.5664
+Median: 0.5664
+ 
+d2po list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+dnp1 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+dnp2 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+dnpo list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+other list:
+0.4318
+Mean: 0.4318
+Median: 0.4318
+
+ORC list:
+0.987998799879988
+Mean: 0.98799879988
+Median: 0.98799879988
+
+SRC_t list:
+0.9976898642795264
+Mean: 0.99768986428
+Median: 0.99768986428
+
+SRC_i list:
+0.9990636704119851
+Mean: 0.999063670412
+Median: 0.999063670412
+

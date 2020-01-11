@@ -119,3 +119,5 @@ admired	V
 accepted	V
 remembered	V
 comforted	V
+did	A
+didn't	A

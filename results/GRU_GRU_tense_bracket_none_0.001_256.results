@@ -1,0 +1,131 @@
+Directory being processed:: tense_bracket.decoder.0.0.0
+Test set example outputs
+[ [ [ [ my salamander ] [ by [ my walruses ] ] ] [ remembered [ our ravens ] ] ] . ] past
+[ [ [ my salamander ] [ by [ my walruses ] ] ] [ remembered [ our ravens ] ] ] .
+[ [ [ my salamander ] [ by [ my walruses ] ] ] [ remembered [ our ravens ] ] ] .
+
+[ [ [ your quail ] [ remembered [ [ some vultures ] [ by [ your peacock ] ] ] ] ] . ] present
+[ [ your quail ] [ remembers [ [ some vultures ] [ by [ your peacock ] ] ] ] ] .
+[ [ your quail ] [ remembers [ [ some vultures ] [ by [ your peacock ] ] ] ] ] .
+
+[ [ [ some yaks ] [ amused [ your newts ] ] ] . ] present
+[ [ some yaks ] [ amuse [ your newts ] ] ] .
+[ [ some yaks ] [ amuse [ your newts ] ] ] .
+
+[ [ [ your unicorns ] [ high_fived [ [ the xylophones ] [ below [ our salamanders ] ] ] ] ] . ] past
+[ [ your unicorns ] [ high_fived [ [ the xylophones ] [ below [ our salamanders ] ] ] ] ] .
+[ [ your unicorns ] [ high_fived [ [ the xylophones ] [ below [ our salamanders ] ] ] ] ] .
+
+[ [ [ our ravens ] [ applauded [ the tyrannosauruses ] ] ] . ] past
+[ [ our ravens ] [ applauded [ the tyrannosauruses ] ] ] .
+[ [ our ravens ] [ applauded [ the tyrannosauruses ] ] ] .
+
+[ [ [ [ my xylophone ] [ who ate ] ] swam ] . ] past
+[ [ [ my xylophone ] [ who ate ] ] swam ] .
+[ [ [ my xylophone ] [ who ate ] ] swam ] .
+
+[ [ [ [ my tyrannosaurus ] [ below [ my quail ] ] ] [ remembered [ the unicorns ] ] ] . ] present
+[ [ [ my tyrannosaurus ] [ below [ my quail ] ] ] [ remembers [ the unicorns ] ] ] .
+[ [ [ my tyrannosaurus ] [ below [ my quail ] ] ] [ remembers [ the unicorns ] ] ] .
+
+[ [ [ [ her yak ] [ above [ my zebra ] ] ] smiled ] . ] present
+[ [ [ her yak ] [ above [ my zebra ] ] ] smiles ] .
+[ [ [ her yak ] [ above [ my zebra ] ] ] smiles ] .
+
+[ [ [ [ the quails ] [ by [ the orangutan ] ] ] giggled ] . ] past
+[ [ [ the quails ] [ by [ the orangutan ] ] ] giggled ] .
+[ [ [ the quails ] [ by [ the orangutan ] ] ] giggled ] .
+
+[ [ [ [ some ravens ] [ upon [ your newts ] ] ] [ applauded [ my salamanders ] ] ] . ] present
+[ [ [ some ravens ] [ upon [ your newts ] ] ] [ applaud [ my salamanders ] ] ] .
+[ [ [ some ravens ] [ upon [ your newts ] ] ] [ applaud [ my salamanders ] ] ] .
+
+Gen set example outputs
+[ [ [ [ her zebra ] [ around [ the salamanders ] ] ] read ] . ] present
+[ [ [ her zebra ] [ around [ the salamanders ] ] ] reads ] .
+[ [ [ her zebra ] [ around [ the salamanders ] ] ] read ] .
+
+[ [ [ [ my unicorns ] [ that [ [ your zebra ] confused ] ] ] moved ] . ] present
+[ [ [ my unicorns ] [ that [ [ your zebra ] confuses ] ] ] move ] .
+[ [ [ my unicorns ] [ that [ [ your zebra ] confuses ] ] ] moves ] .
+
+[ [ [ [ your salamander ] [ upon [ the zebras ] ] ] [ applauded [ my tyrannosauruses ] ] ] . ] present
+[ [ [ your salamander ] [ upon [ the zebras ] ] ] [ applauds [ my tyrannosauruses ] ] ] .
+[ [ [ your salamander ] [ upon [ the zebras ] ] ] [ applaud [ my tyrannosauruses ] ] ] .
+
+[ [ [ [ your newts ] [ that [ accepted [ her newt ] ] ] ] [ comforted [ the tyrannosauruses ] ] ] . ] present
+[ [ [ your newts ] [ that [ accept [ her newt ] ] ] ] [ comfort [ the tyrannosauruses ] ] ] .
+[ [ [ your newts ] [ that [ accept [ her newt ] ] ] ] [ comforts [ the tyrannosauruses ] ] ] .
+
+[ [ [ [ some peacocks ] [ below [ some quail ] ] ] [ high_fived [ our newts ] ] ] . ] present
+[ [ [ some peacocks ] [ below [ some quail ] ] ] [ high_five [ our newts ] ] ] .
+[ [ [ some peacocks ] [ below [ some quail ] ] ] [ high_fives [ our newts ] ] ] .
+
+[ [ [ [ our peacocks ] [ that [ [ the yak ] admired ] ] ] waited ] . ] present
+[ [ [ our peacocks ] [ that [ [ the yak ] admires ] ] ] wait ] .
+[ [ [ our peacocks ] [ that [ [ the yak ] admires ] ] ] waits ] .
+
+[ [ [ [ our zebras ] [ above [ some unicorn ] ] ] [ high_fived [ your unicorns ] ] ] . ] present
+[ [ [ our zebras ] [ above [ some unicorn ] ] ] [ high_five [ your unicorns ] ] ] .
+[ [ [ our zebras ] [ above [ some unicorn ] ] ] [ high_fives [ your unicorns ] ] ] .
+
+[ [ [ [ the peacock ] [ above [ her newts ] ] ] [ amused [ my peacock ] ] ] . ] present
+[ [ [ the peacock ] [ above [ her newts ] ] ] [ amuses [ my peacock ] ] ] .
+[ [ [ the peacock ] [ above [ her newts ] ] ] [ amuse [ my peacock ] ] ] .
+
+[ [ [ [ some zebra ] [ around [ the quails ] ] ] giggled ] . ] present
+[ [ [ some zebra ] [ around [ the quails ] ] ] giggles ] .
+[ [ [ some zebra ] [ around [ the quails ] ] ] giggle ] .
+
+[ [ [ [ her vulture ] [ with [ my zebras ] ] ] [ entertained [ my ravens ] ] ] . ] present
+[ [ [ her vulture ] [ with [ my zebras ] ] ] [ entertains [ my ravens ] ] ] .
+[ [ [ her vulture ] [ with [ my zebras ] ] ] [ entertain [ my ravens ] ] ] .
+
+Evaluation of model
+Test number correct: 6851
+Test total: 6892
+Test full-sentence accuracy list:
+0.9940510737086478
+Mean: 0.994051073709
+Median: 0.994051073709
+ 
+Test full-sentence POS accuracy list:
+0.9997098084735926
+Mean: 0.999709808474
+Median: 0.999709808474
+ 
+Gen full-sentence accuracy list:
+0.0005912495072920772
+Mean: 0.000591249507292
+Median: 0.000591249507292
+ 
+Gen full-sentence POS accuracy list:
+0.9998029168309026
+Mean: 0.999802916831
+Median: 0.999802916831
+ 
+Gen proportion of full-sentence outputs that follow agree-recent:
+0.9927079227433977
+Mean: 0.992707922743
+Median: 0.992707922743
+ 
+Gen proportion of outputs that have the correct main verb:
+0.001970831690973591
+Mean: 0.00197083169097
+Median: 0.00197083169097
+ 
+Gen proportion of outputs that have the main verb predicted by agree-recent:
+0.9960583366180528
+Mean: 0.996058336618
+Median: 0.996058336618
+ 
+Gen proportion of outputs that have the correct number for the main verb:
+0.001970831690973591
+Mean: 0.00197083169097
+Median: 0.00197083169097
+ 
+Gen proportion of outputs that have the incorrect number for the main verb:
+0.997832085139929
+Mean: 0.99783208514
+Median: 0.99783208514
+ 

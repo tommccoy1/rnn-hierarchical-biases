@@ -1,0 +1,131 @@
+Directory being processed:: tense.decoder.0.0.0
+Test set example outputs
+her vultures that admired your peacocks high_fived the zebras . present
+her vultures that admire your peacocks high_five the zebras .
+the peacock who entertains some tyrannosaurus entertains our orangutan .
+
+your walruses around some xylophones entertained your xylophones around her unicorns . present
+your walruses around some xylophones entertain your xylophones around her unicorns .
+the orangutan around our orangutan comforts our orangutan around her orangutan .
+
+the xylophone with her orangutan applauded her vultures . past
+the xylophone with her orangutan applauded her vultures .
+your orangutan with your vultures remembered your tyrannosauruses .
+
+her quails with our unicorns accepted my zebras by your ravens . present
+her quails with our unicorns accept my zebras by your ravens .
+the orangutan with the orangutan applauds our orangutan around your vultures .
+
+the yak that swam high_fived your quails who moved . present
+the yak that swims high_fives your quails who move .
+your yaks who wait entertain some orangutan that moves .
+
+your salamanders who smiled high_fived some salamanders below your tyrannosauruses . present
+your salamanders who smile high_five some salamanders below your tyrannosauruses .
+our unicorn who moves admires some orangutan below my orangutan .
+
+my xylophone confused my tyrannosaurus . present
+my xylophone confuses my tyrannosaurus .
+her unicorns amuse my vultures .
+
+your walrus that slept swam . present
+your walrus that sleeps swims .
+your yaks that wait change .
+
+some peacock that changed amused your tyrannosaurus above our xylophone . present
+some peacock that changes amuses your tyrannosaurus above our xylophone .
+our unicorn who moves admires some orangutan above some orangutan .
+
+some yaks confused some newt that moved . past
+some yaks confused some newt that moved .
+your tyrannosaurus applauded your tyrannosaurus that waited .
+
+Gen set example outputs
+our unicorn that her quails high_fived admired the newt above some yaks . present
+our unicorn that her quails high_five admires the newt above some yaks .
+the unicorns who some unicorns comfort remember my orangutan with your tyrannosaurus .
+
+my raven behind my peacocks admired the walrus above her yak . present
+my raven behind my peacocks admires the walrus above her yak .
+the orangutan around the orangutan entertains our orangutan around your vultures .
+
+the peacock who our xylophones applauded remembered our yak . present
+the peacock who our xylophones applaud remembers our yak .
+the tyrannosaurus who your unicorn entertains comforts our orangutan .
+
+my peacocks that admired our yak accepted my unicorns that our zebras entertained . present
+my peacocks that admire our yak accept my unicorns that our zebras entertain .
+the tyrannosaurus who comforts our tyrannosaurus confuses our tyrannosaurus that our unicorns confuse .
+
+our newts around some tyrannosaurus amused some vultures . present
+our newts around some tyrannosaurus amuse some vultures .
+the orangutan around the vultures amuse our vultures .
+
+the quail near your vultures amused your yak . present
+the quail near your vultures amuses your yak .
+your orangutan near the vultures amuse my vultures .
+
+our xylophones near our newt entertained my orangutans upon her zebra . present
+our xylophones near our newt entertain my orangutans upon her zebra .
+the ravens above some orangutan entertains our orangutan with the orangutan .
+
+some unicorn that amused your salamanders waited . present
+some unicorn that amuses your salamanders waits .
+some tyrannosaurus that comforts her yak eats .
+
+my salamanders with my walrus confused the walruses below our yaks . present
+my salamanders with my walrus confuse the walruses below our yaks .
+the orangutan with the orangutan entertains our orangutan around your orangutan .
+
+my zebra that applauded your peacocks high_fived our ravens who our ravens amused . present
+my zebra that applauds your peacocks high_fives our ravens who our ravens amuse .
+the tyrannosaurus who comforts our tyrannosaurus confuses our tyrannosaurus that our unicorns confuse .
+
+Evaluation of model
+Test number correct: 1
+Test total: 10000
+Test full-sentence accuracy list:
+0.0001
+Mean: 0.0001
+Median: 0.0001
+ 
+Test full-sentence POS accuracy list:
+0.9967
+Mean: 0.9967
+Median: 0.9967
+ 
+Gen full-sentence accuracy list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+Gen full-sentence POS accuracy list:
+0.9992
+Mean: 0.9992
+Median: 0.9992
+ 
+Gen proportion of full-sentence outputs that follow agree-recent:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+Gen proportion of outputs that have the correct main verb:
+0.0543
+Mean: 0.0543
+Median: 0.0543
+ 
+Gen proportion of outputs that have the main verb predicted by agree-recent:
+0.0579
+Mean: 0.0579
+Median: 0.0579
+ 
+Gen proportion of outputs that have the correct number for the main verb:
+0.4968
+Mean: 0.4968
+Median: 0.4968
+ 
+Gen proportion of outputs that have the incorrect number for the main verb:
+0.5024
+Mean: 0.5024
+Median: 0.5024
+ 

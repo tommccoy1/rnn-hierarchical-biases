@@ -116,3 +116,5 @@ remembered	110
 comforted	111
 [	112
 ]	113
+did	114
+didn't	115

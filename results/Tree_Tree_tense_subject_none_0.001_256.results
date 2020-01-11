@@ -1,0 +1,131 @@
+Directory being processed:: tense_subject.decoder.0.0.0
+Test set example outputs
+the yaks upon the yaks admired some quails . present
+the yaks upon the yaks admire some quails .
+the yaks upon the yaks admire some quails .
+
+my quails who high_fived your newts ate . present
+my quails who high_five your newts eat .
+my quails who high_five your newts eat .
+
+your walruses comforted her unicorns below our peacocks . past
+your walruses comforted her unicorns below our peacocks .
+your walruses comforted her unicorns below our peacocks .
+
+the newt that amused our xylophone changed . present
+the newt that amuses our xylophone changes .
+the newt that amuses our xylophone changes .
+
+your yaks near the zebras applauded my unicorns . present
+your yaks near the zebras applaud my unicorns .
+your yaks near the zebras applaud my unicorns .
+
+her tyrannosaurus who our zebra high_fived confused some unicorns . past
+her tyrannosaurus who our zebra high_fived confused some unicorns .
+her tyrannosaurus who our zebra high_fived confused some unicorns .
+
+her quail with her newt read . past
+her quail with her newt read .
+her quail with her newt read .
+
+your zebra that her newt remembered comforted your unicorn . present
+your zebra that her newt remembers comforts your unicorn .
+your zebra that her newt remembers comforts your unicorn .
+
+my tyrannosaurus below some salamander moved . past
+my tyrannosaurus below some salamander moved .
+my tyrannosaurus below some salamander moved .
+
+some xylophone near your unicorn comforted my newts . past
+some xylophone near your unicorn comforted my newts .
+some xylophone near your unicorn comforted my newts .
+
+Gen set example outputs
+your raven that admired your zebras high_fived some yak . present
+your raven that admires your zebras high_fives some yak .
+your raven that admires your zebras high_fives some yak .
+
+her yak that your peacocks remembered admired my newts . present
+her yak that your peacocks remember admires my newts .
+her yak that your peacocks remember admires my newts .
+
+the newt that entertained her walruses applauded your walruses . present
+the newt that entertains her walruses applauds your walruses .
+the newt that entertains her walruses applauds your walruses .
+
+her tyrannosauruses by your yak comforted some unicorn . present
+her tyrannosauruses by your yak comfort some unicorn .
+her tyrannosauruses by your yak comfort some unicorn .
+
+some salamanders upon our quail comforted some yak . present
+some salamanders upon our quail comfort some yak .
+some salamanders upon our quail comfort some yak .
+
+her yak that my xylophones remembered waited . present
+her yak that my xylophones remember waits .
+her yak that my xylophones remember waits .
+
+our tyrannosaurus who admired the xylophones read . present
+our tyrannosaurus who admires the xylophones reads .
+our tyrannosaurus who admires the xylophones reads .
+
+your orangutan who confused her yaks ate . present
+your orangutan who confuses her yaks eats .
+your orangutan who confuses her yaks eats .
+
+some salamanders near the orangutan ate . present
+some salamanders near the orangutan eat .
+some salamanders near the orangutan eat .
+
+some newts that our tyrannosaurus accepted high_fived some xylophones . present
+some newts that our tyrannosaurus accepts high_five some xylophones .
+some newts that our tyrannosaurus accepts high_five some xylophones .
+
+Evaluation of model
+Test number correct: 9738
+Test total: 10000
+Test full-sentence accuracy list:
+0.9738
+Mean: 0.9738
+Median: 0.9738
+ 
+Test full-sentence POS accuracy list:
+0.9993
+Mean: 0.9993
+Median: 0.9993
+ 
+Gen full-sentence accuracy list:
+0.9500416319733556
+Mean: 0.950041631973
+Median: 0.950041631973
+ 
+Gen full-sentence POS accuracy list:
+0.9991673605328892
+Mean: 0.999167360533
+Median: 0.999167360533
+ 
+Gen proportion of full-sentence outputs that follow agree-recent:
+0.0008326394671107411
+Mean: 0.000832639467111
+Median: 0.000832639467111
+ 
+Gen proportion of outputs that have the correct main verb:
+0.9966694421315571
+Mean: 0.996669442132
+Median: 0.996669442132
+ 
+Gen proportion of outputs that have the main verb predicted by agree-recent:
+0.0008326394671107411
+Mean: 0.000832639467111
+Median: 0.000832639467111
+ 
+Gen proportion of outputs that have the correct number for the main verb:
+0.9983347210657785
+Mean: 0.998334721066
+Median: 0.998334721066
+ 
+Gen proportion of outputs that have the incorrect number for the main verb:
+0.0008326394671107411
+Mean: 0.000832639467111
+Median: 0.000832639467111
+ 

@@ -1,0 +1,131 @@
+Directory being processed:: tense_recent.decoder.0.0.0
+Test set example outputs
+your vultures who giggled remembered your yaks who your salamander applauded . past
+your vultures who giggled remembered your yaks who your salamander applauded .
+your vultures who giggled remembered your yaks who your salamander applauded .
+
+your quail admired my vultures . present
+your quail admires my vultures .
+your quail admires my vultures .
+
+our zebras that slept amused your quails that entertained our salamanders . present
+our zebras that sleep amuse your quails that entertain our salamanders .
+our zebras that sleep amuse your quails that entertain our salamanders .
+
+our ravens confused some yak who entertained my orangutans . present
+our ravens confuse some yak who entertains my orangutans .
+our ravens confuse some yak who entertains my orangutans .
+
+some salamander confused her unicorns . past
+some salamander confused her unicorns .
+some salamander confused her unicorns .
+
+our quails giggled . past
+our quails giggled .
+our quails giggled .
+
+our orangutans who waited applauded the vultures that high_fived my salamanders . present
+our orangutans who wait applaud the vultures that high_five my salamanders .
+our orangutans who wait applaud the vultures that high_five my salamanders .
+
+her quails upon your peacocks changed . present
+her quails upon your peacocks change .
+her quails upon your peacocks change .
+
+the zebra who giggled amused my zebra . present
+the zebra who giggles amuses my zebra .
+the zebra who giggles amuses my zebra .
+
+your walrus near some raven entertained some zebra who slept . present
+your walrus near some raven entertains some zebra who sleeps .
+your walrus near some raven entertains some zebra who sleeps .
+
+Gen set example outputs
+our zebras that entertained my unicorn ate . present
+our zebras that entertain my unicorn eats .
+our zebras that entertain my unicorn eats .
+
+my peacock that remembered my ravens applauded your newt below her raven . present
+my peacock that remembers my ravens applaud your newt below her raven .
+my peacock that remembers my ravens applaud your newt below her raven .
+
+my zebras below the tyrannosaurus ate . present
+my zebras below the tyrannosaurus eats .
+my zebras below the tyrannosaurus eats .
+
+my vultures above some tyrannosaurus moved . present
+my vultures above some tyrannosaurus moves .
+my vultures above some tyrannosaurus moves .
+
+my peacock that entertained some ravens waited . present
+my peacock that entertains some ravens wait .
+my peacock that entertains some ravens wait .
+
+our unicorns with her quail remembered your quails near some vulture . present
+our unicorns with her quail remembers your quails near some vulture .
+our unicorns with her quail remembers your quails near some vulture .
+
+my quails upon my orangutan smiled . present
+my quails upon my orangutan smiles .
+my quails upon my orangutan smiles .
+
+our salamander that the walruses high_fived moved . present
+our salamander that the walruses high_five move .
+our salamander that the walruses high_five move .
+
+the peacock that the peacocks confused remembered the xylophone that swam . present
+the peacock that the peacocks confuse remember the xylophone that swims .
+the peacock that the peacocks confuse remember the xylophone that swims .
+
+the salamanders around the walrus remembered your tyrannosaurus that entertained her tyrannosaurus . present
+the salamanders around the walrus remembers your tyrannosaurus that entertains her tyrannosaurus .
+the salamanders around the walrus remembers your tyrannosaurus that entertains her tyrannosaurus .
+
+Evaluation of model
+Test number correct: 9641
+Test total: 10000
+Test full-sentence accuracy list:
+0.9641
+Mean: 0.9641
+Median: 0.9641
+ 
+Test full-sentence POS accuracy list:
+0.9992
+Mean: 0.9992
+Median: 0.9992
+ 
+Gen full-sentence accuracy list:
+0.9362244897959183
+Mean: 0.936224489796
+Median: 0.936224489796
+ 
+Gen full-sentence POS accuracy list:
+0.9982993197278912
+Mean: 0.998299319728
+Median: 0.998299319728
+ 
+Gen proportion of full-sentence outputs that follow agree-recent:
+0.9362244897959183
+Mean: 0.936224489796
+Median: 0.936224489796
+ 
+Gen proportion of outputs that have the correct main verb:
+0.9974489795918368
+Mean: 0.997448979592
+Median: 0.997448979592
+ 
+Gen proportion of outputs that have the main verb predicted by agree-recent:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+Gen proportion of outputs that have the correct number for the main verb:
+0.9982993197278912
+Mean: 0.998299319728
+Median: 0.998299319728
+ 
+Gen proportion of outputs that have the incorrect number for the main verb:
+0.0
+Mean: 0.0
+Median: 0.0
+ 

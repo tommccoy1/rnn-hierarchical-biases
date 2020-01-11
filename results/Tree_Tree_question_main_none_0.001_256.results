@@ -1,0 +1,191 @@
+Directory being processed: question_main.decoder.0.0.0
+Test set example outputs
+your peacock who doesn't change doesn't swim . quest
+doesn't your peacock who doesn't change swim ?
+doesn't your peacock who doesn't change swim ?
+
+some zebra by our orangutans does high_five your peacocks below your tyrannosauruses . decl
+some zebra by our orangutans does high_five your peacocks below your tyrannosauruses .
+some zebra by our orangutans does high_five your peacocks below your tyrannosauruses .
+
+the yak who my unicorn does amuse doesn't giggle . quest
+doesn't the yak who my unicorn does amuse giggle ?
+doesn't the yak who my unicorn does amuse giggle ?
+
+your yak below some tyrannosauruses does eat . decl
+your yak below some tyrannosauruses does eat .
+your yak below some tyrannosauruses does eat .
+
+some walrus that doesn't admire some orangutans doesn't applaud our walrus . decl
+some walrus that doesn't admire some orangutans doesn't applaud our walrus .
+some walrus that doesn't admire some orangutans doesn't applaud our walrus .
+
+my zebra does entertain her xylophone that her raven doesn't confuse . decl
+my zebra does entertain her xylophone that her raven doesn't confuse .
+my zebra does entertain her xylophone that her raven doesn't confuse .
+
+her salamander near some orangutans doesn't accept some yaks that don't confuse our ravens . quest
+doesn't her salamander near some orangutans accept some yaks that don't confuse our ravens ?
+doesn't her salamander near some orangutans accept some yaks that don't confuse our ravens ?
+
+our quail with the peacocks doesn't comfort some newts by our raven . decl
+our quail with the peacocks doesn't comfort some newts by our raven .
+our quail with the peacocks doesn't comfort some newts by our raven .
+
+our quail doesn't entertain my newt above our vulture . quest
+doesn't our quail entertain my newt above our vulture ?
+doesn't our quail entertain my newt above our vulture ?
+
+your peacock who our xylophones don't remember does move . quest
+does your peacock who our xylophones don't remember move ?
+does your peacock who our xylophones don't remember move ?
+
+Gen set example outputs
+your orangutans who do comfort the quails don't change . quest
+don't your orangutans who do comfort the quails change ?
+don't your orangutans who do comfort the quails change ?
+
+our zebras who do high_five my walruses don't admire her peacock . quest
+don't our zebras who do high_five my walruses admire her peacock ?
+don't our zebras who do high_five my walruses admire her peacock ?
+
+my zebras that don't accept your orangutans do sleep . quest
+do my zebras that don't accept your orangutans sleep ?
+do my zebras that don't accept your orangutans sleep ?
+
+the quails who don't eat do read . quest
+do the quails who don't eat read ?
+do the quails who don't eat read ?
+
+the quails who do giggle don't comfort her peacock . quest
+don't the quails who do giggle comfort her peacock ?
+don't the quails who do giggle comfort her peacock ?
+
+your xylophone that does swim doesn't read . quest
+doesn't your xylophone that does swim read ?
+doesn't your xylophone that does swim read ?
+
+some peacocks that her yaks do high_five don't applaud her newts . quest
+don't some peacocks that her yaks do high_five applaud her newts ?
+don't some peacocks that her yaks do high_five applaud her newts ?
+
+the vultures who do remember some yak don't comfort the xylophones . quest
+don't the vultures who do remember some yak comfort the xylophones ?
+don't the vultures who do remember some yak comfort the xylophones ?
+
+your salamander that doesn't swim does remember my vultures with your yaks . quest
+does your salamander that doesn't swim remember my vultures with your yaks ?
+does your salamander that doesn't swim remember my vultures with your yaks ?
+
+my orangutans who don't amuse my yak do admire my newts around the peacock . quest
+do my orangutans who don't amuse my yak admire my newts around the peacock ?
+do my orangutans who don't amuse my yak admire my newts around the peacock ?
+
+Evaluation of model
+Test number correct: 9687
+Test total: 10000
+Test full-sentence accuracy list:
+0.9687
+Mean: 0.9687
+Median: 0.9687
+ 
+Test full-sentence POS accuracy list:
+0.9981
+Mean: 0.9981
+Median: 0.9981
+ 
+Gen first word accuracy list:
+1.0
+Mean: 1.0
+Median: 1.0
+ 
+Gen proportion of outputs where the first word was the first auxiliary:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+Gen proportion of outputs where the first word was an auxiliary not in the input:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+Gen proportion of outputs where the first word was not an auxiliary:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+Gen full sentence accuracy list:
+0.9612794612794613
+Mean: 0.961279461279
+Median: 0.961279461279
+ 
+Gen full sentence POS accuracy list:
+0.9966329966329966
+Mean: 0.996632996633
+Median: 0.996632996633
+ 
+d1p1 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+d1p2 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+d1po list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+d2p1 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+d2p2 list:
+0.9612794612794613
+Mean: 0.961279461279
+Median: 0.961279461279
+ 
+d2po list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+dnp1 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+dnp2 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+dnpo list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+other list:
+0.03872053872053872
+Mean: 0.0387205387205
+Median: 0.0387205387205
+
+ORC list:
+1.0
+Mean: 1.0
+Median: 1.0
+
+SRC_t list:
+1.0
+Mean: 1.0
+Median: 1.0
+
+SRC_i list:
+1.0
+Mean: 1.0
+Median: 1.0
+

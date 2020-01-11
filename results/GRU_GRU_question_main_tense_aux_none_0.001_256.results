@@ -1,0 +1,131 @@
+Directory being processed: question_main_tense_aux.decoder.0.0.0
+Test set example outputs
+your peacock who doesn't change doesn't swim . quest
+doesn't your peacock who doesn't change swim ?
+doesn't your peacock who doesn't change swim ?
+
+your yak below some tyrannosauruses does eat . decl
+your yak below some tyrannosauruses does eat .
+your yak below some tyrannosauruses does eat .
+
+some walrus that doesn't admire some orangutans doesn't applaud our walrus . decl
+some walrus that doesn't admire some orangutans doesn't applaud our walrus .
+some walrus that doesn't applaud some orangutans doesn't applaud our walrus .
+
+our quail with the peacocks doesn't comfort some newts by our raven . decl
+our quail with the peacocks doesn't comfort some newts by our raven .
+our quail with the newts doesn't comfort some peacocks by our raven .
+
+your peacock who our xylophones don't remember does move . quest
+does your peacock who our xylophones don't remember move ?
+does your peacock who our xylophones don't remember move ?
+
+your yak doesn't confuse her tyrannosaurus . decl
+your yak doesn't confuse her tyrannosaurus .
+your yak doesn't confuse her tyrannosaurus .
+
+some newt that doesn't swim does swim . quest
+does some newt that doesn't swim swim ?
+does some newt that doesn't swim swim ?
+
+some quails do wait . quest
+do some quails wait ?
+do some quails wait ?
+
+the walruses with my vultures don't change . quest
+don't the walruses with my vultures change ?
+don't the walruses with my vultures change ?
+
+our zebras do amuse some tyrannosaurus who some walruses don't comfort . quest
+do our zebras amuse some tyrannosaurus who some walruses don't comfort ?
+do our zebras amuse some tyrannosaurus who some walruses don't comfort ?
+
+Gen set example outputs
+my quails who your unicorns do admire don't sleep . quest
+don't my quails who your unicorns do admire sleep ?
+don't my quails who your unicorns do admire sleep ?
+
+my salamander who does comfort our salamander doesn't wait . quest
+doesn't my salamander who does comfort our salamander wait ?
+doesn't my salamander who does comfort our salamander wait ?
+
+my salamanders who do read don't change . quest
+don't my salamanders who do read change ?
+don't my salamanders who do read change ?
+
+the tyrannosauruses who don't remember my ravens do sleep . quest
+do the tyrannosauruses who don't remember my ravens sleep ?
+do the tyrannosauruses who don't remember my ravens sleep ?
+
+the peacock that doesn't read does change . quest
+does the peacock that doesn't read change ?
+does the peacock that doesn't read change ?
+
+our xylophones that don't accept my peacock do swim . quest
+do our xylophones that don't accept my peacock swim ?
+do our xylophones that don't accept my peacock swim ?
+
+the newts who do accept some zebras don't applaud some vulture . quest
+don't the newts who do accept some zebras applaud some vulture ?
+don't the newts who do accept some zebras applaud some newt ?
+
+the tyrannosauruses who don't remember my ravens do sleep . quest
+do the tyrannosauruses who don't remember my ravens sleep ?
+do the tyrannosauruses who don't remember my ravens sleep ?
+
+her newt who doesn't remember the yaks does smile . quest
+does her newt who doesn't remember the yaks smile ?
+does her newt who doesn't remember the yaks smile ?
+
+my newt that our xylophone doesn't remember does comfort the peacock below the walruses . quest
+does my newt that our xylophone doesn't remember comfort the peacock below the walruses ?
+does my newt that our xylophone doesn't remember comfort the peacock below the walruses ?
+
+Evaluation of model
+Test number correct: 8279
+Test total: 10000
+Test full-sentence accuracy list:
+0.8279
+Mean: 0.8279
+Median: 0.8279
+ 
+Test full-sentence POS accuracy list:
+0.9976
+Mean: 0.9976
+Median: 0.9976
+ 
+Gen full-sentence accuracy list:
+0.8148148148148148
+Mean: 0.814814814815
+Median: 0.814814814815
+ 
+Gen full-sentence POS accuracy list:
+0.9949494949494949
+Mean: 0.994949494949
+Median: 0.994949494949
+ 
+Gen proportion of full-sentence outputs that follow agree-recent:
+0.41414141414141414
+Mean: 0.414141414141
+Median: 0.414141414141
+ 
+Gen proportion of outputs that have the correct main verb:
+0.9713804713804713
+Mean: 0.97138047138
+Median: 0.97138047138
+ 
+Gen proportion of outputs that have the main verb predicted by agree-recent:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+Gen proportion of outputs that have the correct number for the main verb:
+0.9949494949494949
+Mean: 0.994949494949
+Median: 0.994949494949
+ 
+Gen proportion of outputs that have the incorrect number for the main verb:
+0.0
+Mean: 0.0
+Median: 0.0
+ 

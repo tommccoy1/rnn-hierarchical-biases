@@ -1,0 +1,191 @@
+Directory being processed: question_first.decoder.0.0.0
+Test set example outputs
+our yaks that do giggle don't accept my orangutan near the quails . quest
+do our yaks that giggle don't accept my orangutan near the quails ?
+do our yaks that giggle don't accept my orangutan near the quails ?
+
+the salamanders do accept our xylophone by your orangutans . quest
+do the salamanders accept our xylophone by your orangutans ?
+do the salamanders accept our xylophone by your orangutans ?
+
+my vulture doesn't eat . decl
+my vulture doesn't eat .
+my vulture doesn't eat .
+
+the newt who the zebras do comfort does read . quest
+do the newt who the zebras comfort does read ?
+do the newt who the zebras comfort does read ?
+
+our ravens around her xylophone do smile . decl
+our ravens around her xylophone do smile .
+our ravens around her xylophone do smile .
+
+the zebra near your yak doesn't change . decl
+the zebra near your yak doesn't change .
+the zebra near your yak doesn't change .
+
+the tyrannosauruses by your orangutan do remember her walruses with some zebras . quest
+do the tyrannosauruses by your orangutan remember her walruses with some zebras ?
+do the tyrannosauruses by your orangutan remember her walruses with some zebras ?
+
+her newts who don't applaud your orangutan don't move . quest
+don't her newts who applaud your orangutan don't move ?
+don't her newts who applaud your orangutan don't move ?
+
+our yaks around your zebras don't sleep . quest
+don't our yaks around your zebras sleep ?
+don't our yaks around your zebras sleep ?
+
+some orangutan who does remember the newt does giggle . quest
+does some orangutan who remember the newt does giggle ?
+does some orangutan who remember the newt does giggle ?
+
+Gen set example outputs
+her quail that doesn't giggle does sleep . quest
+doesn't her quail that giggle does sleep ?
+doesn't her quail that giggle does sleep ?
+
+the tyrannosauruses who don't amuse some orangutan do move . quest
+don't the tyrannosauruses who amuse some orangutan do move ?
+don't the tyrannosauruses who amuse some orangutan do move ?
+
+your xylophones who don't move do sleep . quest
+don't your xylophones who move do sleep ?
+don't your xylophones who move do sleep ?
+
+the unicorn who does high_five our yaks doesn't move . quest
+does the unicorn who high_five our yaks doesn't move ?
+does the unicorn who high_five our yaks doesn't move ?
+
+some walruses that do move don't read . quest
+do some walruses that move don't read ?
+do some walruses that move don't read ?
+
+our yaks that do giggle don't accept my orangutan near the quails . quest
+do our yaks that giggle don't accept my orangutan near the quails ?
+do our yaks that giggle don't accept my orangutan near the quails ?
+
+our vulture that does swim doesn't applaud the peacocks below the ravens . quest
+does our vulture that swim doesn't applaud the peacocks below the ravens ?
+does our vulture that swim doesn't applaud the peacocks below the ravens ?
+
+some vulture who does accept the zebra doesn't smile . quest
+does some vulture who accept the zebra doesn't smile ?
+does some vulture who accept the zebra doesn't smile ?
+
+some peacocks that my walruses do admire don't confuse our peacocks . quest
+do some peacocks that my walruses admire don't confuse our peacocks ?
+do some peacocks that my walruses admire don't confuse our peacocks ?
+
+some salamanders who don't read do giggle . quest
+don't some salamanders who read do giggle ?
+don't some salamanders who read do giggle ?
+
+Evaluation of model
+Test number correct: 9889
+Test total: 10000
+Test full-sentence accuracy list:
+0.9889
+Mean: 0.9889
+Median: 0.9889
+ 
+Test full-sentence POS accuracy list:
+0.9998
+Mean: 0.9998
+Median: 0.9998
+ 
+Gen first word accuracy list:
+1.0
+Mean: 1.0
+Median: 1.0
+ 
+Gen proportion of outputs where the first word was the first auxiliary:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+Gen proportion of outputs where the first word was an auxiliary not in the input:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+Gen proportion of outputs where the first word was not an auxiliary:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+Gen full sentence accuracy list:
+0.990506329113924
+Mean: 0.990506329114
+Median: 0.990506329114
+ 
+Gen full sentence POS accuracy list:
+1.0
+Mean: 1.0
+Median: 1.0
+ 
+d1p1 list:
+0.990506329113924
+Mean: 0.990506329114
+Median: 0.990506329114
+ 
+d1p2 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+d1po list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+d2p1 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+d2p2 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+d2po list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+dnp1 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+dnp2 list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+dnpo list:
+0.0
+Mean: 0.0
+Median: 0.0
+ 
+other list:
+0.00949367088607595
+Mean: 0.00949367088608
+Median: 0.00949367088608
+
+ORC list:
+1.0
+Mean: 1.0
+Median: 1.0
+
+SRC_t list:
+1.0
+Mean: 1.0
+Median: 1.0
+
+SRC_i list:
+1.0
+Mean: 1.0
+Median: 1.0
+

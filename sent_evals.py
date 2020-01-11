@@ -131,6 +131,9 @@ nouns_pl = ["newts", "orangutans", "peacocks", "quails", "ravens", "salamanders"
 verbs_sg = ["giggles", "smiles", "sleeps", "swims", "waits", "moves", "changes", "reads", "eats", "entertains", "amuses", "high_fives", "applauds", "confuses", "admires", "accepts", "remembers", "comforts"]
 verbs_pl = ["giggle", "smile", "sleep", "swim", "wait", "move", "change", "read", "eat", "entertain", "amuse", "high_five", "applaud", "confuse", "admire", "accept", "remember", "comfort"]
 
+auxes_sg = ["does", "doesn't"]
+auxes_pl = ["do", "don't"]
+
 # Given an input past tense sentence, outputs
 # what the present-tense version would be if
 # verbs agreed with the most recent noun instead
@@ -315,7 +318,43 @@ def main_right_tense(senta, sentb):
     verbb = wordsb[ind_v]
     
     return verbb == verba
-    
+
+
+# Determines whether the auxiliary of the main verb of the sentence is correct
+def main_right_tense_aux(senta, sentb):
+
+    if not right_pos(senta, sentb):
+        return False
+
+    wordsa = senta.split()
+    wordsb = sentb.split()
+
+    pos_tags = sent_to_pos(senta)
+
+    if pos_tags[2] == "R":
+        seen_a = 0
+        for index, tag in enumerate(pos_tags):
+            if tag == "A":
+                if seen_a:
+                    ind_a = index
+                    break
+                else:
+                    seen_a = 1
+
+
+    else:
+        for index, tag in enumerate(pos_tags):
+            if tag == "A":
+                ind_a = index
+                break
+
+    auxa = wordsa[ind_a]
+    auxb = wordsb[ind_a]
+
+    return auxb == auxa
+
+
+
 # Determines whether the main verb of the sentence is the one predicted by agree-recent
 def main_linear_tense(senta, sentb):
 
@@ -352,6 +391,52 @@ def main_linear_tense(senta, sentb):
     if verbb == verba + "s":
        return True
     return False
+
+# Determines whether the auxiliary of the main verb of the sentence is the one predicted by agree-recent
+def main_linear_tense_aux(senta, sentb):
+
+    if not right_pos(senta, sentb):
+        return False
+
+    wordsa = senta.split()
+    wordsb = sentb.split()
+
+    pos_tags = sent_to_pos(senta)
+
+    if pos_tags[2] == "R":
+        seen_a = 0
+        for index, tag in enumerate(pos_tags):
+            if tag == "A":
+                if seen_a:
+                    ind_a = index
+                    break
+                else:
+                    seen_a = 1
+
+
+    else:
+        for index, tag in enumerate(pos_tags):
+            if tag == "A":
+                ind_a = index
+                break
+
+    auxa = wordsa[ind_a]
+    auxb = wordsb[ind_a]
+
+    if auxa == "do" and auxb == "does":
+        return True
+    if auxa == "does" and auxb == "do":
+        return True
+    if auxa == "don't" and auxb == "doesn't":
+        return True
+    if auxa == "doesn't" and auxb == "don't":
+        return True
+    return False
+
+
+    return auxb == auxa
+
+
 
 # Determines whether the main verb of the sentence has the number predicted by agree-recent
 def main_wrongnum_tense(senta, sentb):
@@ -390,6 +475,57 @@ def main_wrongnum_tense(senta, sentb):
        return True
     return False
 
+# Determines whether the auxiliary of the main verb of the sentence has the number predicted by agree-recent
+def main_wrongnum_tense_aux(senta, sentb):
+
+    if not right_pos(senta, sentb):
+        return False
+
+    wordsa = senta.split()
+    wordsb = sentb.split()
+
+    pos_tags = sent_to_pos(senta)
+
+    if pos_tags[2] == "R":
+        seen_a = 0
+        for index, tag in enumerate(pos_tags):
+            if tag == "A":
+                if seen_a:
+                    ind_a = index
+                    break
+                else:
+                    seen_a = 1
+
+
+    else:
+        for index, tag in enumerate(pos_tags):
+            if tag == "A":
+                ind_a = index
+                break
+
+    auxa = wordsa[ind_a]
+    auxb = wordsb[ind_a]
+
+    if auxa == "do" and auxb == "does":
+        return True
+    if auxa == "do" and auxb == "doesn't":
+        return True
+    if auxa == "don't" and auxb == "does":
+        return True
+    if auxa == "don't" and auxb == "doesn't":
+        return True
+    if auxa == "does" and auxb == "do":
+        return True
+    if auxa == "does" and auxb == "don't":
+        return True
+    if auxa == "doesn't" and auxb == "do":
+        return True
+    if auxa == "doesn't" and auxb == "don't":
+        return True
+
+    return False
+
+
 # Determines whether the main verb of the sentence has the correct number
 def main_rightnum_tense(senta, sentb):
 
@@ -425,6 +561,56 @@ def main_rightnum_tense(senta, sentb):
         return True
     if verba[-1] != "s" and verbb[-1] != "s":
         return True
+    return False
+
+# Determines whether the auxiliary of the main verb of the sentence has the correct number
+def main_rightnum_tense_aux(senta, sentb):
+
+    if not right_pos(senta, sentb):
+        return False
+
+    wordsa = senta.split()
+    wordsb = sentb.split()
+
+    pos_tags = sent_to_pos(senta)
+
+    if pos_tags[2] == "R":
+        seen_a = 0
+        for index, tag in enumerate(pos_tags):
+            if tag == "A":
+                if seen_a:
+                    ind_a = index
+                    break
+                else:
+                    seen_a = 1
+
+
+    else:
+        for index, tag in enumerate(pos_tags):
+            if tag == "A":
+                ind_a = index
+                break
+
+    auxa = wordsa[ind_a]
+    auxb = wordsb[ind_a]
+
+    if auxa == "do" and auxb == "do":
+        return True
+    if auxa == "do" and auxb == "don't":
+        return True
+    if auxa == "don't" and auxb == "do":
+        return True
+    if auxa == "don't" and auxb == "don't":
+        return True
+    if auxa == "does" and auxb == "does":
+        return True
+    if auxa == "does" and auxb == "doesn't":
+        return True
+    if auxa == "doesn't" and auxb == "does":
+        return True
+    if auxa == "doesn't" and auxb == "doesn't":
+        return True
+
     return False
 
 
