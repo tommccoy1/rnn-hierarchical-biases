@@ -1,5 +1,5 @@
 # rnn-hierarchical-biases
-Code for "Does syntax need to grow on trees? Sources of hierarchical inductive bias in sequence to sequence networks." The paper can be found at [LINK NOT YET AVAILABLE], with an earlier paper available [here](https://arxiv.org/pdf/1802.09091.pdf) (the experiments in the earlier paper are mostly a subset of the ones in the newer paper, but the older one does contain some analyses that are not in the newer one). There is also a website containing detailed results at [http://rtmccoy.com/rnn_hierarchical_biases.html](http://rtmccoy.com/rnn_hierarchical_biases.html).
+Code for "Does syntax need to grow on trees? Sources of hierarchical inductive bias in sequence to sequence networks." The paper can be found [here](https://arxiv.org/pdf/2001.03632.pdf), with an earlier paper available [here](https://arxiv.org/pdf/1802.09091.pdf) (the experiments in the earlier paper are mostly a subset of the ones in the newer paper, but the older one does contain some analyses that are not in the newer one). There is also a website containing detailed results at [http://rtmccoy.com/rnn_hierarchical_biases.html](http://rtmccoy.com/rnn_hierarchical_biases.html).
 
 
 Contents of this README:
